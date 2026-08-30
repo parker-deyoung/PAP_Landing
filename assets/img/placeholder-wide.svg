@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1333" role="img" aria-label="Image placeholder">
+  <rect width="2000" height="1333" fill="#c9cdc2"/>
+  <path d="M0 900 L700 620 L1200 820 L2000 560 L2000 1333 L0 1333 Z" fill="#8f9a7e"/>
+  <line x1="0" y1="920" x2="2000" y2="920" stroke="#a24e2c" stroke-width="6"/>
+  <text x="1000" y="480" font-family="Georgia, serif" font-size="52" fill="#3b4230" text-anchor="middle">
+    placeholder-wide  ·  2000 × 1333  ·  full-bleed section photo
+  </text>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1333 2000" role="img" aria-label="Image placeholder">
+  <rect width="1333" height="2000" fill="#c9cdc2"/>
+  <path d="M0 1400 L500 1120 L900 1320 L1333 1140 L1333 2000 L0 2000 Z" fill="#8f9a7e"/>
+  <line x1="0" y1="1420" x2="1333" y2="1420" stroke="#a24e2c" stroke-width="6"/>
+  <text x="666" y="820" font-family="Georgia, serif" font-size="46" fill="#3b4230" text-anchor="middle">
+    placeholder-tall
+  </text>
+  <text x="666" y="890" font-family="Georgia, serif" font-size="40" fill="#3b4230" text-anchor="middle">
+    1333 × 2000  ·  records-mule-deer-buck
+  </text>
+</svg>

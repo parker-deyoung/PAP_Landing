@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#e9eae6"/>
+  <path d="M0 430 L320 250 L520 350 L780 210 L1000 330 L1200 240 L1200 630 L0 630 Z" fill="#9aa48b"/>
+  <path d="M0 520 L360 400 L640 470 L920 410 L1200 500 L1200 630 L0 630 Z" fill="#7e8768"/>
+  <line x1="90" y1="470" x2="230" y2="470" stroke="#a24e2c" stroke-width="6"/>
+  <text x="90" y="250" font-family="Georgia, serif" font-size="64" font-weight="bold" fill="#22271f">Arches Labs</text>
+  <text x="92" y="330" font-family="Georgia, serif" font-size="40" fill="#22271f">Software for Utah big-game ranches</text>
+  <text x="92" y="392" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="26" fill="#454a3e">Placeholder — replace with assets/img/og-cover.jpg (1200×630)</text>
+</svg>

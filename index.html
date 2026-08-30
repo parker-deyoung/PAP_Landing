@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+  ============================================================================
+  ARCHES LABS — LANDING PAGE CONFIG
+  ============================================================================
+  Everything you'll need to change lives in this block and in the <script id="site-config">
+  immediately below it. Change a value in BOTH places (the visible markup uses the
+  hard-coded defaults so the page works with JavaScript disabled; the script re-syncs
+  links when JS runs).
+
+  MUST be filled before going live (see README.md "Fill before going live"):
+    - CAL_URL ...................... booking link (Cal.com or Calendly). Currently REPLACE_ME.
+    - FORM_ENDPOINT ............... where the contact form POSTs. Currently REPLACE_ME.
+    - SITE_URL ................... canonical domain, used by OG tags + sitemap. Currently REPLACE_ME.
+    - Founder bio lines ......... the three "REPLACE_ME" lines in section 2.
+    - Images ................... drop originals in assets/img/_src/, run tools/make-images.sh,
+                                then swap each <img> for the commented <picture> block above it.
+    - assets/img/og-cover.jpg .. 1200x630 social share image.
+    - IMAGE_CREDITS.md ........ one row per image; footer attributions mirror it.
+
+  Already set (real values, provided by Parker):
+    - PHONE / PHONE_TEL ........ 720-498-7552
+    - EMAIL ................... phdeyoung@gmail.com
+
+  Optional:
+    - ANALYTICS_ID ........... privacy-light analytics; snippet is commented out at end of <body>.
+
+  WHERE EACH VALUE APPEARS IN THE MARKUP:
+    CAL_URL ...... every "book" / section CTA <a class="btn-book">, and the contact booking link
+    PHONE_TEL ... every tel: link (hero secondary CTA, contact block, footer)
+    PHONE ....... visible phone text in those same spots
+    EMAIL ....... mailto: link + visible text in contact block and footer
+    SITE_URL .... <link rel="canonical">, og:url, twitter:url  (also hard-coded in sitemap.xml)
+  ============================================================================
+-->
+
+<title>Arches Labs — software for Utah big-game ranches</title>
+<meta name="description" content="We're three Utah hunters building herd-survey, record-keeping, and guest-operations software with the ranches that will run it. No product yet — book a 30-minute call and help shape it.">
+
+<link rel="canonical" href="https://REPLACE_ME.example/">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Arches Labs">
+<meta property="og:title" content="Software for Utah big-game ranches">
+<meta property="og:description" content="Three Utah hunters building herd-survey, record-keeping, and guest-operations software with the ranches that will run it. Book a 30-minute call.">
+<meta property="og:url" content="https://REPLACE_ME.example/">
+<meta property="og:image" content="https://REPLACE_ME.example/assets/img/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sunlit autumn peak above orange aspen stands in the Utah high country.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Software for Utah big-game ranches">
+<meta name="twitter:description" content="Three Utah hunters building herd-survey, record-keeping, and guest-operations software with the ranches that will run it. Book a 30-minute call.">
+<meta name="twitter:image" content="https://REPLACE_ME.example/assets/img/og-cover.jpg">
+<meta name="twitter:image:alt" content="Sunlit autumn peak above orange aspen stands in the Utah high country.">
+
+<meta name="theme-color" content="#33475a">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<link rel="preload" as="style" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<script id="site-config">
+  /* Single source of truth for the JS path. Keep in sync with the markup defaults. */
+  window.SITE_CONFIG = {
+    CAL_URL:      "https://REPLACE_ME.example/arches-labs/30min", // REPLACE_ME
+    FORM_ENDPOINT: "https://REPLACE_ME.example/f/xxxx",           // REPLACE_ME
+    PHONE:        "720-498-7552",
+    PHONE_TEL:    "+17204987552",
+    EMAIL:        "phdeyoung@gmail.com",
+    SITE_URL:     "https://REPLACE_ME.example",                   // REPLACE_ME
+    ANALYTICS_ID: ""                                              // optional
+  };
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <a class="wordmark" href="#main" aria-label="Arches Labs, home">
+    <svg class="wordmark__mark" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M3 20c0-7 4-13 9-13s9 6 9 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <span>Arches Labs</span>
+  </a>
+  <a class="btn btn--book" data-book data-topic="header"
+     href="https://REPLACE_ME.example/arches-labs/30min?topic=intro&amp;utm_source=site&amp;utm_medium=header&amp;utm_campaign=discovery">
+    Book a call
+  </a>
+</header>
+
+<main id="main">
+
+  <!-- ===================================================================
+       1. HERO
+       =================================================================== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__media">
+      <!--
+        PRODUCTION MARKUP — after tools/make-images.sh has generated the derivatives,
+        replace the <img> below with this block:
+
+        <picture>
+          <source type="image/webp"
+                  srcset="assets/img/hero-autumn-peak-640w.webp 640w,
+                          assets/img/hero-autumn-peak-1280w.webp 1280w,
+                          assets/img/hero-autumn-peak-1920w.webp 1920w"
+                  sizes="100vw">
+          <source type="image/jpeg"
+                  srcset="assets/img/hero-autumn-peak-640w.jpg 640w,
+                          assets/img/hero-autumn-peak-1280w.jpg 1280w,
+                          assets/img/hero-autumn-peak-1920w.jpg 1920w"
+                  sizes="100vw">
+          <img src="assets/img/hero-autumn-peak-1280w.jpg" width="2000" height="1333"
+               fetchpriority="high" decoding="async"
+               alt="A sunlit peak with fresh snow rising above a valley of bright orange aspen under heavy grey storm clouds, Utah high country.">
+        </picture>
+      -->
+      <img class="hero__img" src="assets/img/placeholder-hero.svg" width="2000" height="1333"
+           fetchpriority="high" decoding="async"
+           alt="A sunlit peak with fresh snow rising above a valley of bright orange aspen under heavy grey storm clouds, Utah high country.">
+    </div>
+
+    <div class="hero__body">
+      <hr class="horizon" aria-hidden="true">
+      <h1 id="hero-title">Software for Utah big-game ranches.</h1>
+      <p class="hero__lede">
+        We're three Utah hunters building it &mdash; herd surveys, record-keeping, and guest
+        operations &mdash; alongside the ranches that will run it. There's no product to demo
+        yet. We're spending this season talking to owners and managers about what actually
+        needs fixing, so the tool gets shaped by the people who work these operations.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn--primary btn--book" data-book data-topic="intro"
+           href="https://REPLACE_ME.example/arches-labs/30min?topic=intro&amp;utm_source=site&amp;utm_medium=hero&amp;utm_campaign=discovery">
+          Book a 30-minute call
+        </a>
+        <a class="btn btn--ghost" data-tel href="tel:+17204987552">
+          Call or text 720-498-7552
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       2. WHO WE ARE
+       =================================================================== -->
+  <section class="section section--who" aria-labelledby="who-title">
+    <div class="wrap">
+      <hr class="horizon" aria-hidden="true">
+      <h2 id="who-title">Who we are</h2>
+      <p class="section__lede">
+        Arches Labs is Parker DeYoung, Parker Piombo, and Anton Smolyanyy. We're from Utah
+        and we hunt &mdash; big game, waterfowl, most weekends we can get away. We've spent
+        enough time around ranches and outfitters to know that most software built for this
+        work was built by people who've never sat in a blind or walked a fence line at first
+        light. We would rather build the thing you actually need, with you, than guess at it.
+      </p>
+
+      <ul class="founders" role="list">
+        <li class="founder">
+          <div class="founder__photo">
+            <!--
+              PRODUCTION (after make-images.sh):
+              <picture>
+                <source type="image/webp" srcset="assets/img/founder-parker-duckhunt-640w.webp 640w, assets/img/founder-parker-duckhunt-1280w.webp 1280w" sizes="(min-width:40rem) 20rem, 100vw">
+                <source type="image/jpeg" srcset="assets/img/founder-parker-duckhunt-640w.jpg 640w, assets/img/founder-parker-duckhunt-1280w.jpg 1280w" sizes="(min-width:40rem) 20rem, 100vw">
+                <img src="assets/img/founder-parker-duckhunt-640w.jpg" width="800" height="1000" loading="lazy" decoding="async" alt="Parker DeYoung standing knee-deep in a marsh at first light on the Great Salt Lake, holding a duck, decoys around him.">
+              </picture>
+            -->
+            <img src="assets/img/placeholder-founder.svg" width="800" height="1000" loading="lazy" decoding="async"
+                 alt="Parker DeYoung standing knee-deep in a marsh at first light on the Great Salt Lake, holding a duck, decoys around him.">
+          </div>
+          <h3 class="founder__name">Parker DeYoung</h3>
+          <p class="founder__line">REPLACE_ME &mdash; one line: what he hunts and what he does here.</p>
+        </li>
+        <li class="founder">
+          <div class="founder__photo">
+            <!-- PRODUCTION: same <picture> pattern as above with base name founder-b -->
+            <img src="assets/img/placeholder-founder.svg" width="800" height="1000" loading="lazy" decoding="async"
+                 alt="Portrait of Parker Piombo. Photo to come.">
+          </div>
+          <h3 class="founder__name">Parker Piombo</h3>
+          <p class="founder__line">REPLACE_ME &mdash; one line: what he hunts and what he does here.</p>
+        </li>
+        <li class="founder">
+          <div class="founder__photo">
+            <!-- PRODUCTION: same <picture> pattern as above with base name founder-c -->
+            <img src="assets/img/placeholder-founder.svg" width="800" height="1000" loading="lazy" decoding="async"
+                 alt="Portrait of Anton Smolyanyy. Photo to come.">
+          </div>
+          <h3 class="founder__name">Anton Smolyanyy</h3>
+          <p class="founder__line">REPLACE_ME &mdash; one line: what he hunts and what he does here.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       3. AERIAL SURVEYS AND HERD TRACKING
+       =================================================================== -->
+  <section class="section" aria-labelledby="surveys-title">
+    <figure class="section__figure">
+      <!--
+        PRODUCTION (after make-images.sh):
+        <picture>
+          <source type="image/webp" srcset="assets/img/surveys-bison-herd-640w.webp 640w, assets/img/surveys-bison-herd-1280w.webp 1280w, assets/img/surveys-bison-herd-1920w.webp 1920w" sizes="100vw">
+          <source type="image/jpeg" srcset="assets/img/surveys-bison-herd-640w.jpg 640w, assets/img/surveys-bison-herd-1280w.jpg 1280w, assets/img/surveys-bison-herd-1920w.jpg 1920w" sizes="100vw">
+          <img src="assets/img/surveys-bison-herd-1280w.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="...">
+        </picture>
+      -->
+      <img src="assets/img/placeholder-wide.svg" width="2000" height="1333" loading="lazy" decoding="async"
+           alt="A large herd grazing an irrigated green pasture below a juniper-and-sandstone ridge in southern Utah.">
+    </figure>
+    <div class="wrap">
+      <hr class="horizon" aria-hidden="true">
+      <h2 id="surveys-title">Aerial surveys and herd tracking</h2>
+      <p>
+        This is our starting point. We fly thermal drone surveys to count your herd and break
+        it out by age class, then keep those numbers in one place season over season. Instead
+        of paying for a helicopter survey that gives you one count on one day, you get a
+        running inventory and trend lines you can plan against &mdash; how the buck-to-doe
+        ratio is moving, whether your mature age classes are holding, where numbers are
+        sliding before it shows up at harvest.
+      </p>
+      <p>
+        We work with the trail cameras you already run. We're not asking you to pull anything
+        out or standardize on our hardware &mdash; the cameras feed the same inventory the
+        flights do.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn--primary btn--book" data-book data-topic="surveys"
+           href="https://REPLACE_ME.example/arches-labs/30min?topic=surveys&amp;utm_source=site&amp;utm_medium=surveys&amp;utm_campaign=discovery">
+          Talk to us about surveys
+        </a>
+        <a class="link-note" data-topic="surveys" href="#contact">or send us a note</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       4. HERD RECORDS AND INVENTORY
+       =================================================================== -->
+  <section class="section" aria-labelledby="records-title">
+    <figure class="section__figure">
+      <!--
+        PRODUCTION (after make-images.sh):
+        <picture>
+          <source type="image/webp" srcset="assets/img/records-mule-deer-buck-640w.webp 640w, assets/img/records-mule-deer-buck-1280w.webp 1280w, assets/img/records-mule-deer-buck-1920w.webp 1920w" sizes="100vw">
+          <source type="image/jpeg" srcset="assets/img/records-mule-deer-buck-640w.jpg 640w, assets/img/records-mule-deer-buck-1280w.jpg 1280w, assets/img/records-mule-deer-buck-1920w.jpg 1920w" sizes="100vw">
+          <img src="assets/img/records-mule-deer-buck-1280w.jpg" width="1333" height="2000" loading="lazy" decoding="async" alt="...">
+        </picture>
+      -->
+      <img src="assets/img/placeholder-tall.svg" width="1333" height="2000" loading="lazy" decoding="async"
+           alt="A mature mule deer buck with a heavy, symmetrical rack standing in tall autumn grass at dusk.">
+    </figure>
+    <div class="wrap">
+      <hr class="horizon" aria-hidden="true">
+      <h2 id="records-title">Herd records and inventory</h2>
+      <p>
+        This is the part we're still working out, and we want your read on it. Individual
+        animals and their pedigree. Genetics and breeding history. Harvest records and
+        scores. Mortality, culls, and the compliance paperwork the state asks for. Some of
+        that matters a great deal on your operation and some of it you'd never open. Which is
+        which? That's the conversation we want before we build a line of it.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn--primary btn--book" data-book data-topic="records"
+           href="https://REPLACE_ME.example/arches-labs/30min?topic=records&amp;utm_source=site&amp;utm_medium=records&amp;utm_campaign=discovery">
+          Tell us which records matter
+        </a>
+        <a class="link-note" data-topic="records" href="#contact">or send us a note</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       5. HOSPITALITY AND GUEST OPERATIONS
+       =================================================================== -->
+  <section class="section" aria-labelledby="hospitality-title">
+    <figure class="section__figure">
+      <!--
+        PRODUCTION (after make-images.sh): same <picture> pattern, base name hospitality-bull-elk,
+        widths 640/1280/1920, sizes="100vw".
+      -->
+      <img src="assets/img/placeholder-wide.svg" width="2000" height="1333" loading="lazy" decoding="async"
+           alt="A bull elk bugling in a meadow backlit by low golden evening light.">
+    </figure>
+    <div class="wrap">
+      <hr class="horizon" aria-hidden="true">
+      <h2 id="hospitality-title">Hospitality and guest operations</h2>
+      <p>
+        We're also looking at the guest side &mdash; booking hunts, scheduling guides,
+        keeping lodging straight, and remembering which clients came back and what they
+        hunted last time. We haven't committed to building this. If it's the part of your
+        week that eats the most time, tell us and it moves up the list.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn--primary btn--book" data-book data-topic="hospitality"
+           href="https://REPLACE_ME.example/arches-labs/30min?topic=hospitality&amp;utm_source=site&amp;utm_medium=hospitality&amp;utm_campaign=discovery">
+          Talk to us about guest operations
+        </a>
+        <a class="link-note" data-topic="hospitality" href="#contact">or send us a note</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       6. CONTACT
+       =================================================================== -->
+  <section class="section section--contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <hr class="horizon" aria-hidden="true">
+      <h2 id="contact-title">Contact</h2>
+      <p class="section__lede">
+        Three ways to reach us. A call is the most useful &mdash; 30 minutes, no demo, just
+        questions about how your operation runs.
+      </p>
+
+      <div class="contact-methods">
+        <p class="contact-method">
+          <span class="contact-method__label">Call or text</span>
+          <a class="contact-method__value" data-tel href="tel:+17204987552">720-498-7552</a>
+        </p>
+        <p class="contact-method">
+          <span class="contact-method__label">Email</span>
+          <a class="contact-method__value" data-email href="mailto:phdeyoung@gmail.com">phdeyoung@gmail.com</a>
+        </p>
+        <p class="contact-method">
+          <span class="contact-method__label">Book a time directly</span>
+          <a class="btn btn--primary btn--book" data-book data-topic="contact"
+             href="https://REPLACE_ME.example/arches-labs/30min?topic=contact&amp;utm_source=site&amp;utm_medium=contact&amp;utm_campaign=discovery">
+            Open the booking calendar
+          </a>
+        </p>
+      </div>
+      <!--
+        OPTIONAL inline embed: drop a Cal.com/Calendly <iframe> here once CAL_URL is set.
+        Keep the link above as the no-JS / blocked-embed fallback.
+      -->
+
+      <div class="form-panel">
+        <h3 id="form-title">Or send a note</h3>
+        <p class="form-panel__intro">Six questions. The last one matters most.</p>
+
+        <form id="contact-form" method="post"
+              action="https://REPLACE_ME.example/f/xxxx"
+              aria-labelledby="form-title" aria-describedby="form-status">
+
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label for="f-operation">Operation name</label>
+            <input id="f-operation" name="operation" type="text" autocomplete="organization">
+          </div>
+
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="f-phone">Phone</label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+          </div>
+
+          <div class="field">
+            <label for="f-headcount">Approximate head count</label>
+            <select id="f-headcount" name="headcount">
+              <option value="">Select a range</option>
+              <option value="under-100">Under 100</option>
+              <option value="100-500">100 to 500</option>
+              <option value="500-1500">500 to 1,500</option>
+              <option value="1500-plus">1,500 or more</option>
+              <option value="not-sure">Not sure</option>
+            </select>
+          </div>
+
+          <div class="field field--wide">
+            <label for="f-annoying">What's the most annoying part of your week?</label>
+            <textarea id="f-annoying" name="annoying" rows="6"></textarea>
+          </div>
+
+          <!-- research tag: set from the section CTA the visitor clicked (JS). No-JS default below. -->
+          <input type="hidden" id="f-topic" name="topic" value="site-general">
+          <!-- spam honeypot: real people leave this empty; not a counted field -->
+          <div class="hp" aria-hidden="true">
+            <label for="f-company-url">Company website</label>
+            <input id="f-company-url" name="company_url" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn--primary">Send note</button>
+          </div>
+
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <!--
+    PRODUCTION (after make-images.sh): swap each src to the matching strip image.
+    WebP is optional here; a single 640w JPEG per slot is fine. Order:
+    strip-pronghorn-dusk, strip-snowy-timp, strip-red-maple-ridge, strip-delicate-arch
+  -->
+  <div class="footer-strip" aria-hidden="true">
+    <img src="assets/img/placeholder-strip.svg" width="600" height="400" loading="lazy" decoding="async" alt="">
+    <img src="assets/img/placeholder-strip.svg" width="600" height="400" loading="lazy" decoding="async" alt="">
+    <img src="assets/img/placeholder-strip.svg" width="600" height="400" loading="lazy" decoding="async" alt="">
+    <img src="assets/img/placeholder-strip.svg" width="600" height="400" loading="lazy" decoding="async" alt="">
+  </div>
+
+  <div class="wrap">
+    <hr class="horizon" aria-hidden="true">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand">Arches Labs</p>
+        <p class="footer-place">Utah</p>
+      </div>
+      <ul class="footer-contact" role="list">
+        <li><a data-tel href="tel:+17204987552">Call or text 720-498-7552</a></li>
+        <li><a data-email href="mailto:phdeyoung@gmail.com">phdeyoung@gmail.com</a></li>
+        <li>
+          <a class="btn--book" data-book data-topic="footer"
+             href="https://REPLACE_ME.example/arches-labs/30min?topic=footer&amp;utm_source=site&amp;utm_medium=footer&amp;utm_campaign=discovery">
+            Book a 30-minute call
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer-credits">
+      <h2 class="footer-credits__title">Photography</h2>
+      <!-- Mirror the rows in IMAGE_CREDITS.md. Replace before going live. -->
+      <ul role="list">
+        <li>Hero, autumn peak &mdash; REPLACE_ME (source, license, attribution).</li>
+        <li>Founders section &mdash; Arches Labs, all rights reserved.</li>
+        <li>Herd survey, grazing herd &mdash; REPLACE_ME.</li>
+        <li>Herd records, mule deer buck &mdash; REPLACE_ME.</li>
+        <li>Hospitality, bull elk &mdash; REPLACE_ME.</li>
+        <li>Footer strip &mdash; pronghorn at dusk, snowy peak, red maple ridge, Delicate Arch &mdash; REPLACE_ME.</li>
+      </ul>
+    </div>
+
+    <p class="footer-legal">&copy; 2026 Arches Labs. No product yet &mdash; we're building it with the ranches that will run it.</p>
+  </div>
+</footer>
+
+<script src="assets/js/enhance.js" defer></script>
+
+<!--
+  OPTIONAL analytics. Privacy-light, non-render-blocking. Leave commented until you set
+  SITE_CONFIG.ANALYTICS_ID. Example (Plausible):
+  <script defer data-domain="REPLACE_ME.example" src="https://plausible.io/js/script.js"></script>
+-->
+</body>
+</html>
