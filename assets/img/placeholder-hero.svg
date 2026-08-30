@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1333" role="img" aria-label="Image placeholder">
-  <rect width="2000" height="1333" fill="#c9cdc2"/>
-  <path d="M0 980 L520 560 L820 760 L1180 460 L1520 720 L2000 500 L2000 1333 L0 1333 Z" fill="#9aa48b"/>
-  <path d="M0 1120 L640 860 L1080 1040 L1520 880 L2000 1080 L2000 1333 L0 1333 Z" fill="#7e8768"/>
-  <line x1="0" y1="1000" x2="2000" y2="1000" stroke="#a24e2c" stroke-width="6"/>
-  <text x="1000" y="360" font-family="Georgia, serif" font-size="52" fill="#3b4230" text-anchor="middle">
-    placeholder-hero  ·  2000 × 1333  ·  hero-autumn-peak
-  </text>
-</svg>

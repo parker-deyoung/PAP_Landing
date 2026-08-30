@@ -18,10 +18,8 @@
     - FORM_ENDPOINT ............... where the contact form POSTs. Currently REPLACE_ME.
     - SITE_URL ................... canonical domain, used by OG tags + sitemap. Currently REPLACE_ME.
     - Founder bio lines ......... the three "REPLACE_ME" lines in section 2.
-    - Images ................... drop originals in assets/img/_src/, run tools/make-images.sh,
-                                then swap each <img> for the commented <picture> block above it.
-    - assets/img/og-cover.jpg .. 1200x630 social share image.
-    - IMAGE_CREDITS.md ........ one row per image; footer attributions mirror it.
+    - Founder B & C photos ..... section 2 still shows placeholder-founder.svg for two of three.
+    - IMAGE_CREDITS.md / footer "Photography" ... verify photographer names + Unsplash IDs.
 
   Already set (real values, provided by Parker):
     - PHONE / PHONE_TEL ........ 720-498-7552
@@ -105,29 +103,18 @@
        =================================================================== -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero__media">
-      <!--
-        PRODUCTION MARKUP — after tools/make-images.sh has generated the derivatives,
-        replace the <img> below with this block:
-
-        <picture>
-          <source type="image/webp"
-                  srcset="assets/img/hero-autumn-peak-640w.webp 640w,
-                          assets/img/hero-autumn-peak-1280w.webp 1280w,
-                          assets/img/hero-autumn-peak-1920w.webp 1920w"
-                  sizes="100vw">
-          <source type="image/jpeg"
-                  srcset="assets/img/hero-autumn-peak-640w.jpg 640w,
-                          assets/img/hero-autumn-peak-1280w.jpg 1280w,
-                          assets/img/hero-autumn-peak-1920w.jpg 1920w"
-                  sizes="100vw">
-          <img src="assets/img/hero-autumn-peak-1280w.jpg" width="2000" height="1333"
-               fetchpriority="high" decoding="async"
-               alt="A sunlit peak with fresh snow rising above a valley of bright orange aspen under heavy grey storm clouds, Utah high country.">
-        </picture>
-      -->
-      <img class="hero__img" src="assets/img/placeholder-hero.svg" width="2000" height="1333"
-           fetchpriority="high" decoding="async"
-           alt="A sunlit peak with fresh snow rising above a valley of bright orange aspen under heavy grey storm clouds, Utah high country.">
+      <picture>
+        <source type="image/webp"
+                srcset="assets/img/hero-autumn-peak-640w.webp 640w,
+                        assets/img/hero-autumn-peak-1280w.webp 1280w"
+                sizes="100vw">
+        <img class="hero__img" src="assets/img/hero-autumn-peak-1280w.jpg"
+             srcset="assets/img/hero-autumn-peak-640w.jpg 640w,
+                     assets/img/hero-autumn-peak-1280w.jpg 1280w"
+             sizes="100vw" width="2000" height="1333"
+             fetchpriority="high" decoding="async"
+             alt="A snow-dusted peak under heavy grey storm clouds above a valley of bright orange aspen, Utah high country.">
+      </picture>
     </div>
 
     <div class="hero__body">
@@ -169,16 +156,18 @@
       <ul class="founders" role="list">
         <li class="founder">
           <div class="founder__photo">
-            <!--
-              PRODUCTION (after make-images.sh):
-              <picture>
-                <source type="image/webp" srcset="assets/img/founder-parker-duckhunt-640w.webp 640w, assets/img/founder-parker-duckhunt-1280w.webp 1280w" sizes="(min-width:40rem) 20rem, 100vw">
-                <source type="image/jpeg" srcset="assets/img/founder-parker-duckhunt-640w.jpg 640w, assets/img/founder-parker-duckhunt-1280w.jpg 1280w" sizes="(min-width:40rem) 20rem, 100vw">
-                <img src="assets/img/founder-parker-duckhunt-640w.jpg" width="800" height="1000" loading="lazy" decoding="async" alt="Parker DeYoung standing knee-deep in a marsh at first light on the Great Salt Lake, holding a duck, decoys around him.">
-              </picture>
-            -->
-            <img src="assets/img/placeholder-founder.svg" width="800" height="1000" loading="lazy" decoding="async"
-                 alt="Parker DeYoung standing knee-deep in a marsh at first light on the Great Salt Lake, holding a duck, decoys around him.">
+            <picture>
+              <source type="image/webp"
+                      srcset="assets/img/founder-parker-duckhunt-560w.webp 560w,
+                              assets/img/founder-parker-duckhunt-1120w.webp 1120w"
+                      sizes="(min-width: 40rem) 19rem, 100vw">
+              <img src="assets/img/founder-parker-duckhunt-560w.jpg"
+                   srcset="assets/img/founder-parker-duckhunt-560w.jpg 560w,
+                           assets/img/founder-parker-duckhunt-1120w.jpg 1120w"
+                   sizes="(min-width: 40rem) 19rem, 100vw"
+                   width="1656" height="2208" loading="lazy" decoding="async"
+                   alt="Parker DeYoung standing in a marsh at first light on the Great Salt Lake, holding a duck, decoys on the water around him.">
+            </picture>
           </div>
           <h3 class="founder__name">Parker DeYoung</h3>
           <p class="founder__line">REPLACE_ME &mdash; one line: what he hunts and what he does here.</p>
@@ -210,16 +199,17 @@
        =================================================================== -->
   <section class="section" aria-labelledby="surveys-title">
     <figure class="section__figure">
-      <!--
-        PRODUCTION (after make-images.sh):
-        <picture>
-          <source type="image/webp" srcset="assets/img/surveys-bison-herd-640w.webp 640w, assets/img/surveys-bison-herd-1280w.webp 1280w, assets/img/surveys-bison-herd-1920w.webp 1920w" sizes="100vw">
-          <source type="image/jpeg" srcset="assets/img/surveys-bison-herd-640w.jpg 640w, assets/img/surveys-bison-herd-1280w.jpg 1280w, assets/img/surveys-bison-herd-1920w.jpg 1920w" sizes="100vw">
-          <img src="assets/img/surveys-bison-herd-1280w.jpg" width="2000" height="1333" loading="lazy" decoding="async" alt="...">
-        </picture>
-      -->
-      <img src="assets/img/placeholder-wide.svg" width="2000" height="1333" loading="lazy" decoding="async"
-           alt="A large herd grazing an irrigated green pasture below a juniper-and-sandstone ridge in southern Utah.">
+      <picture>
+        <source type="image/webp"
+                srcset="assets/img/surveys-bison-herd-640w.webp 640w,
+                        assets/img/surveys-bison-herd-1280w.webp 1280w"
+                sizes="100vw">
+        <img src="assets/img/surveys-bison-herd-1280w.jpg"
+             srcset="assets/img/surveys-bison-herd-640w.jpg 640w,
+                     assets/img/surveys-bison-herd-1280w.jpg 1280w"
+             sizes="100vw" width="2000" height="1333" loading="lazy" decoding="async"
+             alt="A large herd grazing an irrigated green pasture below a juniper-and-sandstone ridge under an overcast sky.">
+      </picture>
     </figure>
     <div class="wrap">
       <hr class="horizon" aria-hidden="true">
@@ -251,17 +241,18 @@
        4. HERD RECORDS AND INVENTORY
        =================================================================== -->
   <section class="section" aria-labelledby="records-title">
-    <figure class="section__figure">
-      <!--
-        PRODUCTION (after make-images.sh):
-        <picture>
-          <source type="image/webp" srcset="assets/img/records-mule-deer-buck-640w.webp 640w, assets/img/records-mule-deer-buck-1280w.webp 1280w, assets/img/records-mule-deer-buck-1920w.webp 1920w" sizes="100vw">
-          <source type="image/jpeg" srcset="assets/img/records-mule-deer-buck-640w.jpg 640w, assets/img/records-mule-deer-buck-1280w.jpg 1280w, assets/img/records-mule-deer-buck-1920w.jpg 1920w" sizes="100vw">
-          <img src="assets/img/records-mule-deer-buck-1280w.jpg" width="1333" height="2000" loading="lazy" decoding="async" alt="...">
-        </picture>
-      -->
-      <img src="assets/img/placeholder-tall.svg" width="1333" height="2000" loading="lazy" decoding="async"
-           alt="A mature mule deer buck with a heavy, symmetrical rack standing in tall autumn grass at dusk.">
+    <figure class="section__figure section__figure--tall">
+      <picture>
+        <source type="image/webp"
+                srcset="assets/img/records-mule-deer-buck-640w.webp 640w,
+                        assets/img/records-mule-deer-buck-960w.webp 960w"
+                sizes="100vw">
+        <img src="assets/img/records-mule-deer-buck-960w.jpg"
+             srcset="assets/img/records-mule-deer-buck-640w.jpg 640w,
+                     assets/img/records-mule-deer-buck-960w.jpg 960w"
+             sizes="100vw" width="1656" height="2484" loading="lazy" decoding="async"
+             alt="A mature mule deer buck with a heavy, wide rack standing in tall dry autumn grass at dusk.">
+      </picture>
     </figure>
     <div class="wrap">
       <hr class="horizon" aria-hidden="true">
@@ -288,12 +279,17 @@
        =================================================================== -->
   <section class="section" aria-labelledby="hospitality-title">
     <figure class="section__figure">
-      <!--
-        PRODUCTION (after make-images.sh): same <picture> pattern, base name hospitality-bull-elk,
-        widths 640/1280/1920, sizes="100vw".
-      -->
-      <img src="assets/img/placeholder-wide.svg" width="2000" height="1333" loading="lazy" decoding="async"
-           alt="A bull elk bugling in a meadow backlit by low golden evening light.">
+      <picture>
+        <source type="image/webp"
+                srcset="assets/img/hospitality-bull-elk-640w.webp 640w,
+                        assets/img/hospitality-bull-elk-1280w.webp 1280w"
+                sizes="100vw">
+        <img src="assets/img/hospitality-bull-elk-1280w.jpg"
+             srcset="assets/img/hospitality-bull-elk-640w.jpg 640w,
+                     assets/img/hospitality-bull-elk-1280w.jpg 1280w"
+             sizes="100vw" width="2000" height="1333" loading="lazy" decoding="async"
+             alt="A bull elk bugling in a meadow, backlit by low golden evening light.">
+      </picture>
     </figure>
     <div class="wrap">
       <hr class="horizon" aria-hidden="true">
@@ -414,16 +410,23 @@
 </main>
 
 <footer class="site-footer">
-  <!--
-    PRODUCTION (after make-images.sh): swap each src to the matching strip image.
-    WebP is optional here; a single 640w JPEG per slot is fine. Order:
-    strip-pronghorn-dusk, strip-snowy-timp, strip-red-maple-ridge, strip-delicate-arch
-  -->
   <div class="footer-strip" aria-hidden="true">
-    <img src="assets/img/placeholder-strip.svg" width="600" height="400" loading="lazy" decoding="async" alt="">
-    <img src="assets/img/placeholder-strip.svg" width="600" height="400" loading="lazy" decoding="async" alt="">
-    <img src="assets/img/placeholder-strip.svg" width="600" height="400" loading="lazy" decoding="async" alt="">
-    <img src="assets/img/placeholder-strip.svg" width="600" height="400" loading="lazy" decoding="async" alt="">
+    <picture>
+      <source type="image/webp" srcset="assets/img/strip-pronghorn-dusk-480w.webp">
+      <img src="assets/img/strip-pronghorn-dusk-480w.jpg" width="480" height="320" loading="lazy" decoding="async" alt="">
+    </picture>
+    <picture>
+      <source type="image/webp" srcset="assets/img/strip-snowy-timp-480w.webp">
+      <img src="assets/img/strip-snowy-timp-480w.jpg" width="480" height="720" loading="lazy" decoding="async" alt="">
+    </picture>
+    <picture>
+      <source type="image/webp" srcset="assets/img/strip-red-maple-ridge-480w.webp">
+      <img src="assets/img/strip-red-maple-ridge-480w.jpg" width="480" height="720" loading="lazy" decoding="async" alt="">
+    </picture>
+    <picture>
+      <source type="image/webp" srcset="assets/img/strip-delicate-arch-480w.webp">
+      <img src="assets/img/strip-delicate-arch-480w.jpg" width="480" height="320" loading="lazy" decoding="async" alt="">
+    </picture>
   </div>
 
   <div class="wrap">
@@ -447,14 +450,14 @@
 
     <div class="footer-credits">
       <h2 class="footer-credits__title">Photography</h2>
-      <!-- Mirror the rows in IMAGE_CREDITS.md. Replace before going live. -->
+      <!-- Mirrors IMAGE_CREDITS.md. Names/IDs read from Unsplash download filenames — verify before launch. -->
       <ul role="list">
-        <li>Hero, autumn peak &mdash; REPLACE_ME (source, license, attribution).</li>
-        <li>Founders section &mdash; Arches Labs, all rights reserved.</li>
-        <li>Herd survey, grazing herd &mdash; REPLACE_ME.</li>
-        <li>Herd records, mule deer buck &mdash; REPLACE_ME.</li>
-        <li>Hospitality, bull elk &mdash; REPLACE_ME.</li>
-        <li>Footer strip &mdash; pronghorn at dusk, snowy peak, red maple ridge, Delicate Arch &mdash; REPLACE_ME.</li>
+        <li>Hero and social image &mdash; photo by Saúl Flores on Unsplash.</li>
+        <li>Aerial surveys &mdash; photo by Andres Haro on Unsplash.</li>
+        <li>Herd records &mdash; photo by Kush Dwivedi on Unsplash.</li>
+        <li>Hospitality &mdash; photo by Mathew Schwartz on Unsplash.</li>
+        <li>Footer strip &mdash; photos by Taun Stewart, Caroline Sterr, Nils Rasmusson, and solotravelgoals on Unsplash.</li>
+        <li>Founder photo &mdash; &copy; Arches Labs.</li>
       </ul>
     </div>
 

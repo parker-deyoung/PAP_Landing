@@ -1,2 +1,6 @@
 .DS_Store
 *.log
+.vscode/
+
+# full-resolution originals — keep your own backup; only derivatives are deployed
+assets/img/_src/

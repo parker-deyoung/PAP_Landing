@@ -30,8 +30,12 @@ cd "$(dirname "$0")/.."
 
 SRC="assets/img/_src"
 OUT="assets/img"
-JPEG_Q=80
-WEBP_Q=72
+# Kept deliberately low: the audience is on rural connections and the whole-page
+# budget is ~1 MB. WebP is the primary format (encoded from the original); the JPEG
+# is only the fallback for pre-2020 browsers, so it can be pushed harder.
+# Bump these only if a specific image looks bad.
+JPEG_Q=46
+WEBP_Q=56
 
 HAVE_WEBP=0
 if command -v cwebp >/dev/null 2>&1; then
@@ -58,7 +62,8 @@ derive () { # $1 = base name, $2... = target widths
     local jpg="$OUT/${base}-${w}w.jpg"
     sips -s format jpeg -s formatOptions "$JPEG_Q" --resampleWidth "$w" "$src" --out "$jpg" >/dev/null
     if [ "$HAVE_WEBP" -eq 1 ]; then
-      cwebp -quiet -q "$WEBP_Q" "$jpg" -o "$OUT/${base}-${w}w.webp"
+      # encode WebP straight from the original so it isn't stacked on JPEG artifacts
+      cwebp -quiet -q "$WEBP_Q" -resize "$w" 0 "$src" -o "$OUT/${base}-${w}w.webp"
     fi
     echo "  $jpg$( [ "$HAVE_WEBP" -eq 1 ] && echo "  + .webp" )"
   done
@@ -66,27 +71,28 @@ derive () { # $1 = base name, $2... = target widths
 
 echo "Processing images from $SRC ..."
 
-# hero + full-bleed section photos: 640 / 1280 / 1920
-derive hero-autumn-peak      640 1280 1920
-derive surveys-bison-herd    640 1280 1920
-derive records-mule-deer-buck 640 1280 1920
-derive hospitality-bull-elk  640 1280 1920
+# hero + full-bleed section photos: 640 / 1280 (no larger tier — keeps the budget)
+derive hero-autumn-peak       640 1280
+derive surveys-bison-herd     640 1280
+derive hospitality-bull-elk   640 1280
+# mule-deer frame is edge-to-edge fine grass — it does not compress. Cap it smaller.
+derive records-mule-deer-buck 640 960
 
-# founders: 640 / 1280
-derive founder-parker-duckhunt 640 1280
-derive founder-b               640 1280
-derive founder-c               640 1280
+# founders: 560 / 1120 (rendered at most ~1 column wide)
+derive founder-parker-duckhunt 560 1120
+derive founder-b               560 1120
+derive founder-c               560 1120
 
-# footer strip: 640 only
-derive strip-pronghorn-dusk  640
-derive strip-snowy-timp      640
-derive strip-red-maple-ridge 640
-derive strip-delicate-arch   640
+# footer strip: one small size, decorative + lazy
+derive strip-pronghorn-dusk  480
+derive strip-snowy-timp      480
+derive strip-red-maple-ridge 480
+derive strip-delicate-arch   480
 
 # social share card: 1200x630 crop from the hero source
 HERO_SRC="$(find_src hero-autumn-peak)"
 if [ -n "$HERO_SRC" ]; then
-  sips -s format jpeg -s formatOptions 82 \
+  sips -s format jpeg -s formatOptions 60 \
        --resampleHeightWidth 630 1200 --cropToHeightWidth 630 1200 \
        "$HERO_SRC" --out "$OUT/og-cover.jpg" >/dev/null
   echo "  $OUT/og-cover.jpg (1200x630)"

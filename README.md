@@ -8,8 +8,8 @@ small progressive-enhancement JS file.
 index.html              all six sections + footer; config block is at the top of <head>
 assets/css/styles.css    all styles
 assets/js/enhance.js     optional: link sync, topic tagging, on-page form submit
-assets/img/              placeholder SVGs now; real images after tools/make-images.sh
-assets/img/_src/         drop original photos here (see tools/make-images.sh header)
+assets/img/              processed WebP + JPEG (via tools/make-images.sh) + favicons
+assets/img/_src/         full-res originals (git-ignored); build script reads these
 tools/make-images.sh     one-time image processing (needs macOS `sips`; `cwebp` optional)
 robots.txt  sitemap.xml  .nojekyll
 IMAGE_CREDITS.md         one row per image; footer "Photography" list mirrors it
@@ -56,25 +56,24 @@ the `<script id="site-config">`, AND the visible markup where noted):**
 `.founder__line` with one real sentence each (names, phone `720-498-7552`, and email
 `phdeyoung@gmail.com` are already set).
 
-**Images:**
+**Images — mostly done.** Nine photos are placed, processed to responsive WebP + JPEG
+(`tools/make-images.sh`), and wired into `index.html`. `og-cover.jpg` is generated from
+the hero. Remaining image work:
 
-1. Put originals in `assets/img/_src/` with the names listed at the top of
-   `tools/make-images.sh`.
-2. Run `bash tools/make-images.sh`.
-3. In `index.html`, replace each placeholder `<img …>` with the `<picture>` block in the
-   comment directly above it (or, quick version, change the `src` from `…placeholder-*.svg`
-   to the matching `…-1280w.jpg`). Swap the four footer-strip `src`s too.
-4. Replace `assets/img/og-cover.jpg` (the script regenerates it from the hero source, or
-   drop in a hand-made 1200×630).
-5. Delete the `assets/img/placeholder-*.svg` files and
-   `assets/img/_src/og-cover-placeholder.svg`.
-6. Fill in every `REPLACE_ME` row in `IMAGE_CREDITS.md` and the matching lines in the
-   footer "Photography" list. Confirm licensing for anything not shot by the team — Utah
-   DWR images are **not** automatically public domain.
+1. **Verify photo credits.** `IMAGE_CREDITS.md` and the footer "Photography" list name
+   each photographer and Unsplash photo ID *as read from the download filenames*. Open
+   each Unsplash page, confirm the name/URL, and confirm the Unsplash License still
+   applies. Fix anything that's off.
+2. **Founder B and C photos.** `founder-b` (Parker Piombo) and `founder-c`
+   (Anton Smolyanyy) still show `assets/img/placeholder-founder.svg`. Drop
+   `founder-b.jpg` / `founder-c.jpg` into `assets/img/_src/`, run
+   `bash tools/make-images.sh`, then in section 2 of `index.html` replace those two
+   `<img>` tags with the same `<picture>` block Founder A uses (base names `founder-b`,
+   `founder-c`; widths `560w` / `1120w`).
 
-**Founder photos:** `founder-parker-duckhunt` is Parker DeYoung's marsh photo. `founder-b`
-(Parker Piombo) and `founder-c` (Anton Smolyanyy) stay on the placeholder until real
-files are added to `_src/` and the script is re-run.
+To re-process everything (e.g. after swapping a source photo): put the replacement in
+`assets/img/_src/` under the name at the top of `tools/make-images.sh`, run the script,
+done. `assets/img/_src/` is git-ignored — keep your own backup of the originals.
 
 ## The research tag (why each section has its own CTA)
 

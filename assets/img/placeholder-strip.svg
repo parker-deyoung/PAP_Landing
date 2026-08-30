@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-label="">
-  <rect width="600" height="400" fill="#c9cdc2"/>
-  <path d="M0 280 L200 190 L360 250 L600 170 L600 400 L0 400 Z" fill="#8f9a7e"/>
-  <line x1="0" y1="285" x2="600" y2="285" stroke="#a24e2c" stroke-width="4"/>
-  <text x="300" y="150" font-family="Georgia, serif" font-size="26" fill="#3b4230" text-anchor="middle">footer strip</text>
-</svg>
