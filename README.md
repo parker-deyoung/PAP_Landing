@@ -5,9 +5,10 @@ Static one-page site whose only job is to get ranch owners and managers to book 
 small progressive-enhancement JS file.
 
 ```
-index.html              all six sections + footer; config block is at the top of <head>
+index.html              all seven sections + footer; config block is at the top of <head>
 assets/css/styles.css    all styles
 assets/js/enhance.js     optional: link sync, topic tagging, on-page form submit
+assets/js/patrol-demo.js optional: plays the security section's night-patrol demo (inline SVG)
 assets/img/              processed WebP + JPEG (via tools/make-images.sh) + favicons
 assets/img/_src/         full-res originals (git-ignored); build script reads these
 tools/make-images.sh     one-time image processing (needs macOS `sips`; `cwebp` optional)
@@ -47,14 +48,10 @@ the `<script id="site-config">`, AND the visible markup where noted):**
 
 | Value | Where | Notes |
 |---|---|---|
-| `CAL_URL` | `site-config` script + every `a[data-book]` href + booking link in Contact | Cal.com or Calendly 30-min link. Section CTAs append `?topic=…&utm_medium=…`; keep those query params. |
+| `CAL_URL` | `site-config` script + every `a[data-book]` href + booking link in Contact | **Set:** `https://calendar.app.google/qBJynKzATiRonKVb9` (Google Calendar appointment page). Buttons use the plain link; Google drops any `?topic=`/`utm` params. |
 | `FORM_ENDPOINT` | `site-config` script + `<form action="…">` | Formspree / Basin / Netlify Forms / your own handler. Must accept a `POST` of form fields and return 2xx (ideally JSON for the on-page success state). |
 | `SITE_URL` | `<link rel="canonical">`, `og:url`, `twitter:url`, `og:image`/`twitter:image` | Also update `robots.txt` and `sitemap.xml` to the same domain. |
 | `ANALYTICS_ID` | `site-config` script + commented snippet before `</body>` | Optional. Uncomment the snippet only if you want analytics. |
-
-**Founder bios — section 2 of `index.html`:** replace the three `REPLACE_ME` lines in
-`.founder__line` with one real sentence each (names, phone `720-498-7552`, and email
-`phdeyoung@gmail.com` are already set).
 
 **Images — mostly done.** Nine photos are placed, processed to responsive WebP + JPEG
 (`tools/make-images.sh`), and wired into `index.html`. `og-cover.jpg` is generated from
@@ -64,12 +61,9 @@ the hero. Remaining image work:
    each photographer and Unsplash photo ID *as read from the download filenames*. Open
    each Unsplash page, confirm the name/URL, and confirm the Unsplash License still
    applies. Fix anything that's off.
-2. **Founder B and C photos.** `founder-b` (Parker Piombo) and `founder-c`
-   (Anton Smolyanyy) still show `assets/img/placeholder-founder.svg`. Drop
-   `founder-b.jpg` / `founder-c.jpg` into `assets/img/_src/`, run
-   `bash tools/make-images.sh`, then in section 2 of `index.html` replace those two
-   `<img>` tags with the same `<picture>` block Founder A uses (base names `founder-b`,
-   `founder-c`; widths `560w` / `1120w`).
+2. **Logo.** `logo-mark` (the arch) and `logo-text` (ARCHES / LABS) are cut from the
+   logo art with a transparent background; `logo-arches-labs.png` is the full cutout,
+   kept as a master copy and not loaded by the page. The favicons are built from the mark.
 
 To re-process everything (e.g. after swapping a source photo): put the replacement in
 `assets/img/_src/` under the name at the top of `tools/make-images.sh`, run the script,
@@ -77,12 +71,13 @@ done. `assets/img/_src/` is git-ignored — keep your own backup of the original
 
 ## The research tag (why each section has its own CTA)
 
-Every section's "book" button points at the same `CAL_URL` but with a different
-`topic=` and `utm_medium=` (`intro`, `surveys`, `records`, `hospitality`, `contact`,
-`header`, `footer`). Your booking tool's UTM/analytics report then tells you which
-section drove the conversation. The contact form carries the same signal in its hidden
-`topic` field, set from whichever section's "or send us a note" link the visitor used
-(defaults to `site-general` with JS off).
+Every section's "book" button carries a `data-topic` (`intro`, `surveys`, `security`,
+`records`, `hospitality`, `contact`, `header`, `footer`). Bookings go to a Google Calendar
+appointment page, which doesn't record `topic=` or UTM params, so the booking itself
+won't say which section sent the visitor; ask on the call. The contact form still
+carries the signal in its hidden `topic` field, set from whichever section's "or send us
+a note" link the visitor used (defaults to `site-general` with JS off). If you move to
+Cal.com or Calendly later, add `?topic=…&utm_medium=…` back to the `data-book` links.
 
 ## Accessibility / quality
 

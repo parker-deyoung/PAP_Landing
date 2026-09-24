@@ -14,16 +14,15 @@
   links when JS runs).
 
   MUST be filled before going live (see README.md "Fill before going live"):
-    - CAL_URL ...................... booking link (Cal.com or Calendly). Currently REPLACE_ME.
     - FORM_ENDPOINT ............... where the contact form POSTs. Currently REPLACE_ME.
     - SITE_URL ................... canonical domain, used by OG tags + sitemap. Currently REPLACE_ME.
-    - Founder bio lines ......... the three "REPLACE_ME" lines in section 2.
-    - Founder B & C photos ..... section 2 still shows placeholder-founder.svg for two of three.
     - IMAGE_CREDITS.md / footer "Photography" ... verify photographer names + Unsplash IDs.
 
   Already set (real values, provided by Parker):
     - PHONE / PHONE_TEL ........ 720-498-7552
     - EMAIL ................... phdeyoung@gmail.com
+    - CAL_URL ................. https://calendar.app.google/qBJynKzATiRonKVb9 (Google Calendar
+                                appointment page; it ignores ?topic= / utm params)
 
   Optional:
     - ANALYTICS_ID ........... privacy-light analytics; snippet is commented out at end of <body>.
@@ -38,7 +37,7 @@
 -->
 
 <title>Arches Labs — software for private hunting ranches</title>
-<meta name="description" content="We're three hunters building herd-survey, record-keeping, and guest-operations software with the private hunting ranches that will run it. No product yet — book a 30-minute call and help shape it.">
+<meta name="description" content="We're two hunters building herd-survey, ranch-security, record-keeping, and guest-operations software with the private hunting ranches that will run it. No product yet. Book a 30-minute call and help shape it.">
 
 <link rel="canonical" href="https://REPLACE_ME.example/">
 
@@ -46,7 +45,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Arches Labs">
 <meta property="og:title" content="Software for private hunting ranches">
-<meta property="og:description" content="Three hunters building herd-survey, record-keeping, and guest-operations software with the private hunting ranches that will run it. Book a 30-minute call.">
+<meta property="og:description" content="Two hunters building herd-survey, ranch-security, record-keeping, and guest-operations software with the private hunting ranches that will run it. Book a 30-minute call.">
 <meta property="og:url" content="https://REPLACE_ME.example/">
 <meta property="og:image" content="https://REPLACE_ME.example/assets/img/og-cover.jpg">
 <meta property="og:image:width" content="1200">
@@ -54,22 +53,24 @@
 <meta property="og:image:alt" content="Sunlit autumn peak above orange aspen stands in rugged high country.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Software for private hunting ranches">
-<meta name="twitter:description" content="Three hunters building herd-survey, record-keeping, and guest-operations software with the private hunting ranches that will run it. Book a 30-minute call.">
+<meta name="twitter:description" content="Two hunters building herd-survey, ranch-security, record-keeping, and guest-operations software with the private hunting ranches that will run it. Book a 30-minute call.">
 <meta name="twitter:image" content="https://REPLACE_ME.example/assets/img/og-cover.jpg">
 <meta name="twitter:image:alt" content="Sunlit autumn peak above orange aspen stands in rugged high country.">
 
 <meta name="theme-color" content="#33475a">
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,400..800&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400&amp;display=swap">
 <link rel="preload" as="style" href="assets/css/styles.css">
 <link rel="stylesheet" href="assets/css/styles.css">
 
 <script id="site-config">
   /* Single source of truth for the JS path. Keep in sync with the markup defaults. */
   window.SITE_CONFIG = {
-    CAL_URL:      "https://REPLACE_ME.example/arches-labs/30min", // REPLACE_ME
+    CAL_URL:      "https://calendar.app.google/qBJynKzATiRonKVb9",
     FORM_ENDPOINT: "https://REPLACE_ME.example/f/xxxx",           // REPLACE_ME
     PHONE:        "720-498-7552",
     PHONE_TEL:    "+17204987552",
@@ -84,16 +85,29 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
-  <a class="wordmark" href="#main" aria-label="Arches Labs, home">
-    <svg class="wordmark__mark" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M3 20c0-7 4-13 9-13s9 6 9 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <span>Arches Labs</span>
-  </a>
-  <a class="btn btn--book" data-book data-topic="header"
-     href="https://REPLACE_ME.example/arches-labs/30min?topic=intro&amp;utm_source=site&amp;utm_medium=header&amp;utm_campaign=discovery">
-    Book a call
-  </a>
+  <div class="page site-header__inner">
+    <a class="wordmark" href="#main" aria-label="Arches Labs, home">
+      <picture>
+        <source type="image/webp" srcset="assets/img/logo-mark.webp">
+        <img class="wordmark__mark" src="assets/img/logo-mark.png" width="210" height="150" alt="">
+      </picture>
+      <picture>
+        <source type="image/webp" srcset="assets/img/logo-text.webp">
+        <img class="wordmark__text" src="assets/img/logo-text.png" width="318" height="100" alt="">
+      </picture>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#surveys">Surveys</a>
+      <a href="#security">Security</a>
+      <a href="#records">Records</a>
+      <a href="#guests">Guests</a>
+    </nav>
+    <a class="btn btn--primary btn--small btn--book" data-book data-topic="header"
+       href="https://calendar.app.google/qBJynKzATiRonKVb9">
+      Book a call
+    </a>
+  </div>
 </header>
 
 <main id="main">
@@ -102,36 +116,34 @@
        1. HERO
        =================================================================== -->
   <section class="hero" aria-labelledby="hero-title">
-    <div class="hero__media">
-      <picture>
-        <source type="image/webp"
-                srcset="assets/img/hero-autumn-peak-640w.webp 640w,
-                        assets/img/hero-autumn-peak-1280w.webp 1280w"
-                sizes="100vw">
-        <img class="hero__img" src="assets/img/hero-autumn-peak-1280w.jpg"
-             srcset="assets/img/hero-autumn-peak-640w.jpg 640w,
-                     assets/img/hero-autumn-peak-1280w.jpg 1280w"
-             sizes="100vw" width="2000" height="1333"
-             fetchpriority="high" decoding="async"
-             alt="A snow-dusted peak under heavy grey storm clouds above a valley of bright orange aspen.">
-      </picture>
-    </div>
+    <picture class="hero__media">
+      <source type="image/webp"
+              srcset="assets/img/hero-autumn-peak-640w.webp 640w,
+                      assets/img/hero-autumn-peak-1280w.webp 1280w,
+                      assets/img/hero-autumn-peak-1920w.webp 1920w"
+              sizes="100vw">
+      <img class="hero__img" src="assets/img/hero-autumn-peak-1280w.jpg"
+           srcset="assets/img/hero-autumn-peak-640w.jpg 640w,
+                   assets/img/hero-autumn-peak-1280w.jpg 1280w,
+                   assets/img/hero-autumn-peak-1920w.jpg 1920w"
+           sizes="100vw" width="2000" height="1333"
+           fetchpriority="high" decoding="async"
+           alt="A snow-dusted peak under heavy grey storm clouds above a valley of bright orange aspen.">
+    </picture>
 
-    <div class="hero__body">
-      <hr class="horizon" aria-hidden="true">
+    <div class="page hero__body">
       <h1 id="hero-title">Software for private hunting ranches.</h1>
       <p class="hero__lede">
-        We're three hunters building it &mdash; herd surveys, record-keeping, and guest
-        operations &mdash; alongside the private hunting ranches that will run it. There's no product to demo
-        yet. We're spending this season talking to owners and managers about what actually
-        needs fixing, so the tool gets shaped by the people who work these operations.
+        We're two hunters building herd surveys, ranch security, record-keeping, and guest
+        tools with the ranches that will use them. There's nothing to demo yet. This season
+        we're talking with owners and managers about what actually needs fixing.
       </p>
       <div class="cta-row">
-        <a class="btn btn--primary btn--book" data-book data-topic="intro"
-           href="https://REPLACE_ME.example/arches-labs/30min?topic=intro&amp;utm_source=site&amp;utm_medium=hero&amp;utm_campaign=discovery">
+        <a class="btn btn--light btn--book" data-book data-topic="intro"
+           href="https://calendar.app.google/qBJynKzATiRonKVb9">
           Book a 30-minute call
         </a>
-        <a class="btn btn--ghost" data-tel href="tel:+17204987552">
+        <a class="btn btn--outline-light" data-tel href="tel:+17204987552">
           Call or text 720-498-7552
         </a>
       </div>
@@ -141,17 +153,20 @@
   <!-- ===================================================================
        2. WHO WE ARE
        =================================================================== -->
-  <section class="section section--who" aria-labelledby="who-title">
-    <div class="wrap">
-      <hr class="horizon" aria-hidden="true">
-      <h2 id="who-title">Who we are</h2>
-      <p class="section__lede">
-        Arches Labs is Parker DeYoung, Parker Piombo, and Anton Smolyanyy. We hunt big game
-        and waterfowl most weekends we can get away. We've spent enough time around private
-        hunting ranches and outfitters to know that most software built for this work was
-        built by people who've never sat in a blind or walked a fence line at first light.
-        We would rather build the thing you actually need, with you, than guess at it.
-      </p>
+  <section class="section section--who" id="about" aria-labelledby="who-title">
+    <div class="page">
+      <div class="split">
+        <h2 id="who-title">Who we are</h2>
+        <div class="split__body">
+          <p class="lede">
+            Arches Labs is Parker DeYoung and Parker Piombo. We hunt big game and waterfowl
+            most weekends we can get away. We've spent enough time around private hunting
+            ranches and outfitters to know that most software built for this work was built by
+            people who've never sat in a blind or walked a fence line at first light. We'd
+            rather build the thing you actually need, with you, than guess at it.
+          </p>
+        </div>
+      </div>
 
       <ul class="founders" role="list">
         <li class="founder">
@@ -160,35 +175,49 @@
               <source type="image/webp"
                       srcset="assets/img/founder-parker-duckhunt-560w.webp 560w,
                               assets/img/founder-parker-duckhunt-1120w.webp 1120w"
-                      sizes="(min-width: 40rem) 19rem, 100vw">
+                      sizes="(min-width: 64rem) 22vw, (min-width: 48rem) 45vw, 100vw">
               <img src="assets/img/founder-parker-duckhunt-560w.jpg"
                    srcset="assets/img/founder-parker-duckhunt-560w.jpg 560w,
                            assets/img/founder-parker-duckhunt-1120w.jpg 1120w"
-                   sizes="(min-width: 40rem) 19rem, 100vw"
+                   sizes="(min-width: 64rem) 22vw, (min-width: 48rem) 45vw, 100vw"
                    width="1656" height="2208" loading="lazy" decoding="async"
                    alt="Parker DeYoung standing in a marsh at first light, holding a duck with decoys on the water around him.">
             </picture>
           </div>
           <h3 class="founder__name">Parker DeYoung</h3>
-          <p class="founder__line">REPLACE_ME &mdash; one line: what he hunts and what he does here.</p>
+          <p class="founder__line">
+            Parker DeYoung developed computer-vision systems for U.S. Air Force drones
+            and locally hosted AI systems built to operate where security and reliability
+            matter. He is also published at EMNLP, a leading AI and natural-language-processing
+            conference, for research focused on benchmarking AI agents and improving how
+            reliably and effectively they perform. Away from the keyboard, he enjoys
+            waterfowl hunting and hiking.
+          </p>
         </li>
         <li class="founder">
           <div class="founder__photo">
-            <!-- PRODUCTION: same <picture> pattern as above with base name founder-b -->
-            <img src="assets/img/placeholder-founder.svg" width="800" height="1000" loading="lazy" decoding="async"
-                 alt="Portrait of Parker Piombo. Photo to come.">
+            <picture>
+              <source type="image/webp"
+                      srcset="assets/img/founder-b-560w.webp 560w,
+                              assets/img/founder-b-1120w.webp 1120w"
+                      sizes="(min-width: 64rem) 22vw, (min-width: 48rem) 45vw, 100vw">
+              <img src="assets/img/founder-b-560w.jpg"
+                   srcset="assets/img/founder-b-560w.jpg 560w,
+                           assets/img/founder-b-1120w.jpg 1120w"
+                   sizes="(min-width: 64rem) 22vw, (min-width: 48rem) 45vw, 100vw"
+                   width="3024" height="4032" loading="lazy" decoding="async"
+                   alt="Parker Piombo in a blaze-orange jacket and cap, holding a shotgun on a wooden footbridge above tall dry grass.">
+            </picture>
           </div>
           <h3 class="founder__name">Parker Piombo</h3>
-          <p class="founder__line">REPLACE_ME &mdash; one line: what he hunts and what he does here.</p>
-        </li>
-        <li class="founder">
-          <div class="founder__photo">
-            <!-- PRODUCTION: same <picture> pattern as above with base name founder-c -->
-            <img src="assets/img/placeholder-founder.svg" width="800" height="1000" loading="lazy" decoding="async"
-                 alt="Portrait of Anton Smolyanyy. Photo to come.">
-          </div>
-          <h3 class="founder__name">Anton Smolyanyy</h3>
-          <p class="founder__line">REPLACE_ME &mdash; one line: what he hunts and what he does here.</p>
+          <p class="founder__line">
+            Parker Piombo grew up hunting and living on a ranch in Northern California,
+            and his hands-on work on ranches gave him a firsthand understanding of their
+            needs and how demanding the work can be. He competes in sporting clays and now
+            studies business, bringing professional experience from Deloitte. He is deeply
+            interested in improving the ranching and hunting industries and has a lifelong
+            love of hunting and land management.
+          </p>
         </li>
       </ul>
     </div>
@@ -197,128 +226,478 @@
   <!-- ===================================================================
        3. AERIAL SURVEYS AND HERD TRACKING
        =================================================================== -->
-  <section class="section" aria-labelledby="surveys-title">
-    <figure class="section__figure">
+  <section class="section section--bleed" id="surveys" aria-labelledby="surveys-title">
+    <figure class="bleed">
       <picture>
         <source type="image/webp"
                 srcset="assets/img/surveys-bison-herd-640w.webp 640w,
-                        assets/img/surveys-bison-herd-1280w.webp 1280w"
+                        assets/img/surveys-bison-herd-1280w.webp 1280w,
+                        assets/img/surveys-bison-herd-1920w.webp 1920w"
                 sizes="100vw">
         <img src="assets/img/surveys-bison-herd-1280w.jpg"
              srcset="assets/img/surveys-bison-herd-640w.jpg 640w,
-                     assets/img/surveys-bison-herd-1280w.jpg 1280w"
+                     assets/img/surveys-bison-herd-1280w.jpg 1280w,
+                     assets/img/surveys-bison-herd-1920w.jpg 1920w"
              sizes="100vw" width="2000" height="1333" loading="lazy" decoding="async"
              alt="A large herd grazing an irrigated green pasture below a juniper-and-sandstone ridge under an overcast sky.">
       </picture>
     </figure>
-    <div class="wrap">
-      <hr class="horizon" aria-hidden="true">
+    <div class="page split">
       <h2 id="surveys-title">Aerial surveys and herd tracking</h2>
-      <p>
-        This is our starting point. We fly thermal drone surveys to count your herd and break
-        it out by age class, then keep those numbers in one place season over season. Instead
-        of paying for a helicopter survey that gives you one count on one day, you get a
-        running inventory and trend lines you can plan against &mdash; how the buck-to-doe
-        ratio is moving, whether your mature age classes are holding, where numbers are
-        sliding before it shows up at harvest.
-      </p>
-      <p>
-        We work with the trail cameras you already run. We're not asking you to pull anything
-        out or standardize on our hardware &mdash; the cameras feed the same inventory the
-        flights do.
-      </p>
-      <div class="cta-row">
-        <a class="btn btn--primary btn--book" data-book data-topic="surveys"
-           href="https://REPLACE_ME.example/arches-labs/30min?topic=surveys&amp;utm_source=site&amp;utm_medium=surveys&amp;utm_campaign=discovery">
-          Talk to us about surveys
-        </a>
-        <a class="link-note" data-topic="surveys" href="#contact">or send us a note</a>
+      <div class="split__body">
+        <p>
+          This is our starting point. We fly thermal drone surveys to count your herd and break
+          it out by age class, then keep those numbers in one place season over season. A
+          helicopter survey gives you one count on one day. This gives you a running inventory
+          and trend lines you can plan against: how the buck-to-doe ratio is moving, whether
+          your mature age classes are holding, and where numbers are sliding before it shows up
+          at harvest.
+        </p>
+        <p>
+          We work with the trail cameras you already run. We're not asking you to pull anything
+          out or standardize on our hardware. The cameras feed the same inventory the flights do.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn--primary btn--book" data-book data-topic="surveys"
+             href="https://calendar.app.google/qBJynKzATiRonKVb9">
+            Talk to us about surveys
+          </a>
+          <a class="link-note" data-topic="surveys" href="#contact">or send us a note</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ===================================================================
-       4. HERD RECORDS AND INVENTORY
+       4. RANCH SECURITY AND POACHING PATROL
+       Demo is an inline SVG driven by assets/js/patrol-demo.js. With JS off the
+       SVG shows one static frame (poacher tagged, alert sent) and every step's
+       text is visible. Times in the script line up with the six steps below.
        =================================================================== -->
-  <section class="section" aria-labelledby="records-title">
-    <figure class="section__figure section__figure--tall">
-      <picture>
-        <source type="image/webp"
-                srcset="assets/img/records-mule-deer-buck-640w.webp 640w,
-                        assets/img/records-mule-deer-buck-960w.webp 960w"
-                sizes="100vw">
-        <img src="assets/img/records-mule-deer-buck-960w.jpg"
-             srcset="assets/img/records-mule-deer-buck-640w.jpg 640w,
-                     assets/img/records-mule-deer-buck-960w.jpg 960w"
-             sizes="100vw" width="1656" height="2484" loading="lazy" decoding="async"
-             alt="A mature mule deer buck with a heavy, wide rack standing in tall dry autumn grass at dusk.">
-      </picture>
-    </figure>
-    <div class="wrap">
-      <hr class="horizon" aria-hidden="true">
-      <h2 id="records-title">Herd records and inventory</h2>
-      <p>
-        This is the part we're still working out, and we want your read on it. Individual
-        animals and their pedigree. Genetics and breeding history. Harvest records and
-        scores. Mortality, culls, and the compliance paperwork the state asks for. Some of
-        that matters a great deal on your operation and some of it you'd never open. Which is
-        which? That's the conversation we want before we build a line of it.
-      </p>
-      <div class="cta-row">
-        <a class="btn btn--primary btn--book" data-book data-topic="records"
-           href="https://REPLACE_ME.example/arches-labs/30min?topic=records&amp;utm_source=site&amp;utm_medium=records&amp;utm_campaign=discovery">
-          Tell us which records matter
+  <section class="section section--night" id="security" aria-labelledby="security-title">
+    <div class="page split">
+      <h2 id="security-title">Ranch security and poaching patrol</h2>
+      <div class="split__body">
+        <p class="lede">
+          Poachers and trespassers work your fence lines at night, when nobody's out there to
+          see them. We think the same drone that flies your herd surveys can stand watch too.
+          Below is how we picture a night patrol working. It's an illustration, not a product,
+          and we want to hear how you handle this today before we build any of it.
+        </p>
+      </div>
+    </div>
+
+    <div class="page patrol" data-patrol>
+      <figure class="patrol__stage">
+        <div class="patrol__screen">
+          <svg viewBox="0 0 640 420" role="img" aria-labelledby="patrol-svg-title" focusable="false">
+            <title id="patrol-svg-title">Illustrated night map of a ranch. Someone crosses the east fence, a drone launches from the barn, finds the person with its thermal camera among a group of mule deer, tags them, and follows them off the property before flying back to the barn.</title>
+            <defs>
+              <radialGradient id="pd-heat">
+                <stop offset="0" stop-color="#fff7df"/>
+                <stop offset="0.35" stop-color="#ffc46b"/>
+                <stop offset="1" stop-color="#ff7a2f" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="pd-heat-soft">
+                <stop offset="0" stop-color="#ffd9a0"/>
+                <stop offset="0.45" stop-color="#e59a4f" stop-opacity="0.8"/>
+                <stop offset="1" stop-color="#b85a2c" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="pd-sweep" cx="0" cy="0" r="110" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#ffc46b" stop-opacity="0.34"/>
+                <stop offset="1" stop-color="#ffc46b" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="pd-ir" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#1a1030"/>
+                <stop offset="1" stop-color="#2a1640"/>
+              </linearGradient>
+              <clipPath id="pd-inset-clip"><rect x="446" y="14" width="180" height="116" rx="6"/></clipPath>
+            </defs>
+
+            <!-- ground -->
+            <rect width="640" height="420" fill="#1b221c"/>
+            <path d="M0 0H250L210 120L0 150Z" fill="#1f2820"/>
+            <path d="M330 120L520 110L560 230L430 290L320 250Z" fill="#212b21"/>
+            <path d="M180 330L360 300L420 420H150Z" fill="#1e261f"/>
+            <g fill="none" stroke="#7e8768" stroke-opacity="0.16" stroke-width="1.2">
+              <path d="M-10 60C80 40 150 90 240 70S400 20 470 60 600 40 650 70"/>
+              <path d="M-10 100C90 80 160 130 250 112S420 70 490 104 610 90 650 118"/>
+              <path d="M-10 262C70 240 130 270 190 250S300 200 360 220"/>
+              <path d="M-10 300C80 280 150 312 210 290S320 240 380 262 470 250 520 280"/>
+              <path d="M200 420C230 370 300 360 360 380S470 350 530 380 610 360 650 380"/>
+              <path d="M260 180C300 160 340 170 360 190S340 230 300 226 250 204 260 180Z"/>
+            </g>
+            <!-- creek -->
+            <path d="M0 176C70 170 130 196 200 186S300 150 350 160 420 210 470 262 540 330 600 420" fill="none" stroke="#4f6b80" stroke-width="3" stroke-opacity="0.75" stroke-linecap="round"/>
+            <!-- timber -->
+            <g fill="#2a3829">
+              <circle cx="232" cy="92" r="9"/><circle cx="248" cy="84" r="7"/><circle cx="250" cy="102" r="8"/><circle cx="266" cy="94" r="6"/><circle cx="238" cy="110" r="6"/>
+              <circle cx="300" cy="330" r="9"/><circle cx="318" cy="340" r="8"/><circle cx="286" cy="346" r="7"/><circle cx="306" cy="356" r="6"/><circle cx="330" cy="324" r="6"/>
+              <circle cx="520" cy="320" r="8"/><circle cx="536" cy="308" r="9"/><circle cx="548" cy="326" r="7"/><circle cx="508" cy="336" r="6"/>
+              <circle cx="380" cy="80" r="7"/><circle cx="394" cy="70" r="6"/><circle cx="396" cy="88" r="5"/>
+            </g>
+            <!-- two-track ranch roads -->
+            <g fill="none" stroke="#a79f7c" stroke-opacity="0.32" stroke-width="2" stroke-dasharray="3 6" stroke-linecap="round">
+              <path d="M150 300C120 330 100 360 80 420"/>
+              <path d="M162 292C220 270 280 262 340 240"/>
+            </g>
+            <!-- county road, outside the fence -->
+            <path d="M628 -10L611 430" stroke="#5d5f52" stroke-width="9" stroke-opacity="0.6"/>
+            <path d="M628 -10L611 430" stroke="#b9b39a" stroke-width="1" stroke-opacity="0.35" stroke-dasharray="8 10"/>
+            <text class="pd-label pd-label--sm" x="596" y="404" transform="rotate(-88 596 404)">COUNTY RD</text>
+
+            <!-- geofence -->
+            <polygon class="pd-fence" points="56,52 468,34 588,104 578,352 384,394 108,380 40,222"
+                     fill="#e0824f" fill-opacity="0.035" stroke="#e0824f" stroke-width="2" stroke-dasharray="8 6"/>
+            <line data-el="fenceHit" x1="586" y1="196" x2="581" y2="296" stroke="#ffb07a" stroke-width="5" stroke-linecap="round" opacity="0"/>
+            <text class="pd-label pd-label--fence" x="170" y="368">GEOFENCE</text>
+
+            <!-- motion ping on the fence -->
+            <g data-el="ping" transform="translate(582 246)" opacity="0">
+              <circle data-el="pingRing" r="10" fill="none" stroke="#ffb07a" stroke-width="2"/>
+              <circle r="3.5" fill="#ffb07a"/>
+            </g>
+
+            <!-- barn + dock -->
+            <g transform="translate(140 297) rotate(-8)">
+              <rect x="-24" y="-17" width="48" height="34" rx="2" fill="#3a3a33" stroke="#e9eae6" stroke-opacity="0.55" stroke-width="1.2"/>
+              <line x1="-24" y1="0" x2="24" y2="0" stroke="#e9eae6" stroke-opacity="0.3"/>
+              <rect x="-9" y="-9" width="18" height="18" rx="1" fill="#26372f" stroke="#e9eae6" stroke-opacity="0.5" stroke-dasharray="2 2"/>
+            </g>
+            <circle data-el="dockRing" cx="140" cy="297" r="12" fill="none" stroke="#e9eae6" stroke-width="1.5" opacity="0"/>
+            <text class="pd-label" x="140" y="334" text-anchor="middle">BARN</text>
+
+            <!-- truck on the county road -->
+            <g data-el="truck" transform="translate(620 244)">
+              <rect x="-5" y="-10" width="10" height="20" rx="2" fill="#8d938b"/>
+              <rect x="-4" y="-8" width="8" height="5" rx="1" fill="#2b312c"/>
+            </g>
+
+            <!-- thermal tint while the drone is on station -->
+            <rect data-el="tint" width="640" height="420" fill="#140c24" opacity="0.28"/>
+
+            <!-- flight paths (also sampled by the script for drone positions) -->
+            <path data-el="pathOut" d="M140 297C230 300 300 210 470 222" fill="none" stroke="#e9eae6" stroke-width="1.5" stroke-opacity="0.5" opacity="0"/>
+            <path data-el="pathHome" d="M556 206C430 170 250 300 140 297" fill="none" stroke="#e9eae6" stroke-width="1.5" stroke-opacity="0.5" opacity="0"/>
+
+            <!-- heat: mule deer -->
+            <g data-el="deer">
+              <ellipse cx="412" cy="170" rx="7" ry="4.5" fill="url(#pd-heat-soft)" transform="rotate(-20 412 170)"/>
+              <ellipse cx="426" cy="160" rx="7" ry="4.5" fill="url(#pd-heat-soft)" transform="rotate(10 426 160)"/>
+              <ellipse cx="440" cy="174" rx="7" ry="4.5" fill="url(#pd-heat-soft)" transform="rotate(-35 440 174)"/>
+              <ellipse cx="452" cy="160" rx="6" ry="4" fill="url(#pd-heat-soft)"/>
+              <ellipse cx="420" cy="184" rx="6" ry="4" fill="url(#pd-heat-soft)" transform="rotate(25 420 184)"/>
+              <ellipse cx="446" cy="190" rx="7" ry="4.5" fill="url(#pd-heat-soft)" transform="rotate(-10 446 190)"/>
+              <text class="pd-label pd-label--muted" x="402" y="178" text-anchor="end">MULE DEER ×6 · IGNORED</text>
+            </g>
+
+            <!-- the drone's scan -->
+            <g data-el="sweep" transform="translate(470 222)" opacity="0">
+              <circle r="110" fill="none" stroke="#ffc46b" stroke-opacity="0.25" stroke-dasharray="2 5"/>
+              <path data-el="sweepCone" d="M0 0L110 0A110 110 0 0 1 70.7 84.3Z" fill="url(#pd-sweep)"/>
+            </g>
+
+            <!-- tracking: trail, tether, the person, the tag -->
+            <polyline data-el="trail" points="" fill="none" stroke="#ffc46b" stroke-width="1.5" stroke-dasharray="3 4" stroke-opacity="0.7"/>
+            <line data-el="tether" x1="482" y1="196" x2="508" y2="234" stroke="#ffc46b" stroke-width="1" stroke-dasharray="2 3" opacity="0.8"/>
+            <g data-el="person" transform="translate(508 234)">
+              <circle r="11" fill="url(#pd-heat)"/>
+            </g>
+            <g data-el="tag" transform="translate(508 234)">
+              <path d="M-18 -10V-18H-10M10 -18H18V-10M18 10V18H10M-10 18H-18V10" fill="none" stroke="#ffc46b" stroke-width="2"/>
+              <rect x="-100" y="23" width="118" height="17" rx="3" fill="#ffc46b"/>
+              <text class="pd-tag" x="-95" y="35">PERSON · TAGGED</text>
+            </g>
+
+            <!-- drone -->
+            <g data-el="drone" transform="translate(482 196)">
+              <ellipse data-el="droneShadow" cx="7" cy="10" rx="11" ry="5" fill="#000" opacity="0.35"/>
+              <g data-el="droneBody">
+                <g stroke="#e9eae6" stroke-width="2" stroke-linecap="round">
+                  <line x1="-8" y1="-8" x2="8" y2="8"/><line x1="8" y1="-8" x2="-8" y2="8"/>
+                </g>
+                <g fill="#e9eae6" fill-opacity="0.18" stroke="#e9eae6" stroke-width="1.2">
+                  <circle cx="-9" cy="-9" r="5"/><circle cx="9" cy="-9" r="5"/><circle cx="-9" cy="9" r="5"/><circle cx="9" cy="9" r="5"/>
+                </g>
+                <circle r="4" fill="#e9eae6"/>
+                <circle r="1.6" fill="#e0824f"/>
+              </g>
+            </g>
+
+            <!-- live thermal camera inset -->
+            <g data-el="inset">
+              <rect x="446" y="14" width="180" height="116" rx="6" fill="url(#pd-ir)"/>
+              <g clip-path="url(#pd-inset-clip)">
+                <g stroke="#3d2458" stroke-width="1">
+                  <path d="M446 100C500 92 560 104 626 96" fill="none"/>
+                  <path d="M446 116C510 108 570 120 626 112" fill="none"/>
+                </g>
+                <ellipse cx="596" cy="106" rx="14" ry="6" fill="#6b3a5a" opacity="0.8"/>
+                <g data-el="insetFigure" transform="translate(566 16) scale(0.85)">
+                  <g fill="#fff3d6">
+                    <circle cx="0" cy="44" r="7"/>
+                    <path d="M-9 53H9L11 82H-11Z"/>
+                    <path d="M-10 80H-2L-4 110H-11Z"/>
+                    <path d="M2 80H10L11 110H4Z"/>
+                  </g>
+                  <path d="M-8 58L-22 68" stroke="#fff3d6" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M8 58L24 50" stroke="#fff3d6" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M10 60L40 36" stroke="#ffd18a" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M-17 30V24H-11M11 24H17V30M17 108V114H11M-11 114H-17V108" fill="none" stroke="#ffc46b" stroke-width="2"/>
+                </g>
+              </g>
+              <rect x="446" y="14" width="180" height="116" rx="6" fill="none" stroke="#e9eae6" stroke-opacity="0.35"/>
+              <circle cx="459" cy="27" r="3.5" fill="#e0824f"/>
+              <text class="pd-label pd-label--inset" x="468" y="31">LIVE · THERMAL</text>
+            </g>
+          </svg>
+
+          <p class="patrol__hud" aria-hidden="true">
+            <span class="patrol__hud-status" data-el="hudStatus">Person tagged</span>
+            <span class="patrol__hud-sub" data-el="hudSub">Not on today's guest list</span>
+          </p>
+
+          <div class="patrol__card" data-el="alertCard" aria-hidden="true">
+            <svg class="patrol__card-icon" width="22" height="22" viewBox="0 0 24 24" focusable="false">
+              <rect width="24" height="24" rx="6" fill="#33475a"/>
+              <path d="M6 18c0-5 2.7-8.5 6-8.5s6 3.5 6 8.5" fill="none" stroke="#e0824f" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span class="patrol__card-body">
+              <span class="patrol__card-title">Trespass alert <span class="patrol__card-time">now</span></span>
+              <span class="patrol__card-text">Person on foot, east pasture, inside your fence. Tagged 11:43&nbsp;PM.</span>
+              <span class="patrol__card-actions"><span>Live view</span><span>Call warden</span></span>
+            </span>
+          </div>
+
+          <div class="patrol__card patrol__card--report" data-el="reportCard" aria-hidden="true">
+            <svg class="patrol__card-icon" width="22" height="22" viewBox="0 0 24 24" focusable="false">
+              <rect width="24" height="24" rx="6" fill="#33475a"/>
+              <path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#e9eae6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="patrol__card-body">
+              <span class="patrol__card-title">Incident report saved</span>
+              <span class="patrol__card-text">Video, photos, and GPS track from 11:42 to 11:47&nbsp;PM, ready for the game warden.</span>
+            </span>
+          </div>
+        </div>
+
+        <figcaption class="patrol__caption">
+          <span>Illustration of how we picture a night patrol. There's no product yet.</span>
+          <button type="button" class="patrol__toggle" data-el="toggle" hidden>Pause</button>
+        </figcaption>
+      </figure>
+
+      <ol class="patrol__steps" role="list">
+        <li class="patrol__step">
+          <h3 class="patrol__title"><span class="patrol__num">1</span> Something crosses the line</h3>
+          <p>You draw a geofence on your boundary. When a trail camera, a gate sensor, or the
+            fence line itself picks up movement where nobody's scheduled to be, a patrol is
+            triggered. Patrols can also fly on a random schedule after dark.</p>
+        </li>
+        <li class="patrol__step">
+          <h3 class="patrol__title"><span class="patrol__num">2</span> The drone leaves the barn</h3>
+          <p>It launches from a dock in your barn or equipment shed and flies straight to the
+            spot. Nobody has to get out of bed or drive the two-track with the headlights on.</p>
+        </li>
+        <li class="patrol__step">
+          <h3 class="patrol__title"><span class="patrol__num">3</span> A thermal sweep finds them</h3>
+          <p>At night the thermal camera sees what a spotlight won't. It sorts people from the
+            deer and elk bedded nearby, so a herd moving through the timber doesn't wake you up.</p>
+        </li>
+        <li class="patrol__step">
+          <h3 class="patrol__title"><span class="patrol__num">4</span> The poacher is tagged</h3>
+          <p>Anyone who isn't on your guest or staff list gets tagged: marked on the map, boxed
+            on the camera, and tracked as they move. Your guides and hunters are checked in, so
+            they never set it off.</p>
+        </li>
+        <li class="patrol__step">
+          <h3 class="patrol__title"><span class="patrol__num">5</span> You get the alert</h3>
+          <p>Your phone lights up with the location, a live view, and photos. You decide what
+            happens next: call the game warden, send someone out, or dismiss it.</p>
+        </li>
+        <li class="patrol__step">
+          <h3 class="patrol__title"><span class="patrol__num">6</span> It follows, then heads home</h3>
+          <p>The drone keeps its distance and stays on them until they're off your ground. Then
+            it flies back to the barn to charge, and the video, photos, and GPS track are saved
+            as a report you can hand to the warden or the sheriff.</p>
+        </li>
+      </ol>
+    </div>
+
+    <div class="page split safe">
+      <h3 class="safe__title">How we'd keep your land safe</h3>
+      <div class="split__body">
+        <ul class="safe__list" role="list">
+        <li class="safe__item">
+          <h4>Your boundary, drawn by you</h4>
+          <p>Geofences follow your actual property lines, plus the spots that matter most:
+            feeders, food plots, gates, and the back road everybody knows about.</p>
+        </li>
+        <li class="safe__item">
+          <h4>No pattern to learn</h4>
+          <p>Patrols fly where your cameras can't see, on routes and times that change, so
+            nobody can figure out when the coast is clear.</p>
+        </li>
+        <li class="safe__item">
+          <h4>It watches, it doesn't confront</h4>
+          <p>The drone never goes at anyone. It holds back, records, and leaves the next move
+            to you and to law enforcement.</p>
+        </li>
+        <li class="safe__item">
+          <h4>A record, not a hunch</h4>
+          <p>Every incident is logged with the time, location, photos, and video, organized so
+            a game warden or sheriff can act on it.</p>
+        </li>
+        <li class="safe__item">
+          <h4>Your herd map stays private</h4>
+          <p>Where your best animals bed down is exactly what a poacher wants to know. Survey
+            and security data belong to you, stay locked to your account, and are never sold
+            or shared.</p>
+        </li>
+        <li class="safe__item">
+          <h4>Works with what you have</h4>
+          <p>The trail cameras and gate sensors you already run become the tripwires. We're not
+            asking you to pull anything out.</p>
+        </li>
+      </ul>
+
+        <p class="safe__ask">
+          Where is your fence line weakest, and what do you do about it now? That's the
+          conversation we want to have.
+        </p>
+        <div class="cta-row">
+        <a class="btn btn--primary btn--book" data-book data-topic="security"
+           href="https://calendar.app.google/qBJynKzATiRonKVb9">
+          Talk to us about security
         </a>
-        <a class="link-note" data-topic="records" href="#contact">or send us a note</a>
+        <a class="link-note" data-topic="security" href="#contact">or send us a note</a>
+      </div>
       </div>
     </div>
   </section>
 
   <!-- ===================================================================
-       5. HOSPITALITY AND GUEST OPERATIONS
+       5. HERD RECORDS AND INVENTORY
        =================================================================== -->
-  <section class="section" aria-labelledby="hospitality-title">
-    <figure class="section__figure">
-      <picture>
-        <source type="image/webp"
-                srcset="assets/img/hospitality-bull-elk-640w.webp 640w,
-                        assets/img/hospitality-bull-elk-1280w.webp 1280w"
-                sizes="100vw">
-        <img src="assets/img/hospitality-bull-elk-1280w.jpg"
-             srcset="assets/img/hospitality-bull-elk-640w.jpg 640w,
-                     assets/img/hospitality-bull-elk-1280w.jpg 1280w"
-             sizes="100vw" width="2000" height="1333" loading="lazy" decoding="async"
-             alt="A bull elk bugling in a meadow, backlit by low golden evening light.">
-      </picture>
-    </figure>
-    <div class="wrap">
-      <hr class="horizon" aria-hidden="true">
-      <h2 id="hospitality-title">Hospitality and guest operations</h2>
-      <p>
-        We're also looking at the guest side &mdash; booking hunts, scheduling guides,
-        keeping lodging straight, and remembering which clients came back and what they
-        hunted last time. We haven't committed to building this. If it's the part of your
-        week that eats the most time, tell us and it moves up the list.
-      </p>
-      <div class="cta-row">
+  <section class="section feature" id="records" aria-labelledby="records-title">
+    <div class="page feature__grid">
+      <figure class="feature__media feature__media--tall">
+        <picture>
+          <source type="image/webp"
+                  srcset="assets/img/records-mule-deer-buck-640w.webp 640w,
+                          assets/img/records-mule-deer-buck-960w.webp 960w"
+                  sizes="(min-width: 64rem) 48vw, 100vw">
+          <img src="assets/img/records-mule-deer-buck-960w.jpg"
+               srcset="assets/img/records-mule-deer-buck-640w.jpg 640w,
+                       assets/img/records-mule-deer-buck-960w.jpg 960w"
+               sizes="(min-width: 64rem) 48vw, 100vw" width="1656" height="2484" loading="lazy" decoding="async"
+               alt="A mature mule deer buck with a heavy, wide rack standing in tall dry autumn grass at dusk.">
+        </picture>
+      </figure>
+      <div class="feature__body">
+        <h2 id="records-title">Herd records and inventory</h2>
+        <p>
+          This is the part we're still working out, and we want your read on it. Individual
+          animals and their pedigree. Genetics and breeding history. Harvest records and
+          scores. Mortality, culls, and the compliance paperwork the state asks for. Some of
+          that matters a great deal on your operation and some of it you'd never open. Which is
+          which? That's the conversation we want before we build a line of it.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn--primary btn--book" data-book data-topic="records"
+             href="https://calendar.app.google/qBJynKzATiRonKVb9">
+            Tell us which records matter
+          </a>
+          <a class="link-note" data-topic="records" href="#contact">or send us a note</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       6. HOSPITALITY AND GUEST OPERATIONS
+       Includes the hunt-planning block (herd patterns -> planned hunts). It
+       shares the section's single CTA, so it books under topic=hospitality.
+       =================================================================== -->
+  <section class="section feature feature--flip section--hospitality" id="guests" aria-labelledby="hospitality-title">
+    <div class="page feature__grid">
+      <figure class="feature__media">
+        <picture>
+          <source type="image/webp"
+                  srcset="assets/img/hospitality-bull-elk-640w.webp 640w,
+                          assets/img/hospitality-bull-elk-1280w.webp 1280w"
+                  sizes="(min-width: 64rem) 55vw, 100vw">
+          <img src="assets/img/hospitality-bull-elk-1280w.jpg"
+               srcset="assets/img/hospitality-bull-elk-640w.jpg 640w,
+                       assets/img/hospitality-bull-elk-1280w.jpg 1280w"
+               sizes="(min-width: 64rem) 55vw, 100vw" width="2000" height="1333" loading="lazy" decoding="async"
+               alt="A bull elk bugling in a meadow, backlit by low golden evening light.">
+        </picture>
+      </figure>
+      <div class="feature__body">
+        <h2 id="hospitality-title">Hospitality and guest operations</h2>
+        <p>
+          We're also looking at the guest side: booking hunts, scheduling guides, keeping
+          lodging straight, and remembering which clients came back and what they hunted last
+          time. We haven't committed to building this. If it's the part of your week that eats
+          the most time, tell us and it moves up the list.
+        </p>
+      </div>
+    </div>
+
+    <div class="page split safe hunts">
+      <h3 class="safe__title">Hunts built on how your animals move</h3>
+      <div class="split__body">
+        <p>
+          There's one more idea on the guest side, and it comes straight out of the survey
+          work. The flights and trail cameras that count your herd also show how it moves. We
+          think that could help you plan each guest's hunt around what your animals are really
+          doing.
+        </p>
+        <ul class="safe__list" role="list">
+          <li class="safe__item">
+            <h4>Learn their patterns</h4>
+            <p>Survey flights and trail-camera hits, stacked up week over week, show where your
+              animals feed at first light, the trails they take to bed, where they water, and
+              how weather and pressure push them around.</p>
+          </li>
+          <li class="safe__item">
+            <h4>Plan the hunt around them</h4>
+            <p>Which stand or glassing point, the approach that keeps the wind right, and the
+              hours a given bull or buck is most likely on his feet. Your guide heads out with
+              a game plan instead of a guess.</p>
+          </li>
+          <li class="safe__item">
+            <h4>A real hunt, not a sure thing</h4>
+            <p>Patterns put your guest in the right place at the right time. They still have to
+              glass, close the distance, and make the shot. Spreading pressure across your
+              ground keeps animals acting wild for the next group too.</p>
+          </li>
+        </ul>
+        <p class="safe__ask">
+          How do your guides scout for a guest today, and how much of that lives in one
+          guide's head? That's the conversation we want to have.
+        </p>
+        <div class="cta-row">
         <a class="btn btn--primary btn--book" data-book data-topic="hospitality"
-           href="https://REPLACE_ME.example/arches-labs/30min?topic=hospitality&amp;utm_source=site&amp;utm_medium=hospitality&amp;utm_campaign=discovery">
-          Talk to us about guest operations
+           href="https://calendar.app.google/qBJynKzATiRonKVb9">
+          Talk to us about guests and hunts
         </a>
         <a class="link-note" data-topic="hospitality" href="#contact">or send us a note</a>
       </div>
+      </div>
     </div>
   </section>
 
   <!-- ===================================================================
-       6. CONTACT
+       7. CONTACT
        =================================================================== -->
   <section class="section section--contact" id="contact" aria-labelledby="contact-title">
-    <div class="wrap">
-      <hr class="horizon" aria-hidden="true">
+    <div class="page contact">
+      <div class="contact__info">
       <h2 id="contact-title">Contact</h2>
-      <p class="section__lede">
-        Three ways to reach us. A call is the most useful &mdash; 30 minutes, no demo, just
+      <p class="lede">
+        Three ways to reach us. A call is the most useful: 30 minutes, no demo, just
         questions about how your operation runs.
       </p>
 
@@ -334,15 +713,17 @@
         <p class="contact-method">
           <span class="contact-method__label">Book a time directly</span>
           <a class="btn btn--primary btn--book" data-book data-topic="contact"
-             href="https://REPLACE_ME.example/arches-labs/30min?topic=contact&amp;utm_source=site&amp;utm_medium=contact&amp;utm_campaign=discovery">
+             href="https://calendar.app.google/qBJynKzATiRonKVb9">
             Open the booking calendar
           </a>
         </p>
       </div>
       <!--
-        OPTIONAL inline embed: drop a Cal.com/Calendly <iframe> here once CAL_URL is set.
+        OPTIONAL inline embed: Google Calendar appointment pages can be embedded as an <iframe> here.
         Keep the link above as the no-JS / blocked-embed fallback.
       -->
+
+      </div>
 
       <div class="form-panel">
         <h3 id="form-title">Or send a note</h3>
@@ -372,7 +753,7 @@
             <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
           </div>
 
-          <div class="field">
+          <div class="field field--span">
             <label for="f-headcount">Approximate head count</label>
             <select id="f-headcount" name="headcount">
               <option value="">Select a range</option>
@@ -429,10 +810,13 @@
     </picture>
   </div>
 
-  <div class="wrap">
-    <hr class="horizon" aria-hidden="true">
+  <div class="page">
     <div class="footer-grid">
       <div>
+        <picture>
+          <source type="image/webp" srcset="assets/img/logo-mark.webp">
+          <img class="footer-mark" src="assets/img/logo-mark.png" width="210" height="150" loading="lazy" decoding="async" alt="">
+        </picture>
         <p class="footer-brand">Arches Labs</p>
         <p class="footer-place">For private hunting ranches</p>
       </div>
@@ -441,7 +825,7 @@
         <li><a data-email href="mailto:phdeyoung@gmail.com">phdeyoung@gmail.com</a></li>
         <li>
           <a class="btn--book" data-book data-topic="footer"
-             href="https://REPLACE_ME.example/arches-labs/30min?topic=footer&amp;utm_source=site&amp;utm_medium=footer&amp;utm_campaign=discovery">
+             href="https://calendar.app.google/qBJynKzATiRonKVb9">
             Book a 30-minute call
           </a>
         </li>
@@ -452,20 +836,21 @@
       <h2 class="footer-credits__title">Photography</h2>
       <!-- Mirrors IMAGE_CREDITS.md. Names/IDs read from Unsplash download filenames — verify before launch. -->
       <ul role="list">
-        <li>Hero and social image &mdash; photo by Saúl Flores on Unsplash.</li>
-        <li>Aerial surveys &mdash; photo by Andres Haro on Unsplash.</li>
-        <li>Herd records &mdash; photo by Kush Dwivedi on Unsplash.</li>
-        <li>Hospitality &mdash; photo by Mathew Schwartz on Unsplash.</li>
-        <li>Footer strip &mdash; photos by Taun Stewart, Caroline Sterr, Nils Rasmusson, and solotravelgoals on Unsplash.</li>
-        <li>Founder photo &mdash; &copy; Arches Labs.</li>
+        <li>Hero and social image: photo by Saúl Flores on Unsplash.</li>
+        <li>Aerial surveys: photo by Andres Haro on Unsplash.</li>
+        <li>Herd records: photo by Kush Dwivedi on Unsplash.</li>
+        <li>Hospitality: photo by Mathew Schwartz on Unsplash.</li>
+        <li>Footer strip: photos by Taun Stewart, Caroline Sterr, Nils Rasmusson, and solotravelgoals on Unsplash.</li>
+        <li>Founder photos and logo: &copy; Arches Labs.</li>
       </ul>
     </div>
 
-    <p class="footer-legal">&copy; 2026 Arches Labs. No product yet &mdash; we're building it with the ranches that will run it.</p>
+    <p class="footer-legal">&copy; 2026 Arches Labs. No product yet. We're building it with the ranches that will run it.</p>
   </div>
 </footer>
 
 <script src="assets/js/enhance.js" defer></script>
+<script src="assets/js/patrol-demo.js" defer></script>
 
 <!--
   OPTIONAL analytics. Privacy-light, non-render-blocking. Leave commented until you set

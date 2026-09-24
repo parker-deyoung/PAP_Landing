@@ -19,15 +19,13 @@ without touching layout.
 | Herd records — mule deer buck | `records-mule-deer-buck-{640,960}w.{webp,jpg}` | Unsplash, photo `kEYtw1_YiHM` (`_src/kush-dwivedi-kEYtw1_YiHM-unsplash.jpg`) | Unsplash License | Photo by Kush Dwivedi on Unsplash |
 | Hospitality — bull elk | `hospitality-bull-elk-{640,1280}w.{webp,jpg}` | Unsplash, photo `rtT0Uk8fkR8` (`_src/mathew-schwartz-rtT0Uk8fkR8-unsplash.jpg`) | Unsplash License | Photo by Mathew Schwartz on Unsplash |
 | Founder A — Parker DeYoung | `founder-parker-duckhunt-{560,1120}w.{webp,jpg}` | Arches Labs (own photo) | © Arches Labs, all rights reserved | — |
+| Founder B — Parker Piombo | `founder-b-{560,1120}w.{webp,jpg}` | Arches Labs (own photo, `_src/founder-b.jpg`) | © Arches Labs, all rights reserved | — |
+| Logo — arch mark + lettering | `logo-mark.{webp,png}`, `logo-text.{webp,png}`, `logo-arches-labs.png`, `favicon-32.png`, `apple-touch-icon.png` | Arches Labs logo art, background removed | © Arches Labs, all rights reserved | — |
 | Footer strip 1 — pronghorn at dusk | `strip-pronghorn-dusk-480w.{webp,jpg}` | Unsplash, photo `_WONpzMHHbA` (`_src/taun-stewart-_WONpzMHHbA-unsplash.jpg`) | Unsplash License | Photo by Taun Stewart on Unsplash |
 | Footer strip 2 — snowy peak | `strip-snowy-timp-480w.{webp,jpg}` | Unsplash, photo `pja2EaH4fHo` (`_src/caroline-sterr-pja2EaH4fHo-unsplash.jpg`) | Unsplash License | Photo by Caroline Sterr on Unsplash |
 | Footer strip 3 — red maple ridge | `strip-red-maple-ridge-480w.{webp,jpg}` | Unsplash, photo `r3542uvw4_g` (`_src/nils-rasmusson-r3542uvw4_g-unsplash.jpg`) | Unsplash License | Photo by Nils Rasmusson on Unsplash |
 | Footer strip 4 — Delicate Arch | `strip-delicate-arch-480w.{webp,jpg}` | Unsplash, photo `7kLufxYoqWk` (`_src/solotravelgoals-7kLufxYoqWk-unsplash.jpg`) | Unsplash License | Photo by solotravelgoals on Unsplash |
 
-Founders B (Parker Piombo) and C (Anton Smolyanyy) currently use
-`assets/img/placeholder-founder.svg`. Add `founder-b.jpg` / `founder-c.jpg` to
-`assets/img/_src/`, re-run `tools/make-images.sh`, and swap their `<img>` tags for the
-same `<picture>` pattern used by Founder A.
 
 ## Originals
 

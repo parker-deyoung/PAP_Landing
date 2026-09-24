@@ -11,7 +11,6 @@
 #       hospitality-bull-elk      bull elk bugling, golden hour                    (landscape)
 #       founder-parker-duckhunt   Parker DeYoung in the marsh with a duck          (portrait)
 #       founder-b                 (optional) real photo of Parker Piombo           (portrait)
-#       founder-c                 (optional) real photo of Anton Smolyanyy         (portrait)
 #       strip-pronghorn-dusk      pronghorn on snowy flats at dusk                 (landscape)
 #       strip-snowy-timp          snowy alpine peak through evergreens             (landscape)
 #       strip-red-maple-ridge     red/green maple hillsides below a peak           (landscape)
@@ -71,9 +70,9 @@ derive () { # $1 = base name, $2... = target widths
 
 echo "Processing images from $SRC ..."
 
-# hero + full-bleed section photos: 640 / 1280 (no larger tier — keeps the budget)
-derive hero-autumn-peak       640 1280
-derive surveys-bison-herd     640 1280
+# full-bleed photos: 640 / 1280 / 1920. srcset means only big screens fetch the 1920.
+derive hero-autumn-peak       640 1280 1920
+derive surveys-bison-herd     640 1280 1920
 derive hospitality-bull-elk   640 1280
 # mule-deer frame is edge-to-edge fine grass — it does not compress. Cap it smaller.
 derive records-mule-deer-buck 640 960
@@ -81,7 +80,6 @@ derive records-mule-deer-buck 640 960
 # founders: 560 / 1120 (rendered at most ~1 column wide)
 derive founder-parker-duckhunt 560 1120
 derive founder-b               560 1120
-derive founder-c               560 1120
 
 # footer strip: one small size, decorative + lazy
 derive strip-pronghorn-dusk  480
