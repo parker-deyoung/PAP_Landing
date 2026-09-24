@@ -14,13 +14,17 @@
   links when JS runs).
 
   MUST be filled before going live (see README.md "Fill before going live"):
-    - FORM_ENDPOINT ............... where the contact form POSTs. Currently REPLACE_ME.
     - SITE_URL ................... canonical domain, used by OG tags + sitemap. Currently REPLACE_ME.
     - IMAGE_CREDITS.md / footer "Photography" ... verify photographer names + Unsplash IDs.
 
   Already set (real values, provided by Parker):
     - PHONE / PHONE_TEL ........ 720-498-7552
     - EMAIL ................... phdeyoung@gmail.com
+    - FORM_ENDPOINT ........... https://formsubmit.co/phdeyoung@gmail.com (FormSubmit, no
+                                account). Each note is emailed to phdeyoung@gmail.com and
+                                CC'd to parkerpiombo@gmail.com (hidden _cc field in the form).
+                                The very first submission sends an "Activate Form" email to
+                                phdeyoung@gmail.com; nothing is delivered until that link is clicked.
     - CAL_URL ................. https://calendar.app.google/qBJynKzATiRonKVb9 (Google Calendar
                                 appointment page; it ignores ?topic= / utm params)
 
@@ -71,7 +75,7 @@
   /* Single source of truth for the JS path. Keep in sync with the markup defaults. */
   window.SITE_CONFIG = {
     CAL_URL:      "https://calendar.app.google/qBJynKzATiRonKVb9",
-    FORM_ENDPOINT: "https://REPLACE_ME.example/f/xxxx",           // REPLACE_ME
+    FORM_ENDPOINT: "https://formsubmit.co/phdeyoung@gmail.com",
     PHONE:        "720-498-7552",
     PHONE_TEL:    "+17204987552",
     EMAIL:        "phdeyoung@gmail.com",
@@ -730,7 +734,7 @@
         <p class="form-panel__intro">Six questions. The last one matters most.</p>
 
         <form id="contact-form" method="post"
-              action="https://REPLACE_ME.example/f/xxxx"
+              action="https://formsubmit.co/phdeyoung@gmail.com"
               aria-labelledby="form-title" aria-describedby="form-status">
 
           <div class="field">
@@ -772,6 +776,10 @@
 
           <!-- research tag: set from the section CTA the visitor clicked (JS). No-JS default below. -->
           <input type="hidden" id="f-topic" name="topic" value="site-general">
+          <!-- FormSubmit settings: who gets a copy, the email subject, and the email layout -->
+          <input type="hidden" name="_cc" value="parkerpiombo@gmail.com">
+          <input type="hidden" name="_subject" value="New note from the Arches Labs website">
+          <input type="hidden" name="_template" value="table">
           <!-- spam honeypot: real people leave this empty; not a counted field -->
           <div class="hp" aria-hidden="true">
             <label for="f-company-url">Company website</label>

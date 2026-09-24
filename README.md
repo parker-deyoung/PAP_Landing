@@ -49,7 +49,7 @@ the `<script id="site-config">`, AND the visible markup where noted):**
 | Value | Where | Notes |
 |---|---|---|
 | `CAL_URL` | `site-config` script + every `a[data-book]` href + booking link in Contact | **Set:** `https://calendar.app.google/qBJynKzATiRonKVb9` (Google Calendar appointment page). Buttons use the plain link; Google drops any `?topic=`/`utm` params. |
-| `FORM_ENDPOINT` | `site-config` script + `<form action="…">` | Formspree / Basin / Netlify Forms / your own handler. Must accept a `POST` of form fields and return 2xx (ideally JSON for the on-page success state). |
+| `FORM_ENDPOINT` | `site-config` script + `<form action="…">` | **Set:** `https://formsubmit.co/phdeyoung@gmail.com` (FormSubmit, no account). Notes go to phdeyoung@gmail.com with a copy to parkerpiombo@gmail.com (hidden `_cc` field; `_subject` and `_template` set the email subject and layout). The first submission sends an "Activate Form" email to phdeyoung@gmail.com; nothing is delivered until it's clicked. With JS on, `enhance.js` posts JSON to `formsubmit.co/ajax/…`; with JS off the browser posts to the plain URL and FormSubmit shows a captcha, then its own thank-you page. |
 | `SITE_URL` | `<link rel="canonical">`, `og:url`, `twitter:url`, `og:image`/`twitter:image` | Also update `robots.txt` and `sitemap.xml` to the same domain. |
 | `ANALYTICS_ID` | `site-config` script + commented snippet before `</body>` | Optional. Uncomment the snippet only if you want analytics. |
 

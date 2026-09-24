@@ -67,13 +67,28 @@
       setStatus("", "Sending…");
       if (btn) { btn.disabled = true; }
 
-      fetch(endpoint, {
+      // FormSubmit's JSON endpoint lives under /ajax/. The plain URL answers with a
+      // captcha page, which would look like a success here without sending anything.
+      var url = endpoint.replace(/^https:\/\/formsubmit\.co\/(?!ajax\/)/, "https://formsubmit.co/ajax/");
+      var data = {};
+      new FormData(form).forEach(function (v, k) {
+        if (k !== "company_url") { data[k] = v; } // leave the honeypot out of the email
+      });
+
+      fetch(url, {
         method: "POST",
-        body: new FormData(form),
-        headers: { "Accept": "application/json" }
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(data)
       })
         .then(function (res) {
           if (!res.ok) { throw new Error("bad status " + res.status); }
+          return res.json().catch(function () { return {}; });
+        })
+        .then(function (body) {
+          // FormSubmit reports some failures (e.g. form not activated yet) with a 200
+          if (body && (body.success === false || body.success === "false")) {
+            throw new Error(body.message || "not sent");
+          }
           form.reset();
           setStatus("ok",
             "Thanks — we’ll email you" + (email ? " at " + email : "") +
