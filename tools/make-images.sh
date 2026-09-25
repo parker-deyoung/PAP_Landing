@@ -9,6 +9,8 @@
 #       surveys-bison-herd        herd grazing green pasture below a ridge         (landscape)
 #       records-mule-deer-buck    mature mule deer buck in tall grass              (portrait)
 #       hospitality-bull-elk      bull elk bugling, golden hour                    (landscape)
+#       cattle-holstein-cow       dairy cow with ear tags in a green pasture       (portrait)
+#       hunts-whitetail-buck      whitetail buck in a sunlit clearing              (portrait)
 #       founder-parker-duckhunt   Parker DeYoung in the marsh with a duck          (portrait)
 #       founder-b                 (optional) real photo of Parker Piombo           (portrait)
 #       strip-pronghorn-dusk      pronghorn on snowy flats at dusk                 (landscape)
@@ -76,6 +78,8 @@ derive surveys-bison-herd     640 1280 1920
 derive hospitality-bull-elk   640 1280
 # mule-deer frame is edge-to-edge fine grass — it does not compress. Cap it smaller.
 derive records-mule-deer-buck 640 960
+derive cattle-holstein-cow    640 960
+derive hunts-whitetail-buck   640 960
 
 # founders: 560 / 1120 (rendered at most ~1 column wide)
 derive founder-parker-duckhunt 560 1120

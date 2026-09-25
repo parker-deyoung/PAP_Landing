@@ -1,14 +1,17 @@
 # Arches Labs — landing page
 
 Static one-page site whose only job is to get ranch owners and managers to book a
-30-minute discovery call. No build step, no framework. Plain HTML, one CSS file, one
-small progressive-enhancement JS file.
+30-minute discovery call. No build step, no framework. Plain HTML, one CSS file, and
+small progressive-enhancement JS files (the page works with all of them off).
 
 ```
-index.html              all seven sections + footer; config block is at the top of <head>
+index.html              all ten sections + footer; config block is at the top of <head>
 assets/css/styles.css    all styles
 assets/js/enhance.js     optional: link sync, topic tagging, on-page form submit
+assets/js/survey-demo.js optional: plays the surveys section's flight demo + live dashboard
 assets/js/patrol-demo.js optional: plays the security section's night-patrol demo (inline SVG)
+assets/js/fence-demo.js  optional: plays the fences section's fence-check demo (map + phone)
+assets/js/demos.js       optional: plays the records and guests demos (one shared player)
 assets/img/              processed WebP + JPEG (via tools/make-images.sh) + favicons
 assets/img/_src/         full-res originals (git-ignored); build script reads these
 tools/make-images.sh     one-time image processing (needs macOS `sips`; `cwebp` optional)
@@ -71,8 +74,8 @@ done. `assets/img/_src/` is git-ignored — keep your own backup of the original
 
 ## The research tag (why each section has its own CTA)
 
-Every section's "book" button carries a `data-topic` (`intro`, `surveys`, `security`,
-`records`, `hospitality`, `contact`, `header`, `footer`). Bookings go to a Google Calendar
+Every section's "book" button carries a `data-topic` (`intro`, `surveys`, `security`, `fences`,
+`records`, `hospitality`, `cattle`, `contact`, `header`, `footer`). Bookings go to a Google Calendar
 appointment page, which doesn't record `topic=` or UTM params, so the booking itself
 won't say which section sent the visitor; ask on the call. The contact form still
 carries the signal in its hidden `topic` field, set from whichever section's "or send us

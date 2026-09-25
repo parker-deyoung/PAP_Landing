@@ -41,7 +41,7 @@
 -->
 
 <title>Arches Labs — software for private hunting ranches</title>
-<meta name="description" content="We're two hunters building herd-survey, ranch-security, record-keeping, and guest-operations software with the private hunting ranches that will run it. No product yet. Book a 30-minute call and help shape it.">
+<meta name="description" content="Drone surveys, fence and security checks, herd records, and guest tools for private hunting ranches, built by two hunters. Now taking on development partners.">
 
 <link rel="canonical" href="https://REPLACE_ME.example/">
 
@@ -49,7 +49,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Arches Labs">
 <meta property="og:title" content="Software for private hunting ranches">
-<meta property="og:description" content="Two hunters building herd-survey, ranch-security, record-keeping, and guest-operations software with the private hunting ranches that will run it. Book a 30-minute call.">
+<meta property="og:description" content="Drone surveys, fence and security checks, herd records, and guest tools for private hunting ranches. Now taking on development partners: book a 30-minute call.">
 <meta property="og:url" content="https://REPLACE_ME.example/">
 <meta property="og:image" content="https://REPLACE_ME.example/assets/img/og-cover.jpg">
 <meta property="og:image:width" content="1200">
@@ -57,7 +57,7 @@
 <meta property="og:image:alt" content="Sunlit autumn peak above orange aspen stands in rugged high country.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Software for private hunting ranches">
-<meta name="twitter:description" content="Two hunters building herd-survey, ranch-security, record-keeping, and guest-operations software with the private hunting ranches that will run it. Book a 30-minute call.">
+<meta name="twitter:description" content="Drone surveys, fence and security checks, herd records, and guest tools for private hunting ranches. Now taking on development partners: book a 30-minute call.">
 <meta name="twitter:image" content="https://REPLACE_ME.example/assets/img/og-cover.jpg">
 <meta name="twitter:image:alt" content="Sunlit autumn peak above orange aspen stands in rugged high country.">
 
@@ -104,8 +104,10 @@
       <a href="#about">About</a>
       <a href="#surveys">Surveys</a>
       <a href="#security">Security</a>
+      <a href="#fences">Fences</a>
       <a href="#records">Records</a>
       <a href="#guests">Guests</a>
+      <a href="#cattle">Cattle</a>
     </nav>
     <a class="btn btn--primary btn--small btn--book" data-book data-topic="header"
        href="https://calendar.app.google/qBJynKzATiRonKVb9">
@@ -138,9 +140,9 @@
     <div class="page hero__body">
       <h1 id="hero-title">Software for private hunting ranches.</h1>
       <p class="hero__lede">
-        We're two hunters building herd surveys, ranch security, record-keeping, and guest
-        tools with the ranches that will use them. There's nothing to demo yet. This season
-        we're talking with owners and managers about what actually needs fixing.
+        Drone surveys, fence and security checks, herd records, and guest tools, built by two
+        hunters. We're taking on development partners now: ranches that put it to work first
+        and help shape how it runs.
       </p>
       <div class="cta-row">
         <a class="btn btn--light btn--book" data-book data-topic="intro"
@@ -163,11 +165,9 @@
         <h2 id="who-title">Who we are</h2>
         <div class="split__body">
           <p class="lede">
-            Arches Labs is Parker DeYoung and Parker Piombo. We hunt big game and waterfowl
-            most weekends we can get away. We've spent enough time around private hunting
-            ranches and outfitters to know that most software built for this work was built by
-            people who've never sat in a blind or walked a fence line at first light. We'd
-            rather build the thing you actually need, with you, than guess at it.
+            Arches Labs is Parker DeYoung and Parker Piombo. We hunt big game and waterfowl,
+            and most ranch software we've seen was built by people who've never sat in a
+            blind. We'd rather build it with you.
           </p>
         </div>
       </div>
@@ -190,12 +190,9 @@
           </div>
           <h3 class="founder__name">Parker DeYoung</h3>
           <p class="founder__line">
-            Parker DeYoung developed computer-vision systems for U.S. Air Force drones
-            and locally hosted AI systems built to operate where security and reliability
-            matter. He is also published at EMNLP, a leading AI and natural-language-processing
-            conference, for research focused on benchmarking AI agents and improving how
-            reliably and effectively they perform. Away from the keyboard, he enjoys
-            waterfowl hunting and hiking.
+            Built computer-vision systems for U.S. Air Force drones and secure, locally hosted
+            AI. Published at EMNLP, a leading AI conference, on benchmarking AI agents and making
+            them more reliable. Hunts waterfowl and hikes.
           </p>
         </li>
         <li class="founder">
@@ -215,12 +212,9 @@
           </div>
           <h3 class="founder__name">Parker Piombo</h3>
           <p class="founder__line">
-            Parker Piombo grew up hunting and living on a ranch in Northern California,
-            and his hands-on work on ranches gave him a firsthand understanding of their
-            needs and how demanding the work can be. He competes in sporting clays and now
-            studies business, bringing professional experience from Deloitte. He is deeply
-            interested in improving the ranching and hunting industries and has a lifelong
-            love of hunting and land management.
+            Grew up hunting and working on a ranch in Northern California, so he knows how hard
+            the work is. Competes in sporting clays, studies business, and brings experience
+            from Deloitte. A lifelong hunter with a love of land management.
           </p>
         </li>
       </ul>
@@ -229,6 +223,12 @@
 
   <!-- ===================================================================
        3. AERIAL SURVEYS AND HERD TRACKING
+       Demo is an inline SVG map plus an HTML dashboard panel, driven by
+       assets/js/survey-demo.js. With JS off it shows the finished survey:
+       every animal marked, the full dashboard, and every step's text.
+       The panel's counts must match the .sd-a markers in the SVG (the script
+       recounts from the markers as it plays). Times in the script line up
+       with the five steps below.
        =================================================================== -->
   <section class="section section--bleed" id="surveys" aria-labelledby="surveys-title">
     <figure class="bleed">
@@ -249,22 +249,308 @@
     <div class="page split">
       <h2 id="surveys-title">Aerial surveys and herd tracking</h2>
       <div class="split__body">
-        <p>
-          This is our starting point. We fly thermal drone surveys to count your herd and break
-          it out by age class, then keep those numbers in one place season over season. A
-          helicopter survey gives you one count on one day. This gives you a running inventory
-          and trend lines you can plan against: how the buck-to-doe ratio is moving, whether
-          your mature age classes are holding, and where numbers are sliding before it shows up
-          at harvest.
+        <p class="lede">
+          A helicopter gives you one count on one day. Thermal drone flights could give you a
+          running count by age class, so you see ratios slide before harvest does.
         </p>
-        <p>
-          We work with the trail cameras you already run. We're not asking you to pull anything
-          out or standardize on our hardware. The cameras feed the same inventory the flights do.
-        </p>
-        <div class="cta-row">
+        <p>The trail cameras you already run feed the same count.</p>
+      </div>
+    </div>
+
+    <div class="page survey" data-survey>
+      <figure class="survey__stage">
+        <div class="survey__window">
+          <div class="survey__bar" aria-hidden="true">
+            <span class="survey__bar-title">Morning survey <span class="survey__bar-sub">North and Creek pastures</span></span>
+            <span class="survey__bar-live">
+              <span class="survey__pill" data-el="pill">Saved</span>
+              <span class="survey__clock" data-el="clock">6:09 AM</span>
+            </span>
+          </div>
+
+          <div class="survey__body">
+            <div class="survey__map">
+              <svg viewBox="0 0 640 460" role="img" aria-labelledby="survey-svg-title" focusable="false">
+                <title id="survey-svg-title">Illustrated map of a ranch survey. A drone takes off from the barn before first light and flies evenly spaced lines back and forth over 640 acres. Its thermal camera finds and marks each animal: 22 mule deer, 14 elk, and 7 pronghorn, plus one bedded in the timber that it flags for review. Beside the map, a live dashboard shows the ground covered, the count by species and age class, and how the herd's ratios compare with last fall.</title>
+                <defs>
+                  <radialGradient id="sd-heat">
+                    <stop offset="0" stop-color="#fff7df"/>
+                    <stop offset="0.45" stop-color="#ffc46b"/>
+                    <stop offset="1" stop-color="#ff7a2f" stop-opacity="0"/>
+                  </radialGradient>
+                  <linearGradient id="sd-ir" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#1a1030"/>
+                    <stop offset="1" stop-color="#2a1640"/>
+                  </linearGradient>
+                  <clipPath id="sd-area-clip"><polygon points="34,54 412,44 426,160 606,166 598,396 380,408 66,400 26,236"/></clipPath>
+                  <clipPath id="sd-cam-clip"><rect x="446" y="14" width="180" height="116" rx="6"/></clipPath>
+                  <!-- drawn twice: once on the map, once (cold) in the thermal camera -->
+                  <path id="sd-creek" d="M170 -6C188 60 150 120 196 170S296 214 300 262 340 330 316 380 350 440 372 470"/>
+                  <g id="sd-trees">
+                    <circle cx="110" cy="150" r="9"/><circle cx="124" cy="143" r="7"/><circle cx="97" cy="160" r="7"/><circle cx="118" cy="163" r="6"/>
+                    <circle cx="320" cy="316" r="9"/><circle cx="337" cy="327" r="8"/><circle cx="345" cy="311" r="7"/><circle cx="325" cy="335" r="6"/><circle cx="310" cy="328" r="6"/>
+                    <circle cx="566" cy="312" r="9"/><circle cx="580" cy="298" r="7"/><circle cx="556" cy="323" r="7"/><circle cx="574" cy="327" r="6"/><circle cx="522" cy="318" r="6"/>
+                    <circle cx="577" cy="211" r="8"/><circle cx="589" cy="196" r="7"/><circle cx="582" cy="226" r="6"/>
+                    <circle cx="382" cy="98" r="7"/><circle cx="394" cy="87" r="6"/><circle cx="370" cy="88" r="6"/>
+                  </g>
+                </defs>
+
+                <!-- ground -->
+                <rect width="640" height="460" fill="#e4e7dc"/>
+                <path d="M40 262C90 246 170 250 212 268S222 316 172 320 62 314 40 298Z" fill="#ebe4cf"/>
+                <path d="M358 184C400 170 470 176 488 196S480 246 440 250 364 242 356 216Z" fill="#d6e0c4"/>
+                <g fill="none" stroke="#7e8768" stroke-opacity="0.3" stroke-width="1.1">
+                  <path d="M-10 26C90 16 170 50 260 36S420 8 500 26 600 16 650 34"/>
+                  <path d="M-10 140C60 128 120 150 200 142S300 110 360 128"/>
+                  <path d="M456 262C520 244 580 258 650 246"/>
+                  <path d="M-10 432C80 412 160 442 240 426S380 402 460 432 580 416 650 442"/>
+                  <path d="M296 170C316 150 348 160 350 180S328 206 308 198 288 184 296 170Z"/>
+                  <path d="M470 360C500 342 540 350 548 372S520 400 494 392 462 378 470 360Z"/>
+                </g>
+                <use href="#sd-creek" fill="none" stroke="#7fa6c4" stroke-width="3" stroke-linecap="round"/>
+                <use href="#sd-trees" fill="#b7c5a5"/>
+                <path d="M114 424C170 392 230 334 300 306S420 272 482 262" fill="none" stroke="#a89c78" stroke-opacity="0.6" stroke-width="2" stroke-dasharray="3 6" stroke-linecap="round"/>
+
+                <!-- survey area -->
+                <polygon data-el="area" points="34,54 412,44 426,160 606,166 598,396 380,408 66,400 26,236"
+                         fill="#fff" fill-opacity="0.3" stroke="#33475a" stroke-width="1.6" stroke-linejoin="round"/>
+                <text class="sd-label" data-el="areaLabel" x="34" y="38">SURVEY AREA · 640 ACRES</text>
+
+                <!-- flight lines as planned, then the ground the camera has covered -->
+                <g data-el="plan" stroke="#33475a" stroke-opacity="0.45" stroke-width="1" stroke-dasharray="3 5">
+                  <line x1="60" y1="376" x2="599" y2="376"/>
+                  <line x1="49" y1="332" x2="600" y2="332"/>
+                  <line x1="39" y1="288" x2="602" y2="288"/>
+                  <line x1="28" y1="244" x2="603" y2="244"/>
+                  <line x1="28" y1="200" x2="605" y2="200"/>
+                  <line x1="30" y1="156" x2="426" y2="156"/>
+                  <line x1="31" y1="112" x2="420" y2="112"/>
+                  <line x1="33" y1="68" x2="415" y2="68"/>
+                </g>
+                <!-- survey route: swath and track share this d, and the script samples it for the drone -->
+                <path data-el="swath" d="M60.1 376H600.2A22 22 0 0 0 600.2 332H38.7A22 22 0 0 1 38.7 288H603.3A22 22 0 0 0 603.3 244H27.6A22 22 0 0 1 27.6 200H604.8A22 22 0 0 0 604.8 156H29.5A22 22 0 0 1 29.5 112H420.2A22 22 0 0 0 420.2 68H33.4"
+                      fill="none" stroke="#33475a" stroke-opacity="0.12" stroke-width="58" stroke-linejoin="round" clip-path="url(#sd-area-clip)"/>
+                <path data-el="track" d="M60.1 376H600.2A22 22 0 0 0 600.2 332H38.7A22 22 0 0 1 38.7 288H603.3A22 22 0 0 0 603.3 244H27.6A22 22 0 0 1 27.6 200H604.8A22 22 0 0 0 604.8 156H29.5A22 22 0 0 1 29.5 112H420.2A22 22 0 0 0 420.2 68H33.4"
+                      fill="none" stroke="#33475a" stroke-opacity="0.7" stroke-width="1.4" stroke-linejoin="round"/>
+                <path data-el="pathOut" d="M100 430C90 412 70 394 60.1 376" fill="none" stroke="#33475a" stroke-width="1.4" stroke-opacity="0.6" opacity="0"/>
+                <path data-el="pathHome" d="M33.4 68C6 150 4 360 100 430" fill="none" stroke="#33475a" stroke-width="1.4" stroke-opacity="0.6" opacity="0"/>
+
+                <!-- barn + dock -->
+                <g transform="translate(100 430) rotate(-4)">
+                  <rect x="-17" y="-11" width="34" height="22" rx="2" fill="#8b8474" stroke="#5d584c" stroke-width="1"/>
+                  <rect x="-7" y="-7" width="14" height="14" rx="1" fill="#6f695b" stroke="#e9eae6" stroke-opacity="0.7" stroke-dasharray="2 2"/>
+                </g>
+                <circle data-el="dockRing" cx="100" cy="430" r="12" fill="none" stroke="#33475a" stroke-width="1.5" opacity="0"/>
+                <text class="sd-label" x="124" y="435">BARN</text>
+
+                <!-- animals the camera has found (script adds the detection rings) -->
+                <g data-el="rings" fill="none" stroke-width="1.5"></g>
+                <g class="sd-animals">
+                  <g class="sd-a sd-a--deer" data-g="g1" data-c="doe" transform="translate(232 350)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g1" data-c="doe" transform="translate(244 358)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g1" data-c="fawn" transform="translate(228 364)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g1" data-c="doe" transform="translate(240 372)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g1" data-c="fawn" transform="translate(254 348)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g2" data-c="buck" transform="translate(524 296)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g2" data-c="buck" transform="translate(538 305)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g2" data-c="buck" transform="translate(548 291)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g3" data-c="doe" transform="translate(250 244)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g3" data-c="doe" transform="translate(263 250)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g3" data-c="fawn" transform="translate(255 262)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g3" data-c="doe" transform="translate(274 242)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g3" data-c="doe" transform="translate(278 257)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g3" data-c="fawn" transform="translate(267 270)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g4" data-c="doe" transform="translate(140 112)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g4" data-c="doe" transform="translate(153 118)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g4" data-c="fawn" transform="translate(145 129)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g4" data-c="doe" transform="translate(164 108)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g4" data-c="buck" transform="translate(172 124)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g5" data-c="doe" transform="translate(322 74)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g5" data-c="doe" transform="translate(335 82)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--deer" data-g="g5" data-c="buck" transform="translate(348 70)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--elk" data-g="e1" data-c="cow" transform="translate(386 200)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--elk" data-g="e1" data-c="cow" transform="translate(399 193)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--elk" data-g="e1" data-c="cow" transform="translate(411 202)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--elk" data-g="e1" data-c="cow" transform="translate(423 195)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--elk" data-g="e1" data-c="cow" transform="translate(435 204)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--elk" data-g="e1" data-c="calf" transform="translate(392 214)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--elk" data-g="e1" data-c="cow" transform="translate(404 218)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--elk" data-g="e1" data-c="calf" transform="translate(417 214)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--elk" data-g="e1" data-c="cow" transform="translate(429 221)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--elk" data-g="e1" data-c="cow" transform="translate(442 216)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--elk" data-g="e1" data-c="cow" transform="translate(411 230)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--elk" data-g="e1" data-c="calf" transform="translate(424 234)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--elk" data-g="e1" data-c="bull" transform="translate(454 196)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--elk" data-g="e2" data-c="bull" transform="translate(562 198)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--pronghorn" data-g="p1" data-c="doe" transform="translate(96 278)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--pronghorn" data-g="p1" data-c="doe" transform="translate(108 287)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--pronghorn" data-g="p1" data-c="buck" transform="translate(120 276)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--pronghorn" data-g="p1" data-c="doe" transform="translate(132 290)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--pronghorn" data-g="p1" data-c="doe" transform="translate(146 280)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--pronghorn" data-g="p1" data-c="doe" transform="translate(158 292)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--pronghorn" data-g="p1" data-c="buck" transform="translate(170 282)"><circle r="4.5"/></g>
+                  <g class="sd-a sd-a--unknown" data-g="u1" data-c="unknown" transform="translate(330 322)"><circle r="5"/><text y="2.6">?</text></g>
+                </g>
+
+                <!-- camera footprint + drone -->
+                <g data-el="foot" transform="translate(100 430)" opacity="0">
+                  <rect x="-45" y="-29" width="90" height="58" fill="#33475a" fill-opacity="0.08"/>
+                  <path d="M-45 -20V-29H-36M36 -29H45V-20M45 20V29H36M-36 29H-45V20" fill="none" stroke="#22271f" stroke-width="1.5"/>
+                </g>
+                <g data-el="drone" transform="translate(100 430)">
+                  <ellipse data-el="droneShadow" cx="2" cy="3" rx="11" ry="5" fill="#22271f" opacity="0.2"/>
+                  <g stroke="#22271f" stroke-width="2" stroke-linecap="round">
+                    <line x1="-8" y1="-8" x2="8" y2="8"/><line x1="8" y1="-8" x2="-8" y2="8"/>
+                  </g>
+                  <g fill="#fff" fill-opacity="0.75" stroke="#22271f" stroke-width="1.2">
+                    <circle cx="-9" cy="-9" r="5"/><circle cx="9" cy="-9" r="5"/><circle cx="-9" cy="9" r="5"/><circle cx="9" cy="9" r="5"/>
+                  </g>
+                  <circle r="4" fill="#22271f"/>
+                  <circle r="1.6" fill="#e0824f"/>
+                </g>
+
+                <!-- live thermal camera: a zoomed, cold-to-hot view under the drone (filled in by the script) -->
+                <g data-el="cam" class="sd-cam">
+                  <rect x="446" y="14" width="180" height="116" rx="6" fill="url(#sd-ir)"/>
+                  <g clip-path="url(#sd-cam-clip)">
+                    <g data-el="camWorld">
+                      <use href="#sd-creek" fill="none" stroke="#3b2860" stroke-width="3"/>
+                      <use href="#sd-trees" fill="#2b1c47"/>
+                      <g data-el="heat"></g>
+                    </g>
+                    <path d="M536 64v-6M536 80v6M528 72h-6M544 72h6" stroke="#e9eae6" stroke-opacity="0.45" stroke-width="1"/>
+                    <rect x="446" y="111" width="180" height="19" fill="#0f0a1c" fill-opacity="0.8"/>
+                    <circle cx="456" cy="120.5" r="3" fill="#e0824f"/>
+                    <text class="sd-cam-id" data-el="camLabel" x="464" y="124.5">SCANNING</text>
+                    <rect x="450" y="18" width="58" height="15" rx="2" fill="#0f0a1c" fill-opacity="0.7"/>
+                    <text class="sd-label sd-label--cam" x="455" y="29">THERMAL</text>
+                  </g>
+                  <rect x="446" y="14" width="180" height="116" rx="6" fill="none" stroke="#22271f" stroke-opacity="0.5"/>
+                </g>
+              </svg>
+
+              <div class="survey__card" data-el="card" aria-hidden="true">
+                <svg class="survey__card-icon" width="22" height="22" viewBox="0 0 24 24" focusable="false">
+                  <rect width="24" height="24" rx="6" fill="#33475a"/>
+                  <path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#e9eae6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="survey__card-body">
+                  <span class="survey__card-title">Survey saved</span>
+                  <span class="survey__card-text">43 animals added to your herd records. 1 flagged for you to check.</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- the live dashboard. Values below are the finished survey (the no-JS frame). -->
+            <div class="survey__panel" aria-hidden="true">
+              <div class="sp-head">
+                <p class="sp-status" data-el="status">Survey complete</p>
+                <p class="sp-sub" data-el="sub">Landed 6:02 AM · saved to herd records</p>
+              </div>
+
+              <div class="sp-cover">
+                <p class="sp-row"><span class="sp-label">Ground covered</span><span class="sp-num" data-el="coverPct">100%</span></p>
+                <span class="sp-meter"><span class="sp-meter__fill" data-el="coverBar" style="--v:1"></span></span>
+                <p class="sp-note" data-el="coverNote">640 of 640 acres · 8 of 8 lines</p>
+              </div>
+
+              <div class="sp-total">
+                <p class="sp-label">Animals counted</p>
+                <p class="sp-hero" data-el="total">43</p>
+              </div>
+
+              <ul class="sp-species" role="list">
+                <li class="sp-sp">
+                  <span class="sp-sw sp-sw--deer"></span>
+                  <span class="sp-name">Mule deer</span>
+                  <span class="sp-count" data-el="n-deer">22</span>
+                  <span class="sp-bar"><span class="sp-bar__fill sp-bar__fill--deer" data-el="bar-deer" style="--v:1"></span></span>
+                  <span class="sp-classes" data-el="c-deer">5 bucks · 12 does · 5 fawns</span>
+                </li>
+                <li class="sp-sp">
+                  <span class="sp-sw sp-sw--elk"></span>
+                  <span class="sp-name">Elk</span>
+                  <span class="sp-count" data-el="n-elk">14</span>
+                  <span class="sp-bar"><span class="sp-bar__fill sp-bar__fill--elk" data-el="bar-elk" style="--v:0.636"></span></span>
+                  <span class="sp-classes" data-el="c-elk">2 bulls · 9 cows · 3 calves</span>
+                </li>
+                <li class="sp-sp">
+                  <span class="sp-sw sp-sw--pronghorn"></span>
+                  <span class="sp-name">Pronghorn</span>
+                  <span class="sp-count" data-el="n-pronghorn">7</span>
+                  <span class="sp-bar"><span class="sp-bar__fill sp-bar__fill--pronghorn" data-el="bar-pronghorn" style="--v:0.318"></span></span>
+                  <span class="sp-classes" data-el="c-pronghorn">2 bucks · 5 does</span>
+                </li>
+                <li class="sp-sp sp-sp--review">
+                  <span class="sp-sw sp-sw--review">?</span>
+                  <span class="sp-name">Needs a look</span>
+                  <span class="sp-count" data-el="n-unknown">1</span>
+                  <span class="sp-classes" data-el="c-unknown">Bedded in timber, south draw. Flagged, not guessed.</span>
+                </li>
+              </ul>
+
+              <div class="sp-slot">
+                <div class="sp-feed">
+                  <p class="sp-label">Latest sightings</p>
+                  <ol class="sp-feed__list" role="list" data-el="feed"></ol>
+                </div>
+                <div class="sp-compare">
+                  <p class="sp-label">Compared with last fall</p>
+                  <div class="sp-tiles">
+                    <p class="sp-tile">
+                      <span class="sp-tile__label">Mule deer bucks per 100 does</span>
+                      <span class="sp-tile__val">42</span>
+                      <span class="sp-delta sp-delta--up">▲ 6 from 36</span>
+                    </p>
+                    <p class="sp-tile">
+                      <span class="sp-tile__label">Elk calves per 100 cows</span>
+                      <span class="sp-tile__val">33</span>
+                      <span class="sp-delta sp-delta--down">▼ 8 from 41</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <figcaption class="survey__caption">
+          <span>Illustration only. The numbers are made up.</span>
+          <button type="button" class="survey__toggle" data-el="toggle" hidden>Pause</button>
+        </figcaption>
+      </figure>
+
+      <ol class="survey__steps" role="list">
+        <li class="survey__step">
+          <h3 class="survey__title"><span class="survey__num">1</span> Mark the ground</h3>
+          <p>Outline the pastures. Flight lines are spaced so nothing is missed or counted twice.</p>
+        </li>
+        <li class="survey__step">
+          <h3 class="survey__title"><span class="survey__num">2</span> Up before first light</h3>
+          <p>It launches while the ground is cold, when warm animals stand out best.</p>
+        </li>
+        <li class="survey__step">
+          <h3 class="survey__title"><span class="survey__num">3</span> Fly the lines</h3>
+          <p>Back and forth at a steady height, reading body heat in the open and along timber.</p>
+        </li>
+        <li class="survey__step">
+          <h3 class="survey__title"><span class="survey__num">4</span> Count and sort</h3>
+          <p>Each animal is mapped by species and age class. Unclear ones are flagged, not guessed.</p>
+        </li>
+        <li class="survey__step">
+          <h3 class="survey__title"><span class="survey__num">5</span> Your herd, updated</h3>
+          <p>Each count is saved next to last season's, so you spot a decline early.</p>
+        </li>
+      </ol>
+    </div>
+
+    <div class="ask">
+      <div class="page ask__inner">
+        <p class="ask__q">How do you count your herd now, and how much do you trust the number?</p>
+        <div class="ask__actions">
           <a class="btn btn--primary btn--book" data-book data-topic="surveys"
              href="https://calendar.app.google/qBJynKzATiRonKVb9">
-            Talk to us about surveys
+            Book a call about surveys
           </a>
           <a class="link-note" data-topic="surveys" href="#contact">or send us a note</a>
         </div>
@@ -283,10 +569,8 @@
       <h2 id="security-title">Ranch security and poaching patrol</h2>
       <div class="split__body">
         <p class="lede">
-          Poachers and trespassers work your fence lines at night, when nobody's out there to
-          see them. We think the same drone that flies your herd surveys can stand watch too.
-          Below is how we picture a night patrol working. It's an illustration, not a product,
-          and we want to hear how you handle this today before we build any of it.
+          Poachers work fence lines at night, when nobody's watching. The survey drone could
+          stand watch too.
         </p>
       </div>
     </div>
@@ -486,7 +770,7 @@
         </div>
 
         <figcaption class="patrol__caption">
-          <span>Illustration of how we picture a night patrol. There's no product yet.</span>
+          <span>Illustration only.</span>
           <button type="button" class="patrol__toggle" data-el="toggle" hidden>Pause</button>
         </figcaption>
       </figure>
@@ -494,36 +778,32 @@
       <ol class="patrol__steps" role="list">
         <li class="patrol__step">
           <h3 class="patrol__title"><span class="patrol__num">1</span> Something crosses the line</h3>
-          <p>You draw a geofence on your boundary. When a trail camera, a gate sensor, or the
-            fence line itself picks up movement where nobody's scheduled to be, a patrol is
-            triggered. Patrols can also fly on a random schedule after dark.</p>
+          <p>A trail camera, gate sensor, or your geofence catches movement where nobody's
+            expected. Patrols can also fly at random after dark.</p>
         </li>
         <li class="patrol__step">
           <h3 class="patrol__title"><span class="patrol__num">2</span> The drone leaves the barn</h3>
-          <p>It launches from a dock in your barn or equipment shed and flies straight to the
-            spot. Nobody has to get out of bed or drive the two-track with the headlights on.</p>
+          <p>It launches from a dock and flies straight there. Nobody drives out with the
+            headlights on.</p>
         </li>
         <li class="patrol__step">
           <h3 class="patrol__title"><span class="patrol__num">3</span> A thermal sweep finds them</h3>
-          <p>At night the thermal camera sees what a spotlight won't. It sorts people from the
-            deer and elk bedded nearby, so a herd moving through the timber doesn't wake you up.</p>
+          <p>Thermal sees what a spotlight won't, and tells people apart from bedded deer and elk.</p>
         </li>
         <li class="patrol__step">
           <h3 class="patrol__title"><span class="patrol__num">4</span> The poacher is tagged</h3>
-          <p>Anyone who isn't on your guest or staff list gets tagged: marked on the map, boxed
-            on the camera, and tracked as they move. Your guides and hunters are checked in, so
-            they never set it off.</p>
+          <p>Anyone not on your guest or staff list is marked and tracked. Your own guides never
+            trip it.</p>
         </li>
         <li class="patrol__step">
           <h3 class="patrol__title"><span class="patrol__num">5</span> You get the alert</h3>
-          <p>Your phone lights up with the location, a live view, and photos. You decide what
-            happens next: call the game warden, send someone out, or dismiss it.</p>
+          <p>Location, live view, and photos on your phone. Call the warden, send someone, or
+            dismiss it.</p>
         </li>
         <li class="patrol__step">
           <h3 class="patrol__title"><span class="patrol__num">6</span> It follows, then heads home</h3>
-          <p>The drone keeps its distance and stays on them until they're off your ground. Then
-            it flies back to the barn to charge, and the video, photos, and GPS track are saved
-            as a report you can hand to the warden or the sheriff.</p>
+          <p>It keeps its distance until they're off your ground, then docks. Video and GPS
+            track are saved for the warden.</p>
         </li>
       </ol>
     </div>
@@ -533,84 +813,387 @@
       <div class="split__body">
         <ul class="safe__list" role="list">
         <li class="safe__item">
-          <h4>Your boundary, drawn by you</h4>
-          <p>Geofences follow your actual property lines, plus the spots that matter most:
-            feeders, food plots, gates, and the back road everybody knows about.</p>
-        </li>
-        <li class="safe__item">
-          <h4>No pattern to learn</h4>
-          <p>Patrols fly where your cameras can't see, on routes and times that change, so
-            nobody can figure out when the coast is clear.</p>
+          <h4>You draw the boundary</h4>
+          <p>Property lines, feeders, gates, and backroads.</p>
         </li>
         <li class="safe__item">
           <h4>It watches, it doesn't confront</h4>
-          <p>The drone never goes at anyone. It holds back, records, and leaves the next move
-            to you and to law enforcement.</p>
+          <p>It holds back and records. The next move is yours.</p>
         </li>
         <li class="safe__item">
           <h4>A record, not a hunch</h4>
-          <p>Every incident is logged with the time, location, photos, and video, organized so
-            a game warden or sheriff can act on it.</p>
+          <p>Time, place, photos, and video a warden can act on.</p>
         </li>
         <li class="safe__item">
           <h4>Your herd map stays private</h4>
-          <p>Where your best animals bed down is exactly what a poacher wants to know. Survey
-            and security data belong to you, stay locked to your account, and are never sold
-            or shared.</p>
-        </li>
-        <li class="safe__item">
-          <h4>Works with what you have</h4>
-          <p>The trail cameras and gate sensors you already run become the tripwires. We're not
-            asking you to pull anything out.</p>
+          <p>Where your best animals bed is what poachers want. It's your data, never sold.</p>
         </li>
       </ul>
-
-        <p class="safe__ask">
-          Where is your fence line weakest, and what do you do about it now? That's the
-          conversation we want to have.
-        </p>
-        <div class="cta-row">
-        <a class="btn btn--primary btn--book" data-book data-topic="security"
-           href="https://calendar.app.google/qBJynKzATiRonKVb9">
-          Talk to us about security
-        </a>
-        <a class="link-note" data-topic="security" href="#contact">or send us a note</a>
       </div>
+    </div>
+
+    <div class="ask">
+      <div class="page ask__inner">
+        <p class="ask__q">How do trespassers get onto your place, and what do you do about it now? Your insight shapes what we build.</p>
+        <div class="ask__actions">
+          <a class="btn btn--primary btn--book" data-book data-topic="security"
+             href="https://calendar.app.google/qBJynKzATiRonKVb9">
+            Share how you patrol
+          </a>
+          <a class="link-note" data-topic="security" href="#contact">or send us a note</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ===================================================================
-       5. HERD RECORDS AND INVENTORY
+       5. FENCE LINE CHECKS
+       Demo is an inline SVG map plus an HTML phone, driven by
+       assets/js/fence-demo.js. With JS off it shows the finished check: the
+       whole line checked, both breaks pinned, both in the phone's list, and
+       every step's text. The two photos are <symbol>s in the map's <defs>;
+       the map callouts and the phone thumbnails all <use> them. Times in the
+       script line up with the four steps below.
        =================================================================== -->
-  <section class="section feature" id="records" aria-labelledby="records-title">
-    <div class="page feature__grid">
-      <figure class="feature__media feature__media--tall">
-        <picture>
-          <source type="image/webp"
-                  srcset="assets/img/records-mule-deer-buck-640w.webp 640w,
-                          assets/img/records-mule-deer-buck-960w.webp 960w"
-                  sizes="(min-width: 64rem) 48vw, 100vw">
-          <img src="assets/img/records-mule-deer-buck-960w.jpg"
-               srcset="assets/img/records-mule-deer-buck-640w.jpg 640w,
-                       assets/img/records-mule-deer-buck-960w.jpg 960w"
-               sizes="(min-width: 64rem) 48vw, 100vw" width="1656" height="2484" loading="lazy" decoding="async"
-               alt="A mature mule deer buck with a heavy, wide rack standing in tall dry autumn grass at dusk.">
-        </picture>
+  <section class="section section--fence" id="fences" aria-labelledby="fences-title">
+    <div class="page split">
+      <h2 id="fences-title">Fence line checks</h2>
+      <div class="split__body">
+        <p class="lede">
+          Your fence protects years of investment in your herd. After every storm, a drone check
+          finds the breaks and pins them for you, so your crew's time goes to fixing, not
+          searching.
+        </p>
+      </div>
+    </div>
+
+    <div class="page fence" data-fence>
+      <figure class="fence__stage">
+        <div class="fence__scene">
+          <div class="fence__mapcol">
+            <div class="fence__map">
+              <svg viewBox="0 0 640 440" role="img" aria-labelledby="fence-svg-title" focusable="false">
+                <title id="fence-svg-title">Illustrated map of a ranch fence check. After a windy night, a drone leaves the barn and follows 11.6 miles of perimeter fence. On the east line its camera finds about 40 feet of wire down under a fallen tree, and at the creek crossing on the south line it finds a washout under the bottom wire. Each spot is pinned on the map with a photo, and the rancher's phone gets an alert with directions. Once the downed section is repaired, it's marked fixed.</title>
+                <defs>
+                  <linearGradient id="fd-sky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#bccbd6"/>
+                    <stop offset="0.55" stop-color="#e9e7dc"/>
+                  </linearGradient>
+                  <!-- camera photo: tree down across the wire -->
+                  <symbol id="fd-photo-tree" viewBox="0 0 200 120">
+                    <rect width="200" height="120" fill="url(#fd-sky)"/>
+                    <path d="M0 56C40 48 84 56 124 49S180 44 200 50V120H0Z" fill="#a8b08e"/>
+                    <path d="M0 74C60 70 130 76 200 70V120H0Z" fill="#cdc19a"/>
+                    <g fill="#5a4a3a">
+                      <rect x="12" y="52" width="4" height="30"/>
+                      <rect x="50" y="53" width="4" height="30"/>
+                      <rect x="88" y="54" width="4" height="30"/>
+                      <rect x="146" y="54" width="4" height="30" transform="rotate(16 148 84)"/>
+                      <rect x="184" y="52" width="4" height="31"/>
+                    </g>
+                    <g fill="none" stroke="#3b3b36" stroke-width="0.9">
+                      <path d="M16 56L90 57M16 63L90 64M16 70L90 71M16 77L90 78"/>
+                      <path d="M155 58L186 56M153 65L186 63M151 72L186 70M149 79L186 77"/>
+                      <path d="M92 57C98 70 106 84 116 92M92 64C98 77 106 88 120 95M92 71C98 82 108 92 124 97M92 78C100 88 112 95 128 98"/>
+                      <path d="M155 58C150 74 144 86 134 93M153 65C148 79 142 90 130 96"/>
+                    </g>
+                    <path d="M26 106L176 48" stroke="#6b5540" stroke-width="6.5" stroke-linecap="round"/>
+                    <path d="M62 92L54 78M90 81L98 69M124 68L120 56" stroke="#6b5540" stroke-width="2.4" stroke-linecap="round"/>
+                    <ellipse cx="178" cy="47" rx="6" ry="9" fill="#7a6048"/>
+                    <g fill="#6f7f55">
+                      <circle cx="18" cy="100" r="12"/><circle cx="34" cy="93" r="10"/><circle cx="12" cy="113" r="9"/><circle cx="40" cy="108" r="8"/>
+                    </g>
+                    <rect x="84" y="44" width="80" height="58" fill="none" stroke="#d03b3b" stroke-width="2"/>
+                    <rect x="84" y="33" width="54" height="11" fill="#d03b3b"/>
+                    <text x="87" y="41.5" fill="#fff" font-family="ui-monospace, Menlo, monospace" font-size="8" font-weight="700">WIRE DOWN</text>
+                  </symbol>
+                  <!-- camera photo: washout under the bottom wire at the creek -->
+                  <symbol id="fd-photo-wash" viewBox="0 0 200 120">
+                    <rect width="200" height="120" fill="url(#fd-sky)"/>
+                    <path d="M0 54C50 46 100 54 150 48S190 46 200 50V120H0Z" fill="#a8b08e"/>
+                    <path d="M0 76L66 76C78 78 84 104 100 106S122 78 134 76L200 76V120H0Z" fill="#cdc19a"/>
+                    <path d="M66 76C78 78 84 104 100 106S122 78 134 76" fill="none" stroke="#9c865f" stroke-width="2"/>
+                    <ellipse cx="100" cy="104" rx="14" ry="3.5" fill="#7fa6c4"/>
+                    <g fill="#5a4a3a">
+                      <rect x="16" y="50" width="4" height="30"/>
+                      <rect x="54" y="50" width="4" height="30"/>
+                      <rect x="140" y="50" width="4" height="30"/>
+                      <rect x="178" y="50" width="4" height="30"/>
+                    </g>
+                    <path d="M18 54H180M18 61H180M18 68H180M18 75H180" fill="none" stroke="#3b3b36" stroke-width="0.9"/>
+                    <rect x="70" y="77" width="60" height="31" fill="none" stroke="#d99a00" stroke-width="2"/>
+                    <rect x="70" y="108" width="74" height="11" fill="#fab219"/>
+                    <text x="73" y="116.5" fill="#22271f" font-family="ui-monospace, Menlo, monospace" font-size="8" font-weight="700">GAP UNDER WIRE</text>
+                  </symbol>
+                </defs>
+
+                <!-- ground -->
+                <rect width="640" height="440" fill="#e4e7dc"/>
+                <path d="M70 120C150 96 250 110 296 150S296 256 226 276 86 250 66 200Z" fill="#dfe5d2"/>
+                <path d="M436 244C496 230 560 246 568 286S538 344 480 346 426 316 436 244Z" fill="#e9e3cf"/>
+                <g fill="none" stroke="#7e8768" stroke-opacity="0.3" stroke-width="1.1">
+                  <path d="M-10 18C90 8 170 30 260 20S420 2 500 16 600 8 650 22"/>
+                  <path d="M-10 300C60 288 120 312 200 302S300 270 360 290"/>
+                  <path d="M430 200C480 180 560 196 650 184"/>
+                  <path d="M-10 432C80 420 160 440 240 428S380 414 460 436"/>
+                  <path d="M380 120C400 100 432 110 434 130S412 156 392 148 372 134 380 120Z"/>
+                </g>
+                <path d="M206 -6C222 60 176 120 222 176S332 230 330 292S396 372 400 412L404 452" fill="none" stroke="#7fa6c4" stroke-width="3" stroke-linecap="round"/>
+                <g fill="#b7c5a5">
+                  <circle cx="588" cy="112" r="9"/><circle cx="607" cy="102" r="8"/><circle cx="620" cy="122" r="7"/><circle cx="594" cy="143" r="7"/><circle cx="578" cy="128" r="6"/><circle cx="617" cy="149" r="6"/>
+                  <circle cx="110" cy="110" r="9"/><circle cx="124" cy="102" r="7"/><circle cx="98" cy="122" r="7"/>
+                  <circle cx="352" cy="318" r="8"/><circle cx="366" cy="330" r="7"/><circle cx="342" cy="334" r="6"/>
+                  <circle cx="520" cy="330" r="8"/><circle cx="534" cy="318" r="7"/><circle cx="508" cy="342" r="6"/>
+                </g>
+                <path d="M126 350C200 372 300 386 396 384S560 374 574 300 580 120 566 70" fill="none" stroke="#a89c78" stroke-opacity="0.6" stroke-width="2" stroke-dasharray="3 6" stroke-linecap="round"/>
+
+                <!-- the fence: checked stretch (under), then the line and its posts -->
+                <path data-el="checked" d="M40 398L28 220L44 46L330 34L598 52L612 236L596 408L318 414Z"
+                      fill="none" stroke="#2e8540" stroke-opacity="0.45" stroke-width="6" stroke-linejoin="round"/>
+                <path d="M40 398L28 220L44 46L330 34L598 52L612 236L596 408L318 414Z" fill="none" stroke="#4d4a40" stroke-width="1.3" stroke-linejoin="round"/>
+                <path d="M40 398L28 220L44 46L330 34L598 52L612 236L596 408L318 414Z" fill="none" stroke="#4d4a40" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="0 11"/>
+                <text class="fd-label" x="44" y="24">11.6 MILES OF FENCE</text>
+
+                <!-- barn + dock, and the legs to and from the fence -->
+                <g transform="translate(110 356) rotate(-4)">
+                  <rect x="-17" y="-11" width="34" height="22" rx="2" fill="#8b8474" stroke="#5d584c" stroke-width="1"/>
+                  <rect x="-7" y="-7" width="14" height="14" rx="1" fill="#6f695b" stroke="#e9eae6" stroke-opacity="0.7" stroke-dasharray="2 2"/>
+                </g>
+                <circle data-el="dockRing" cx="110" cy="356" r="12" fill="none" stroke="#33475a" stroke-width="1.5" opacity="0"/>
+                <text class="fd-label" x="134" y="361">BARN</text>
+                <path data-el="leg" d="M110 356C90 372 60 388 40 398" fill="none" stroke="#33475a" stroke-width="1.4" stroke-opacity="0.6" opacity="0"/>
+
+                <!-- what the check found -->
+                <g data-el="pin1" transform="translate(604 130)">
+                  <g data-el="pin1Alert">
+                    <circle r="9" fill="#d03b3b" stroke="#fff" stroke-width="2"/>
+                    <path d="M0 -4.5V1.2" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+                    <circle cy="4.6" r="1.3" fill="#fff"/>
+                  </g>
+                  <g data-el="pin1Fixed" opacity="0">
+                    <circle r="9" fill="#2e6b34" stroke="#fff" stroke-width="2"/>
+                    <path d="M-4 0.3l2.8 2.8L4.2 -3" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+                </g>
+                <text class="fd-label fd-label--pin" data-el="pin1Label" x="590" y="168" text-anchor="end">WIRE DOWN</text>
+                <g data-el="pin2" transform="translate(400 412)">
+                  <circle r="9" fill="#fab219" stroke="#fff" stroke-width="2"/>
+                  <path d="M0 -4.5V1.2" stroke="#22271f" stroke-width="2.2" stroke-linecap="round"/>
+                  <circle cy="4.6" r="1.3" fill="#22271f"/>
+                </g>
+                <text class="fd-label fd-label--pin" data-el="pin2Label" x="414" y="434">WASHOUT</text>
+
+                <!-- camera photos, shown beside each find while the drone holds over it -->
+                <g class="fd-callout" data-el="call1">
+                  <line x1="570" y1="130" x2="594" y2="130" stroke="#22271f" stroke-width="1.2"/>
+                  <rect x="368" y="68" width="204" height="138" rx="3" fill="#22271f" opacity="0.18"/>
+                  <rect x="366" y="66" width="204" height="138" rx="3" fill="#fff"/>
+                  <use href="#fd-photo-tree" x="368" y="68" width="200" height="120"/>
+                  <text class="fd-cap" x="370" y="200">CAMERA · EAST LINE · 7:13 AM</text>
+                </g>
+                <g class="fd-callout" data-el="call2">
+                  <line x1="400" y1="392" x2="400" y2="402" stroke="#22271f" stroke-width="1.2"/>
+                  <rect x="300" y="256" width="204" height="138" rx="3" fill="#22271f" opacity="0.18"/>
+                  <rect x="298" y="254" width="204" height="138" rx="3" fill="#fff"/>
+                  <use href="#fd-photo-wash" x="300" y="256" width="200" height="120"/>
+                  <text class="fd-cap" x="302" y="388">CAMERA · CREEK CROSSING · 7:19 AM</text>
+                </g>
+
+                <!-- drone and its camera's view of the line -->
+                <circle data-el="scan" cx="110" cy="356" r="22" fill="#33475a" fill-opacity="0.06" stroke="#22271f" stroke-opacity="0.45" stroke-dasharray="3 3" opacity="0"/>
+                <g data-el="drone" transform="translate(110 356)">
+                  <ellipse data-el="droneShadow" cx="2" cy="3" rx="11" ry="5" fill="#22271f" opacity="0.2"/>
+                  <g stroke="#22271f" stroke-width="2" stroke-linecap="round">
+                    <line x1="-8" y1="-8" x2="8" y2="8"/><line x1="8" y1="-8" x2="-8" y2="8"/>
+                  </g>
+                  <g fill="#fff" fill-opacity="0.75" stroke="#22271f" stroke-width="1.2">
+                    <circle cx="-9" cy="-9" r="5"/><circle cx="9" cy="-9" r="5"/><circle cx="-9" cy="9" r="5"/><circle cx="9" cy="9" r="5"/>
+                  </g>
+                  <circle r="4" fill="#22271f"/>
+                  <circle r="1.6" fill="#e0824f"/>
+                </g>
+              </svg>
+            </div>
+            <ul class="fence__legend" role="list" aria-hidden="true">
+              <li><span class="fl-key fl-key--checked"></span>Checked</li>
+              <li><span class="fl-key fl-key--line"></span>Not checked yet</li>
+              <li><span class="fl-key fl-key--down">!</span>Fence down</li>
+              <li><span class="fl-key fl-key--work">!</span>Needs work</li>
+              <li><span class="fl-key fl-key--fixed">✓</span>Fixed</li>
+            </ul>
+          </div>
+
+          <!-- the rancher's phone. Values below are the finished check (the no-JS frame). -->
+          <div class="fence__phone" aria-hidden="true">
+            <div class="fp-screen">
+              <p class="fp-bar"><span data-el="phoneTime">7:32</span><span class="fp-bar__battery"></span></p>
+              <div class="fp-notif" data-el="notif">
+                <span class="fp-notif__app">Arches Labs · now</span>
+                <span class="fp-notif__title" data-el="notifTitle">Fence down on the East line</span>
+                <span class="fp-notif__text" data-el="notifText">About 40 ft of wire under a fallen tree. Tap for directions.</span>
+              </div>
+              <div class="fp-app">
+                <p class="fp-title">Fence check</p>
+                <p class="fp-sub" data-el="phoneSub">Done 7:25 AM · after last night's wind</p>
+                <p class="fp-row"><span>Checked</span><span data-el="miles">11.6 of 11.6 mi</span></p>
+                <span class="fp-meter"><span class="fp-meter__fill" data-el="milesBar" style="--v:1"></span></span>
+                <p class="fp-label" data-el="findLabel">2 spots need work</p>
+                <ul class="fp-finds" role="list">
+                  <li class="fp-find" data-el="find1">
+                    <svg class="fp-thumb" viewBox="0 0 200 120" focusable="false"><use href="#fd-photo-tree" width="200" height="120"/></svg>
+                    <span class="fp-find__body">
+                      <span class="fp-badge fp-badge--down" data-el="badge1">Fence down</span>
+                      <span class="fp-find__title">East line</span>
+                      <span class="fp-find__text" data-el="find1Text">About 40 ft of wire under a fallen tree, near the southeast corner.</span>
+                    </span>
+                    <span class="fp-actions"><span>Directions</span><span data-el="fix1">Mark fixed</span></span>
+                  </li>
+                  <li class="fp-find" data-el="find2">
+                    <svg class="fp-thumb" viewBox="0 0 200 120" focusable="false"><use href="#fd-photo-wash" width="200" height="120"/></svg>
+                    <span class="fp-find__body">
+                      <span class="fp-badge fp-badge--work">Needs work</span>
+                      <span class="fp-find__title">Creek crossing, south line</span>
+                      <span class="fp-find__text">Washed out under the bottom wire. A 2 ft gap, room for a deer or a coyote.</span>
+                    </span>
+                    <span class="fp-actions"><span>Directions</span><span>Mark fixed</span></span>
+                  </li>
+                </ul>
+                <p class="fp-ok" data-el="okLine">The other 11.5 mi look good.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <figcaption class="fence__caption">
+          <span>Illustration only.</span>
+          <button type="button" class="fence__toggle" data-el="toggle" hidden>Pause</button>
+        </figcaption>
+      </figure>
+
+      <ol class="fence__steps" role="list">
+        <li class="fence__step">
+          <h3 class="fence__title"><span class="fence__num">1</span> Fly the fence line</h3>
+          <p>After a storm or on a schedule, it follows your fence all the way around.</p>
+        </li>
+        <li class="fence__step">
+          <h3 class="fence__title"><span class="fence__num">2</span> Spot the break</h3>
+          <p>Wire down, a tree on the line, a leaning post, a washout, an open gate.</p>
+        </li>
+        <li class="fence__step">
+          <h3 class="fence__title"><span class="fence__num">3</span> Know where to go</h3>
+          <p>A photo and a pin on your phone, so you know what to bring and where to drive.</p>
+        </li>
+        <li class="fence__step">
+          <h3 class="fence__title"><span class="fence__num">4</span> Close it out</h3>
+          <p>Mark it fixed. The next check confirms it held.</p>
+        </li>
+      </ol>
+    </div>
+
+    <div class="ask">
+      <div class="page ask__inner">
+        <p class="ask__q">How do you find out a fence is down today?</p>
+        <div class="ask__actions">
+          <a class="btn btn--primary btn--book" data-book data-topic="fences"
+             href="https://calendar.app.google/qBJynKzATiRonKVb9">
+            Talk fences with us
+          </a>
+          <a class="link-note" data-topic="fences" href="#contact">or send us a note</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       6. HERD RECORDS AND INVENTORY
+       Demo is HTML (one buck's record card) driven by assets/js/demos.js. With JS
+       off it shows the finished record: photo confirmed, harvest logged.
+       =================================================================== -->
+  <section class="section feature section--records" id="records" aria-labelledby="records-title">
+    <div class="page feature__grid" data-demo="records">
+      <figure class="feature__demo">
+        <div class="rec" role="img" aria-label="Illustration of one buck's record. A new trail-camera photo is matched to Buck 14 and confirmed. His record adds the sighting and this year's score estimate. When he's harvested, the herd count and the state harvest report update.">
+          <div class="rec__inbox" data-el="inbox">
+            <span class="rec__cam">
+              <img src="assets/img/records-mule-deer-buck-640w.jpg" width="640" height="960" loading="lazy" decoding="async" alt="">
+              <span class="rec__stamp">CAM 6 · 10/03 · 6:12 AM</span>
+            </span>
+            <span class="rec__inbox-body">
+              <span class="rec__inbox-title">New trail-cam photo</span>
+              <span class="rec__inbox-text" data-el="matchText">Matched to Buck 14</span>
+              <span class="rec__confirm" data-el="confirm">Confirmed ✓</span>
+            </span>
+          </div>
+          <div class="rec__card">
+            <div class="rec__head">
+              <span class="rec__photo"><img src="assets/img/records-mule-deer-buck-640w.jpg" width="640" height="960" loading="lazy" decoding="async" alt=""></span>
+              <span class="rec__id">
+                <span class="rec__name">Buck 14 <span class="rec__nick">“Wide Four”</span></span>
+                <span class="rec__meta">Mule deer · about 5½ years</span>
+              </span>
+              <span class="rec__status" data-el="status">Harvested</span>
+            </div>
+            <dl class="rec__stats">
+              <div><dt>Sightings</dt><dd data-el="sightings">24</dd></div>
+              <div><dt>Last seen</dt><dd data-el="seen">Oct 3, Cam 6</dd></div>
+              <div><dt>Home range</dt><dd>North pasture</dd></div>
+            </dl>
+            <div class="rec__chart">
+              <p class="rec__label">Guide's score estimate</p>
+              <svg viewBox="0 0 240 88" focusable="false">
+                <path data-el="line" d="M30 58.8L90 43.9L150 31.7L210 24.3" fill="none" stroke="#33475a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <g fill="#33475a" stroke="#fff" stroke-width="2">
+                  <circle cx="30" cy="58.8" r="4.5"/><circle cx="90" cy="43.9" r="4.5"/><circle cx="150" cy="31.7" r="4.5"/>
+                  <circle data-el="lastDot" cx="210" cy="24.3" r="5" fill="#a24e2c"/>
+                </g>
+                <g class="rec__vals">
+                  <text x="30" y="48">142</text><text x="90" y="33">158</text><text x="150" y="21">171</text>
+                  <text data-el="lastVal" x="210" y="13">179</text>
+                </g>
+                <g class="rec__years"><text x="30" y="84">2022</text><text x="90" y="84">2023</text><text x="150" y="84">2024</text><text x="210" y="84">2025</text></g>
+              </svg>
+            </div>
+            <div class="rec__harvest" data-el="harvest">
+              <span class="rec__harvest-title">Harvested Nov 8 · guest hunt · 181 gross</span>
+              <span class="rec__chips"><span data-el="chip1">State report started</span><span data-el="chip2">Mature bucks 12 → 11</span></span>
+            </div>
+          </div>
+        </div>
+        <figcaption class="demo__caption">
+          <span>Illustration only.</span>
+          <button type="button" class="demo__toggle" data-el="toggle" hidden>Pause</button>
+        </figcaption>
       </figure>
       <div class="feature__body">
         <h2 id="records-title">Herd records and inventory</h2>
         <p>
-          This is the part we're still working out, and we want your read on it. Individual
-          animals and their pedigree. Genetics and breeding history. Harvest records and
-          scores. Mortality, culls, and the compliance paperwork the state asks for. Some of
-          that matters a great deal on your operation and some of it you'd never open. Which is
-          which? That's the conversation we want before we build a line of it.
+          Every animal's sightings, age, scores, harvest, and state paperwork, kept in one
+          place.
         </p>
-        <div class="cta-row">
+        <ol class="demo__steps" role="list">
+          <li class="demo__step">
+            <h3 class="demo__title"><span class="demo__num">1</span> A new photo comes in</h3>
+            <p>It's matched to an animal you already know. You confirm it.</p>
+          </li>
+          <li class="demo__step">
+            <h3 class="demo__title"><span class="demo__num">2</span> His record fills in</h3>
+            <p>Sightings, age, and score build up season over season.</p>
+          </li>
+          <li class="demo__step">
+            <h3 class="demo__title"><span class="demo__num">3</span> Harvest closes it out</h3>
+            <p>The herd count updates and the state report is started for you.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="ask">
+      <div class="page ask__inner">
+        <p class="ask__q">Which records matter on your place, and which would you never open?</p>
+        <div class="ask__actions">
           <a class="btn btn--primary btn--book" data-book data-topic="records"
              href="https://calendar.app.google/qBJynKzATiRonKVb9">
-            Tell us which records matter
+            Tell us what you track
           </a>
           <a class="link-note" data-topic="records" href="#contact">or send us a note</a>
         </div>
@@ -619,90 +1202,206 @@
   </section>
 
   <!-- ===================================================================
-       6. HOSPITALITY AND GUEST OPERATIONS
-       Includes the hunt-planning block (herd patterns -> planned hunts). It
-       shares the section's single CTA, so it books under topic=hospitality.
+       7. HOSPITALITY AND GUEST OPERATIONS
+       Demo is HTML (the week's booking board) driven by assets/js/demos.js. With
+       JS off it shows the finished board. No CTA of its own: the hunts section
+       right after it closes both with one CTA, booked under topic=hospitality.
        =================================================================== -->
   <section class="section feature feature--flip section--hospitality" id="guests" aria-labelledby="hospitality-title">
-    <div class="page feature__grid">
-      <figure class="feature__media">
-        <picture>
-          <source type="image/webp"
-                  srcset="assets/img/hospitality-bull-elk-640w.webp 640w,
-                          assets/img/hospitality-bull-elk-1280w.webp 1280w"
-                  sizes="(min-width: 64rem) 55vw, 100vw">
-          <img src="assets/img/hospitality-bull-elk-1280w.jpg"
-               srcset="assets/img/hospitality-bull-elk-640w.jpg 640w,
-                       assets/img/hospitality-bull-elk-1280w.jpg 1280w"
-               sizes="(min-width: 64rem) 55vw, 100vw" width="2000" height="1333" loading="lazy" decoding="async"
-               alt="A bull elk bugling in a meadow, backlit by low golden evening light.">
-        </picture>
+    <div class="page feature__grid" data-demo="guests">
+      <figure class="feature__demo">
+        <div class="book" role="img" aria-label="Illustration of a booking board for the week of September 15. A party of two elk hunters asks for the 17th through the 19th. The only free guide, Ray, and the only free cabin, Cabin 2, are booked for them, a card notes they're returning clients who took a bull with Ray last year, and confirmations go out.">
+          <div class="book__top">
+            <span class="book__title">Week of Sep 15</span>
+            <span class="book__req" data-el="request"><b>New request</b> Harlan party · 2 hunters · elk · Sep 17–19</span>
+          </div>
+          <div class="book__grid">
+            <span class="book__hl" data-el="hl"></span>
+            <span class="book__day" style="--c:2">Mon<b>15</b></span>
+            <span class="book__day" style="--c:3">Tue<b>16</b></span>
+            <span class="book__day" style="--c:4">Wed<b>17</b></span>
+            <span class="book__day" style="--c:5">Thu<b>18</b></span>
+            <span class="book__day" style="--c:6">Fri<b>19</b></span>
+            <span class="book__day" style="--c:7">Sat<b>20</b></span>
+            <span class="book__day" style="--c:8">Sun<b>21</b></span>
+            <span class="book__row" style="--r:2">Cody</span>
+            <span class="book__row" data-el="ray" style="--r:3">Ray</span>
+            <span class="book__row" style="--r:4">Jess</span>
+            <span class="book__row book__row--cabin" style="--r:5">Cabin 1</span>
+            <span class="book__row book__row--cabin" data-el="cab2" style="--r:6">Cabin 2</span>
+            <span class="book__row book__row--cabin" style="--r:7">Cabin 3</span>
+            <span class="book__bk" style="--r:2;--c:2;--s:4">Miller · deer</span>
+            <span class="book__bk" style="--r:3;--c:2;--s:2">Day hunt</span>
+            <span class="book__bk" style="--r:4;--c:4;--s:4">Ortiz · elk</span>
+            <span class="book__bk book__bk--cabin" style="--r:5;--c:2;--s:4">Miller</span>
+            <span class="book__bk book__bk--cabin" style="--r:7;--c:4;--s:4">Ortiz</span>
+            <span class="book__bk book__bk--new" data-el="newGuide" style="--r:3;--c:4;--s:3">Harlan · elk</span>
+            <span class="book__bk book__bk--new" data-el="newCabin" style="--r:6;--c:3;--s:4">Harlan</span>
+          </div>
+          <div class="book__client" data-el="client">
+            <img src="assets/img/hospitality-bull-elk-640w.jpg" width="640" height="427" loading="lazy" decoding="async" alt="">
+            <span><b>Back for year three.</b> Took a 6×6 bull with Ray in 2024. Likes ground blinds.</span>
+          </div>
+          <p class="book__sent" data-el="sent">✓ Confirmed with the Harlan party and Ray</p>
+        </div>
+        <figcaption class="demo__caption">
+          <span>Illustration only.</span>
+          <button type="button" class="demo__toggle" data-el="toggle" hidden>Pause</button>
+        </figcaption>
       </figure>
       <div class="feature__body">
         <h2 id="hospitality-title">Hospitality and guest operations</h2>
         <p>
-          We're also looking at the guest side: booking hunts, scheduling guides, keeping
-          lodging straight, and remembering which clients came back and what they hunted last
-          time. We haven't committed to building this. If it's the part of your week that eats
-          the most time, tell us and it moves up the list.
+          Bookings, guides, cabins, and returning clients on one board, so nothing gets
+          double-booked and no regular gets forgotten.
         </p>
-      </div>
-    </div>
-
-    <div class="page split safe hunts">
-      <h3 class="safe__title">Hunts built on how your animals move</h3>
-      <div class="split__body">
-        <p>
-          There's one more idea on the guest side, and it comes straight out of the survey
-          work. The flights and trail cameras that count your herd also show how it moves. We
-          think that could help you plan each guest's hunt around what your animals are really
-          doing.
-        </p>
-        <ul class="safe__list" role="list">
-          <li class="safe__item">
-            <h4>Learn their patterns</h4>
-            <p>Survey flights and trail-camera hits, stacked up week over week, show where your
-              animals feed at first light, the trails they take to bed, where they water, and
-              how weather and pressure push them around.</p>
+        <ol class="demo__steps" role="list">
+          <li class="demo__step">
+            <h3 class="demo__title"><span class="demo__num">1</span> A booking comes in</h3>
+            <p>Dates, party, and species land in one place.</p>
           </li>
-          <li class="safe__item">
-            <h4>Plan the hunt around them</h4>
-            <p>Which stand or glassing point, the approach that keeps the wind right, and the
-              hours a given bull or buck is most likely on his feet. Your guide heads out with
-              a game plan instead of a guess.</p>
+          <li class="demo__step">
+            <h3 class="demo__title"><span class="demo__num">2</span> It finds a guide and a bed</h3>
+            <p>Only the guides and cabins that are free light up. No double-booking.</p>
           </li>
-          <li class="safe__item">
-            <h4>A real hunt, not a sure thing</h4>
-            <p>Patterns put your guest in the right place at the right time. They still have to
-              glass, close the distance, and make the shot. Spreading pressure across your
-              ground keeps animals acting wild for the next group too.</p>
+          <li class="demo__step">
+            <h3 class="demo__title"><span class="demo__num">3</span> It remembers them</h3>
+            <p>Last trip, last guide, and what they like, before they pull in.</p>
           </li>
-        </ul>
-        <p class="safe__ask">
-          How do your guides scout for a guest today, and how much of that lives in one
-          guide's head? That's the conversation we want to have.
-        </p>
-        <div class="cta-row">
-        <a class="btn btn--primary btn--book" data-book data-topic="hospitality"
-           href="https://calendar.app.google/qBJynKzATiRonKVb9">
-          Talk to us about guests and hunts
-        </a>
-        <a class="link-note" data-topic="hospitality" href="#contact">or send us a note</a>
-      </div>
+        </ol>
       </div>
     </div>
   </section>
 
   <!-- ===================================================================
-       7. CONTACT
+       8. HUNTS BUILT ON HOW YOUR ANIMALS MOVE
+       Photo + text (its map demo was cut). Photo sides alternate down the page:
+       records left, guests right, hunts left, cattle right. Its CTA covers guests
+       too, so it books under topic=hospitality.
+       =================================================================== -->
+  <section class="section feature section--hunts" id="hunts" aria-labelledby="hunts-title">
+    <div class="page feature__grid">
+      <figure class="feature__media feature__media--tall">
+        <picture>
+          <source type="image/webp"
+                  srcset="assets/img/hunts-whitetail-buck-640w.webp 640w,
+                          assets/img/hunts-whitetail-buck-960w.webp 960w"
+                  sizes="(min-width: 64rem) 48vw, 100vw">
+          <img src="assets/img/hunts-whitetail-buck-960w.jpg"
+               srcset="assets/img/hunts-whitetail-buck-640w.jpg 640w,
+                       assets/img/hunts-whitetail-buck-960w.jpg 960w"
+               sizes="(min-width: 64rem) 48vw, 100vw" width="2425" height="3622" loading="lazy" decoding="async"
+               alt="A whitetail buck with a tall, wide rack standing in a sunlit clearing at golden hour, looking at the camera, with more deer in the shade behind him.">
+        </picture>
+      </figure>
+      <div class="feature__body">
+        <h2 id="hunts-title">Hunts built on how your animals move</h2>
+        <p class="lede">
+          The flights and cameras that count your herd also show how it moves. That could
+          help plan each guest's hunt around what your animals are really doing.
+        </p>
+        <ul class="points points--stack" role="list">
+          <li>
+            <h3>Learn their patterns</h3>
+            <p>Where they feed at first light, bed, and water, and how weather and pressure move them.</p>
+          </li>
+          <li>
+            <h3>Plan the hunt around them</h3>
+            <p>The right stand, the right wind, the right hours. Your guide heads out with a plan, not a guess.</p>
+          </li>
+          <li>
+            <h3>A real hunt, not a sure thing</h3>
+            <p>Patterns put your guest in the right place. They still have to close the distance and make the shot.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ask">
+      <div class="page ask__inner">
+        <p class="ask__q">How do your guides scout for a guest today?</p>
+        <div class="ask__actions">
+          <a class="btn btn--primary btn--book" data-book data-topic="hospitality"
+             href="https://calendar.app.google/qBJynKzATiRonKVb9">
+            Walk us through your season
+          </a>
+          <a class="link-note" data-topic="hospitality" href="#contact">or send us a note</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       9. CATTLE OPERATIONS
+       The same tools, pointed at a cow-calf place. Photo + text, photo on the
+       right. Books under topic=cattle.
+       =================================================================== -->
+  <section class="section feature feature--flip section--cattle" id="cattle" aria-labelledby="cattle-title">
+    <div class="page feature__grid">
+      <figure class="feature__media feature__media--tall">
+        <picture>
+          <source type="image/webp"
+                  srcset="assets/img/cattle-holstein-cow-640w.webp 640w,
+                          assets/img/cattle-holstein-cow-960w.webp 960w"
+                  sizes="(min-width: 64rem) 48vw, 100vw">
+          <img src="assets/img/cattle-holstein-cow-960w.jpg"
+               srcset="assets/img/cattle-holstein-cow-640w.jpg 640w,
+                       assets/img/cattle-holstein-cow-960w.jpg 960w"
+               sizes="(min-width: 64rem) 48vw, 100vw" width="2223" height="3321" loading="lazy" decoding="async"
+               alt="A black-and-white dairy cow with yellow ear tags walking toward the camera across a green pasture in low evening light.">
+        </picture>
+      </figure>
+      <div class="feature__body">
+        <h2 id="cattle-title">Cattle operations</h2>
+        <p class="lede">
+          Run cattle? Most of this carries over. The drone that counts deer can count pairs,
+          and a fence check doesn't care what's behind the wire.
+        </p>
+        <ul class="points points--2" role="list">
+          <li>
+            <h3>Head counts by pasture</h3>
+            <p>Count pairs from the air and find the strays hung up in the brush.</p>
+          </li>
+          <li>
+            <h3>Calving checks at night</h3>
+            <p>Thermal spots a cow off by herself or a calf that's down, without the 2 AM drive.</p>
+          </li>
+          <li>
+            <h3>Fences, gates, and water</h3>
+            <p>Wire down, a gate left open, a tank running low, found before the cows find it.</p>
+          </li>
+          <li>
+            <h3>Records that follow the cow</h3>
+            <p>Tags, treatments, weights, and calving dates, ready when you sell.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ask">
+      <div class="page ask__inner">
+        <p class="ask__q">What would save you the most time with your cattle?</p>
+        <div class="ask__actions">
+          <a class="btn btn--primary btn--book" data-book data-topic="cattle"
+             href="https://calendar.app.google/qBJynKzATiRonKVb9">
+            Show us how you run cattle
+          </a>
+          <a class="link-note" data-topic="cattle" href="#contact">or send us a note</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       10. CONTACT
        =================================================================== -->
   <section class="section section--contact" id="contact" aria-labelledby="contact-title">
     <div class="page contact">
       <div class="contact__info">
       <h2 id="contact-title">Contact</h2>
       <p class="lede">
-        Three ways to reach us. A call is the most useful: 30 minutes, no demo, just
-        questions about how your operation runs.
+        We're looking for development partners. It starts with 30 minutes on how your place
+        runs.
       </p>
 
       <div class="contact-methods">
@@ -848,17 +1547,22 @@
         <li>Aerial surveys: photo by Andres Haro on Unsplash.</li>
         <li>Herd records: photo by Kush Dwivedi on Unsplash.</li>
         <li>Hospitality: photo by Mathew Schwartz on Unsplash.</li>
+        <li>Hunts: photo by <a href="https://unsplash.com/@laura_college?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Laura College</a> on <a href="https://unsplash.com/photos/selective-focus-photography-of-brown-deer-standing-on-green-grass-field-during-daytime-K_Na5gCmh38?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>.</li>
+        <li>Cattle: photo by <a href="https://unsplash.com/@jorienloman?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jorien Loman</a> on <a href="https://unsplash.com/photos/white-and-black-cow-on-green-grass-field-during-daytime-00YD5QLyaGU?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>.</li>
         <li>Footer strip: photos by Taun Stewart, Caroline Sterr, Nils Rasmusson, and solotravelgoals on Unsplash.</li>
         <li>Founder photos and logo: &copy; Arches Labs.</li>
       </ul>
     </div>
 
-    <p class="footer-legal">&copy; 2026 Arches Labs. No product yet. We're building it with the ranches that will run it.</p>
+    <p class="footer-legal">&copy; 2026 Arches Labs.</p>
   </div>
 </footer>
 
 <script src="assets/js/enhance.js" defer></script>
+<script src="assets/js/survey-demo.js" defer></script>
 <script src="assets/js/patrol-demo.js" defer></script>
+<script src="assets/js/fence-demo.js" defer></script>
+<script src="assets/js/demos.js" defer></script>
 
 <!--
   OPTIONAL analytics. Privacy-light, non-render-blocking. Leave commented until you set
