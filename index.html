@@ -102,9 +102,10 @@
     </a>
     <nav class="site-nav" aria-label="Sections">
       <a href="#about">About</a>
-      <a href="#surveys">Surveys</a>
-      <a href="#security">Security</a>
       <a href="#records">Records</a>
+      <a href="#surveys">Surveys</a>
+      <a href="#fences">Fences</a>
+      <a href="#security">Security</a>
       <a href="#guests">Guests</a>
     </nav>
     <a class="btn btn--primary btn--small btn--book" data-book data-topic="header"
@@ -163,11 +164,8 @@
         <h2 id="who-title">Who we are</h2>
         <div class="split__body">
           <p class="lede">
-            Arches Labs is Parker DeYoung and Parker Piombo. We hunt big game and waterfowl
-            most weekends we can get away. We've spent enough time around private hunting
-            ranches and outfitters to know that most software built for this work was built by
-            people who've never sat in a blind or walked a fence line at first light. We'd
-            rather build the thing you actually need, with you, than guess at it.
+            Arches Labs is Parker DeYoung and Parker Piombo, two hunters building software
+            with private ranches and outfitters to learn what their operations need.
           </p>
         </div>
       </div>
@@ -191,11 +189,8 @@
           <h3 class="founder__name">Parker DeYoung</h3>
           <p class="founder__line">
             Parker DeYoung developed computer-vision systems for U.S. Air Force drones
-            and locally hosted AI systems built to operate where security and reliability
-            matter. He is also published at EMNLP, a leading AI and natural-language-processing
-            conference, for research focused on benchmarking AI agents and improving how
-            reliably and effectively they perform. Away from the keyboard, he enjoys
-            waterfowl hunting and hiking.
+            and secure, locally hosted AI systems. His research on AI agents was published
+            at EMNLP; away from work, he enjoys waterfowl hunting and hiking.
           </p>
         </li>
         <li class="founder">
@@ -215,12 +210,9 @@
           </div>
           <h3 class="founder__name">Parker Piombo</h3>
           <p class="founder__line">
-            Parker Piombo grew up hunting and living on a ranch in Northern California,
-            and his hands-on work on ranches gave him a firsthand understanding of their
-            needs and how demanding the work can be. He competes in sporting clays and now
-            studies business, bringing professional experience from Deloitte. He is deeply
-            interested in improving the ranching and hunting industries and has a lifelong
-            love of hunting and land management.
+            Parker Piombo grew up hunting and working on a Northern California ranch.
+            He studies business, brings experience from Deloitte, competes in sporting
+            clays, and cares deeply about hunting and land management.
           </p>
         </li>
       </ul>
@@ -228,7 +220,43 @@
   </section>
 
   <!-- ===================================================================
-       3. AERIAL SURVEYS AND HERD TRACKING
+       3. HERD RECORDS AND INVENTORY
+       =================================================================== -->
+  <section class="section feature" id="records" aria-labelledby="records-title">
+    <div class="page feature__grid">
+      <figure class="feature__media feature__media--tall">
+        <picture>
+          <source type="image/webp"
+                  srcset="assets/img/records-mule-deer-buck-640w.webp 640w,
+                          assets/img/records-mule-deer-buck-960w.webp 960w"
+                  sizes="(min-width: 64rem) 48vw, 100vw">
+          <img src="assets/img/records-mule-deer-buck-960w.jpg"
+               srcset="assets/img/records-mule-deer-buck-640w.jpg 640w,
+                       assets/img/records-mule-deer-buck-960w.jpg 960w"
+               sizes="(min-width: 64rem) 48vw, 100vw" width="1656" height="2484" loading="lazy" decoding="async"
+               alt="A mature mule deer buck with a heavy, wide rack standing in tall dry autumn grass at dusk.">
+        </picture>
+      </figure>
+      <div class="feature__body">
+        <h2 id="records-title">Herd records and inventory</h2>
+        <p>
+          We're developing a place for individual animal records, pedigree and breeding
+          history, harvest scores, mortality, culls, and compliance paperwork. Tell us which
+          records your operation actually uses before we build it.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn--primary btn--book" data-book data-topic="records"
+             href="https://calendar.app.google/qBJynKzATiRonKVb9">
+            Tell us which records matter
+          </a>
+          <a class="link-note" data-topic="records" href="#contact">or send us a note</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       4. AERIAL SURVEYS
        =================================================================== -->
   <section class="section section--bleed" id="surveys" aria-labelledby="surveys-title">
     <figure class="bleed">
@@ -247,19 +275,16 @@
       </picture>
     </figure>
     <div class="page split">
-      <h2 id="surveys-title">Aerial surveys and herd tracking</h2>
+      <h2 id="surveys-title">Aerial surveys</h2>
       <div class="split__body">
         <p>
-          This is our starting point. We fly thermal drone surveys to count your herd and break
-          it out by age class, then keep those numbers in one place season over season. A
-          helicopter survey gives you one count on one day. This gives you a running inventory
-          and trend lines you can plan against: how the buck-to-doe ratio is moving, whether
-          your mature age classes are holding, and where numbers are sliding before it shows up
-          at harvest.
+          We are developing. Thermal drone surveys could count your herd by age class
+          and keep a running inventory season over season. Trends in buck-to-doe ratios,
+          mature age classes, and areas of decline could help you plan ahead.
         </p>
         <p>
-          We work with the trail cameras you already run. We're not asking you to pull anything
-          out or standardize on our hardware. The cameras feed the same inventory the flights do.
+          Trail cameras you already run could feed the same inventory without replacing
+          your hardware.
         </p>
         <div class="cta-row">
           <a class="btn btn--primary btn--book" data-book data-topic="surveys"
@@ -273,20 +298,42 @@
   </section>
 
   <!-- ===================================================================
-       4. RANCH SECURITY AND POACHING PATROL
+       5. FENCE MONITORING
+       =================================================================== -->
+  <section class="section" id="fences" aria-labelledby="fences-title">
+    <div class="page split">
+      <h2 id="fences-title">Fence monitoring</h2>
+      <div class="split__body">
+        <p>
+          Drones could monitor your fence lines and identify breaks, damage, or fallen
+          posts, wire, and other fence components. A mapped location would help your crew
+          find and fix each issue.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn--primary btn--book" data-book data-topic="fences"
+             href="https://calendar.app.google/qBJynKzATiRonKVb9">
+            Talk to us about fence monitoring
+          </a>
+          <a class="link-note" data-topic="fences" href="#contact">or send us a note</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       6. SECURITY AND POACHING PATROL
        Demo is an inline SVG driven by assets/js/patrol-demo.js. With JS off the
        SVG shows one static frame (poacher tagged, alert sent) and every step's
        text is visible. Times in the script line up with the six steps below.
        =================================================================== -->
   <section class="section section--night" id="security" aria-labelledby="security-title">
     <div class="page split">
-      <h2 id="security-title">Ranch security and poaching patrol</h2>
+      <h2 id="security-title">Security and poaching patrol</h2>
       <div class="split__body">
         <p class="lede">
-          Poachers and trespassers work your fence lines at night, when nobody's out there to
-          see them. We think the same drone that flies your herd surveys can stand watch too.
-          Below is how we picture a night patrol working. It's an illustration, not a product,
-          and we want to hear how you handle this today before we build any of it.
+          We're exploring night patrols that use drones, trail cameras, and gate sensors
+          to spot trespassers along your boundary. The illustration below shows the idea;
+          we want to learn how you handle incidents today before building it.
         </p>
       </div>
     </div>
@@ -468,7 +515,7 @@
             </svg>
             <span class="patrol__card-body">
               <span class="patrol__card-title">Trespass alert <span class="patrol__card-time">now</span></span>
-              <span class="patrol__card-text">Person on foot, east pasture, inside your fence. Tagged 11:43&nbsp;PM.</span>
+            <span class="patrol__card-text">Person on foot · east pasture · inside your fence · tagged 11:43&nbsp;PM</span>
               <span class="patrol__card-actions"><span>Live view</span><span>Call warden</span></span>
             </span>
           </div>
@@ -480,13 +527,13 @@
             </svg>
             <span class="patrol__card-body">
               <span class="patrol__card-title">Incident report saved</span>
-              <span class="patrol__card-text">Video, photos, and GPS track from 11:42 to 11:47&nbsp;PM, ready for the game warden.</span>
+            <span class="patrol__card-text">Video, photos, and GPS track · 11:42 to 11:47&nbsp;PM · ready for the game warden</span>
             </span>
           </div>
         </div>
 
         <figcaption class="patrol__caption">
-          <span>Illustration of how we picture a night patrol. There's no product yet.</span>
+          <span>Illustration of a proposed night patrol, not a product</span>
           <button type="button" class="patrol__toggle" data-el="toggle" hidden>Pause</button>
         </figcaption>
       </figure>
@@ -494,36 +541,27 @@
       <ol class="patrol__steps" role="list">
         <li class="patrol__step">
           <h3 class="patrol__title"><span class="patrol__num">1</span> Something crosses the line</h3>
-          <p>You draw a geofence on your boundary. When a trail camera, a gate sensor, or the
-            fence line itself picks up movement where nobody's scheduled to be, a patrol is
-            triggered. Patrols can also fly on a random schedule after dark.</p>
+          <p>A boundary geofence triggered by a camera, gate sensor, or scheduled patrol</p>
         </li>
         <li class="patrol__step">
           <h3 class="patrol__title"><span class="patrol__num">2</span> The drone leaves the barn</h3>
-          <p>It launches from a dock in your barn or equipment shed and flies straight to the
-            spot. Nobody has to get out of bed or drive the two-track with the headlights on.</p>
+          <p>A launch from the barn dock to the reported location</p>
         </li>
         <li class="patrol__step">
           <h3 class="patrol__title"><span class="patrol__num">3</span> A thermal sweep finds them</h3>
-          <p>At night the thermal camera sees what a spotlight won't. It sorts people from the
-            deer and elk bedded nearby, so a herd moving through the timber doesn't wake you up.</p>
+          <p>Thermal footage distinguishing people from nearby deer and elk</p>
         </li>
         <li class="patrol__step">
           <h3 class="patrol__title"><span class="patrol__num">4</span> The poacher is tagged</h3>
-          <p>Anyone who isn't on your guest or staff list gets tagged: marked on the map, boxed
-            on the camera, and tracked as they move. Your guides and hunters are checked in, so
-            they never set it off.</p>
+          <p>An unknown person marked on the map and tracked; checked-in guests ignored</p>
         </li>
         <li class="patrol__step">
           <h3 class="patrol__title"><span class="patrol__num">5</span> You get the alert</h3>
-          <p>Your phone lights up with the location, a live view, and photos. You decide what
-            happens next: call the game warden, send someone out, or dismiss it.</p>
+          <p>A phone alert with location, live view, and photos for your decision</p>
         </li>
         <li class="patrol__step">
           <h3 class="patrol__title"><span class="patrol__num">6</span> It follows, then heads home</h3>
-          <p>The drone keeps its distance and stays on them until they're off your ground. Then
-            it flies back to the barn to charge, and the video, photos, and GPS track are saved
-            as a report you can hand to the warden or the sheriff.</p>
+          <p>A return to the dock, with video, photos, and GPS saved for the warden or sheriff</p>
         </li>
       </ol>
     </div>
@@ -534,40 +572,32 @@
         <ul class="safe__list" role="list">
         <li class="safe__item">
           <h4>Your boundary, drawn by you</h4>
-          <p>Geofences follow your actual property lines, plus the spots that matter most:
-            feeders, food plots, gates, and the back road everybody knows about.</p>
+          <p>Geofences along your property lines, gates, and other key areas</p>
         </li>
         <li class="safe__item">
           <h4>No pattern to learn</h4>
-          <p>Patrols fly where your cameras can't see, on routes and times that change, so
-            nobody can figure out when the coast is clear.</p>
+          <p>Changing routes and times beyond the reach of fixed cameras</p>
         </li>
         <li class="safe__item">
           <h4>It watches, it doesn't confront</h4>
-          <p>The drone never goes at anyone. It holds back, records, and leaves the next move
-            to you and to law enforcement.</p>
+          <p>A drone that holds back and records, leaving the next move to you</p>
         </li>
         <li class="safe__item">
           <h4>A record, not a hunch</h4>
-          <p>Every incident is logged with the time, location, photos, and video, organized so
-            a game warden or sheriff can act on it.</p>
+          <p>Time, location, photos, and video ready for a warden or sheriff</p>
         </li>
         <li class="safe__item">
           <h4>Your herd map stays private</h4>
-          <p>Where your best animals bed down is exactly what a poacher wants to know. Survey
-            and security data belong to you, stay locked to your account, and are never sold
-            or shared.</p>
+          <p>Survey and security data kept in your account, never sold or shared</p>
         </li>
         <li class="safe__item">
           <h4>Works with what you have</h4>
-          <p>The trail cameras and gate sensors you already run become the tripwires. We're not
-            asking you to pull anything out.</p>
+          <p>Your existing trail cameras and gate sensors as tripwires</p>
         </li>
       </ul>
 
         <p class="safe__ask">
-          Where is your fence line weakest, and what do you do about it now? That's the
-          conversation we want to have.
+          Tell us where your boundary is hardest to watch and how you handle it today.
         </p>
         <div class="cta-row">
         <a class="btn btn--primary btn--book" data-book data-topic="security"
@@ -581,45 +611,7 @@
   </section>
 
   <!-- ===================================================================
-       5. HERD RECORDS AND INVENTORY
-       =================================================================== -->
-  <section class="section feature" id="records" aria-labelledby="records-title">
-    <div class="page feature__grid">
-      <figure class="feature__media feature__media--tall">
-        <picture>
-          <source type="image/webp"
-                  srcset="assets/img/records-mule-deer-buck-640w.webp 640w,
-                          assets/img/records-mule-deer-buck-960w.webp 960w"
-                  sizes="(min-width: 64rem) 48vw, 100vw">
-          <img src="assets/img/records-mule-deer-buck-960w.jpg"
-               srcset="assets/img/records-mule-deer-buck-640w.jpg 640w,
-                       assets/img/records-mule-deer-buck-960w.jpg 960w"
-               sizes="(min-width: 64rem) 48vw, 100vw" width="1656" height="2484" loading="lazy" decoding="async"
-               alt="A mature mule deer buck with a heavy, wide rack standing in tall dry autumn grass at dusk.">
-        </picture>
-      </figure>
-      <div class="feature__body">
-        <h2 id="records-title">Herd records and inventory</h2>
-        <p>
-          This is the part we're still working out, and we want your read on it. Individual
-          animals and their pedigree. Genetics and breeding history. Harvest records and
-          scores. Mortality, culls, and the compliance paperwork the state asks for. Some of
-          that matters a great deal on your operation and some of it you'd never open. Which is
-          which? That's the conversation we want before we build a line of it.
-        </p>
-        <div class="cta-row">
-          <a class="btn btn--primary btn--book" data-book data-topic="records"
-             href="https://calendar.app.google/qBJynKzATiRonKVb9">
-            Tell us which records matter
-          </a>
-          <a class="link-note" data-topic="records" href="#contact">or send us a note</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================================================================
-       6. HOSPITALITY AND GUEST OPERATIONS
+       7. HOSPITALITY AND GUEST OPERATIONS
        Includes the hunt-planning block (herd patterns -> planned hunts). It
        shares the section's single CTA, so it books under topic=hospitality.
        =================================================================== -->
@@ -641,10 +633,9 @@
       <div class="feature__body">
         <h2 id="hospitality-title">Hospitality and guest operations</h2>
         <p>
-          We're also looking at the guest side: booking hunts, scheduling guides, keeping
-          lodging straight, and remembering which clients came back and what they hunted last
-          time. We haven't committed to building this. If it's the part of your week that eats
-          the most time, tell us and it moves up the list.
+          We're exploring tools for booking hunts, scheduling guides, managing lodging,
+          and tracking returning guests. Tell us if this work takes up the most time in
+          your week.
         </p>
       </div>
     </div>
@@ -653,34 +644,25 @@
       <h3 class="safe__title">Hunts built on how your animals move</h3>
       <div class="split__body">
         <p>
-          There's one more idea on the guest side, and it comes straight out of the survey
-          work. The flights and trail cameras that count your herd also show how it moves. We
-          think that could help you plan each guest's hunt around what your animals are really
-          doing.
+          Survey flights and trail cameras could show herd movement and help guides plan
+          each guest's hunt.
         </p>
         <ul class="safe__list" role="list">
           <li class="safe__item">
             <h4>Learn their patterns</h4>
-            <p>Survey flights and trail-camera hits, stacked up week over week, show where your
-              animals feed at first light, the trails they take to bed, where they water, and
-              how weather and pressure push them around.</p>
+            <p>Feeding, bedding, and watering patterns across flights and trail cameras</p>
           </li>
           <li class="safe__item">
             <h4>Plan the hunt around them</h4>
-            <p>Which stand or glassing point, the approach that keeps the wind right, and the
-              hours a given bull or buck is most likely on his feet. Your guide heads out with
-              a game plan instead of a guess.</p>
+            <p>A stand, approach, and time chosen around those patterns</p>
           </li>
           <li class="safe__item">
             <h4>A real hunt, not a sure thing</h4>
-            <p>Patterns put your guest in the right place at the right time. They still have to
-              glass, close the distance, and make the shot. Spreading pressure across your
-              ground keeps animals acting wild for the next group too.</p>
+            <p>A plan that keeps the hunt fair and spreads pressure across your ground</p>
           </li>
         </ul>
         <p class="safe__ask">
-          How do your guides scout for a guest today, and how much of that lives in one
-          guide's head? That's the conversation we want to have.
+          Tell us how your guides scout for guests today.
         </p>
         <div class="cta-row">
         <a class="btn btn--primary btn--book" data-book data-topic="hospitality"
@@ -694,7 +676,7 @@
   </section>
 
   <!-- ===================================================================
-       7. CONTACT
+       8. CONTACT
        =================================================================== -->
   <section class="section section--contact" id="contact" aria-labelledby="contact-title">
     <div class="page contact">
