@@ -1541,43 +1541,101 @@ a:hover { color: var(--rust); }
   .book__bk { padding: 0 0.25rem; font-size: 0.6rem; }
 }
 
-/* temperature checks (cattle page): a thermal pass over a group of calves, each one read
-   against the group, and a dot plot of the readings under it */
+/* temperature checks (cattle page): a small dashboard in the style of the head-count
+   window. Thermal view beside a readout (they stack when the card is narrow), then a
+   tracker that fills in as the calf is flagged, treated, and rechecked. Rows that wait
+   for the scan share one grid cell with their placeholder, so nothing jumps. */
 .temp {
-  display: grid;
-  gap: 0.75rem;
-  padding: 0.9rem;
+  overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 10px;
   background: #fff;
-  box-shadow: 0 20px 40px -30px rgba(34, 39, 31, 0.6);
+  box-shadow: 0 1.5rem 3rem -2rem rgba(34, 39, 31, 0.45);
   font-family: var(--ui);
-  font-size: 0.82rem;
-  line-height: 1.3;
   color: var(--ink);
 }
-.temp__top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.2rem 1rem; }
-.temp__title { font-family: var(--display); font-size: 1.2rem; font-weight: 750; font-stretch: 85%; }
-.temp__sub { display: block; font-family: var(--ui); font-size: 0.76rem; font-weight: 400; font-stretch: 100%; color: var(--ink-soft); }
-.temp__read { font-size: 0.76rem; font-weight: 600; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-.temp__view, .temp__chart svg { display: block; width: 100%; height: auto; }
-.temp__view { border-radius: 8px; }
-.temp__chart .rec__label { margin-bottom: 0.1rem; }
-.temp__zone { font: 700 7.5px var(--ui); letter-spacing: 0.05em; text-transform: uppercase; fill: var(--ink-soft); }
-.temp__axis text { font: 500 8.5px var(--ui); fill: var(--ink-soft); text-anchor: middle; }
-.temp__note { font: 700 8.5px var(--ui); }
-.temp__flag-text { color: var(--ink-soft); }
-.tc-box { fill: none; stroke: #ffd9a0; stroke-width: 0.8; transition: opacity 160ms linear; }
-.tc-a.is-flagged .tc-box { stroke: #ff6a5a; stroke-width: 1.6; }
-.tc-tag rect { fill: #ff6a5a; }
-.tc-tag text { font: 700 8px var(--mono); fill: #fff; }
-.tc-dot { fill: var(--slate); stroke: #fff; stroke-width: 1.2; transition: opacity 200ms linear; }
-.tc-dot--warm { fill: var(--rust); }
-.temp__recheck { transition: opacity 300ms linear; }
-.demo--live .tc-a:not(.is-shown) .tc-box,
-.demo--live .tc-dot:not(.is-shown),
-.demo--live .tc-a:not(.is-flagged) .tc-tag,
-.demo--live .temp__recheck:not(.is-shown) { opacity: 0; }
+.temp__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 0.9rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--mist);
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+.temp__bar-title { font-weight: 700; }
+.temp__bar-sub { margin-left: 0.4rem; font-weight: 400; color: var(--ink-soft); }
+.temp__bar-live { display: inline-flex; align-items: center; gap: 0.6rem; white-space: nowrap; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.temp.is-scanning .survey__pill { background: var(--rust); color: #fff; }
+.temp.is-scanning .survey__pill::before { background: #fff; animation: sd-blink 1.2s ease-in-out infinite; }
+/* side by side only when each half gets 16rem; the view's contents stay inside x 22-298 so
+   the slice crop (when the readout is taller) never cuts them */
+.temp__body { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+.temp__view { display: block; width: 100%; height: 100%; min-height: 13rem; background: #1a1030; }
+.tc-cam { font: 700 10px/1 var(--mono); letter-spacing: 0.08em; fill: #e9eae6; fill-opacity: 0.85; }
+.tc-flag text { font: 700 11px/1 var(--mono); fill: #fff; }
+.tc-body { transition: opacity 200ms linear; }
+.demo--live .tc-a:not(.is-shown) .tc-body { opacity: 0.4; }
+.demo--live .tc-a:not(.is-flagged) .tc-flag { opacity: 0; }
+
+.temp__panel { display: grid; gap: 0.85rem; align-content: start; padding: 0.95rem 1rem 1.05rem; font-size: 0.85rem; line-height: 1.35; }
+.temp__panel p { margin: 0; }
+.tp-label { display: block; font-size: 0.76rem; font-weight: 600; color: var(--ink-soft); }
+.tp-note { font-size: 0.76rem; color: var(--ink-soft); }
+.tp-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+.tp-stat { display: grid; gap: 0.1rem; }
+.tp-num { font-size: 2.2rem; font-weight: 700; font-stretch: 90%; line-height: 1; font-variant-numeric: tabular-nums; }
+.temp.is-flagged .tp-stat--warm .tp-num { color: var(--rust); }
+.tp-heat { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.5rem; padding: 0.5rem 0.65rem; border-radius: 6px; background: var(--mist); }
+.tp-heat .tp-label { display: inline; }
+.tp-heat__val { font-weight: 700; color: #2e6b34; }
+.tp-list .tp-label { margin-bottom: 0.4rem; }
+.tp-slot { display: grid; }
+.tp-wait, .tp-rows { grid-area: 1 / 1; }
+.tp-wait { visibility: hidden; color: var(--ink-soft); }
+.demo--live .tp-wait.is-shown { visibility: visible; }
+.demo--live .tp-rows:not(.is-shown) { visibility: hidden; }
+.tp-rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; }
+.tp-row {
+  display: grid;
+  grid-template-columns: 3.6rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.55rem;
+  border-radius: 6px;
+  background: var(--mist);
+  font-size: 0.82rem;
+}
+.tp-row--warm { background: #f6e7df; }
+.tp-val { font-weight: 700; font-variant-numeric: tabular-nums; }
+.tp-row--warm .tp-val { color: var(--rust); }
+.tp-where { color: var(--ink-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tp-badge { padding: 0.08rem 0.5rem; border-radius: 999px; background: var(--rust); color: #fff; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+.demo--live .temp:not(.is-flagged) .tp-badge { visibility: hidden; }
+.tp-ok { font-size: 0.74rem; font-weight: 600; color: #2e6b34; }
+
+.temp__track { list-style: none; margin: 0; padding: 0.85rem 1rem 0.95rem; border-top: 1px solid var(--line); display: grid; gap: 0.5rem; font-size: 0.84rem; line-height: 1.35; }
+.tt-step { position: relative; padding-left: 1.5rem; color: var(--ink-soft); transition: color 200ms linear; }
+.tt-step::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: inset 0 0 0 1.5px var(--line);
+  transition: background-color 200ms linear, box-shadow 200ms linear;
+}
+.tt-step b { margin-right: 0.35rem; }
+.tt-step.is-done { color: var(--ink); }
+.tt-step.is-done::before { box-shadow: none; }
+.tt-step--flag.is-done::before { background: var(--rust); }
+.tt-step--treat.is-done::before { background: var(--slate); }
+.tt-step--ok.is-done::before { background: #2e6b34; }
 
 /* herding (cattle page): the map beside its steps on wide screens, steps on the right
    (the mirror of the calving demo). The status and "move done" card sit over the map. */

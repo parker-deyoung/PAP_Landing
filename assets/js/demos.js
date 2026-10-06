@@ -233,8 +233,9 @@
     }
   });
 
-  /* --- temperature checks: a thermal pass reads each calf against the group; one runs warm --- */
-  var calves = [], tempDots = [];
+  /* --- temperature checks: a thermal pass reads each calf against the group; one runs warm,
+     is flagged, treated, and rechecked --- */
+  var calves = [];
   play("temps", {
     T: 20,
     STEPS: [0, 7, 13],
@@ -244,31 +245,38 @@
         var m = /translate\(\s*([\d.]+)/.exec(g.getAttribute("transform")) || [0, 0];
         return { node: g, x: +m[1] };
       });
-      tempDots = Array.prototype.slice.call(el.dots.querySelectorAll(".tc-dot"));
     },
     render: function (t, el) {
-      // 1. the scan line crosses the group; each calf is read (boxed, plotted) as it passes
+      // 1. the scan line crosses the group; each calf brightens as it's read
       var sx = 320 * prog(t, 0.6, 6);
       el.scan.setAttribute("transform", "translate(" + sx.toFixed(1) + " 0)");
       op(el.scan, fade(t, 0.4, 0.6, 6, 6.4));
       var n = 0;
-      calves.forEach(function (c, i) {
+      calves.forEach(function (c) {
         var read = t >= 0.6 && sx >= c.x;
         show(c.node, read);
-        show(tempDots[i], read);
         if (read) { n++; }
       });
-      setText(el.read, n < calves.length ? "Reading " + n + " of " + calves.length
-        : calves.length + " read · heat load low");
+      var done = t >= 6.2;
+      el.card.classList.toggle("is-scanning", t >= 0.6 && !done);
+      setText(el.pill, done ? "Done" : t >= 0.6 ? "Scanning" : "Ready");
+      setText(el.clock, "7:0" + Math.min(6, 1 + Math.floor(t * 0.8)) + " AM");
+      setText(el.readNum, String(n));
+      setText(el.readNote, done ? "of " + calves.length + " · one pass" : "of " + calves.length + " · reading");
+      show(el.wait, !done);
+      show(el.rows, done);
 
-      // 2. the one running warm is flagged, with where it's standing
-      el.warm.classList.toggle("is-flagged", t >= 7.2);
-      show(el.flag, t >= 8);
+      // 2. the one running warm is flagged
+      var flagged = t >= 7.2;
+      el.card.classList.toggle("is-flagged", flagged);
+      el.warm.classList.toggle("is-flagged", flagged);
+      setText(el.warmNum, flagged ? "1" : "0");
+      setText(el.warmNote, flagged ? "pull for a look" : "none yet");
+      el.t1.classList.toggle("is-done", flagged);
 
-      // 3. pulled and treated; Thursday's flight finds it back with the group
-      show(el.chip1, t >= 13.8);
-      show(el.recheck, t >= 15.4);
-      show(el.chip2, t >= 16.4);
+      // 3. treated that morning; Thursday's flight finds it back with the group
+      el.t2.classList.toggle("is-done", t >= 13.8);
+      el.t3.classList.toggle("is-done", t >= 16);
     }
   });
 

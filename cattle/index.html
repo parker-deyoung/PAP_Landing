@@ -625,116 +625,111 @@
 
   <!-- ===================================================================
        3b. TEMPERATURE CHECKS
-       Demo is HTML + SVG (a thermal pass over 18 weaned calves and a dot plot
-       of each one against the group), the "temps" scene in assets/js/demos.js.
-       Each .tc-a calf pairs with the .tc-dot in the same position in its list.
-       With JS off it shows the finished check: all read, one flagged, Thursday's
-       recheck back in the normal band.
+       Dashboard-style demo: a thermal view of 18 weaned calves beside a readout
+       (calves read, running warm, heat load, warmest three), with a tracker
+       under it (flagged, treated, rechecked). The "temps" scene in
+       assets/js/demos.js. With JS off it shows the finished check.
        =================================================================== -->
   <section class="section feature feature--flip section--temps" id="temps" aria-labelledby="temps-title">
     <div class="page feature__grid" data-demo="temps">
       <figure class="feature__demo">
-        <div class="temp" role="img" aria-label="Illustration of a temperature check on 18 weaned calves. A thermal pass reads each calf against the rest of the group. One calf by the water tank reads 3.1 degrees warmer than the group and is flagged with a photo and where it's standing. It's pulled and treated, and Thursday's flight finds it back in line with the group.">
-          <div class="temp__top">
-            <span class="temp__title">Temperature check <span class="temp__sub">Weaned calves · 18 head · Mon 7:05 AM</span></span>
-            <span class="temp__read" data-el="read">18 read · heat load low</span>
+                <div class="temp is-flagged" data-el="card" role="img" aria-label="Illustration of a temperature check on 18 weaned calves. A thermal pass reads each calf against the rest of the group, with the heat load low. One calf by the water tank reads 3.1 degrees warmer than the group and is flagged for a look. It's treated that morning, and Thursday's recheck finds it back with the group.">
+          <div class="temp__bar" aria-hidden="true">
+            <span class="temp__bar-title">Temperature check <span class="temp__bar-sub">Weaned calves · 18 head</span></span>
+            <span class="temp__bar-live">
+              <span class="survey__pill" data-el="pill">Done</span>
+              <span data-el="clock">7:06 AM</span>
+            </span>
           </div>
-          <svg class="temp__view" viewBox="0 0 320 180" focusable="false">
-            <defs>
-              <linearGradient id="tc-ir" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#1a1030"/>
-                <stop offset="1" stop-color="#2a1640"/>
-              </linearGradient>
-              <radialGradient id="tc-heat">
-                <stop offset="0" stop-color="#ffe9b8"/>
-                <stop offset="0.5" stop-color="#f0a250"/>
-                <stop offset="1" stop-color="#c2552a" stop-opacity="0"/>
-              </radialGradient>
-              <radialGradient id="tc-hot">
-                <stop offset="0" stop-color="#ffffff"/>
-                <stop offset="0.45" stop-color="#ffe08a"/>
-                <stop offset="1" stop-color="#ff6a2f" stop-opacity="0"/>
-              </radialGradient>
-              <linearGradient id="tc-scan" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#ffd9a0" stop-opacity="0"/>
-                <stop offset="1" stop-color="#ffd9a0" stop-opacity="0.22"/>
-              </linearGradient>
-            </defs>
-            <!-- the cold ground: fence, water tank, a worn track -->
-            <rect width="320" height="180" fill="url(#tc-ir)"/>
-            <path d="M6 6H314V174H6Z" fill="none" stroke="#3d2458" stroke-width="2" stroke-dasharray="1 5" stroke-linecap="round"/>
-            <path d="M10 170C80 150 160 172 240 152S300 132 316 140" fill="none" stroke="#2e1d4a" stroke-width="6"/>
-            <circle cx="28" cy="28" r="11" fill="#140c24" stroke="#3d2458" stroke-width="2"/>
-            <g data-el="herd">
-                  <g class="tc-a is-flagged" data-el="warm" transform="translate(58 52)"><g transform="rotate(30)"><ellipse rx="7" ry="4" fill="url(#tc-hot)"/><circle cx="7.5" r="2.6" fill="url(#tc-hot)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/><g class="tc-tag"><rect x="12" y="-21" width="40" height="13" rx="2"/><text x="15.5" y="-11.5">+3.1°F</text></g></g>
-                  <g class="tc-a" transform="translate(40 120)"><g transform="rotate(-20)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
-                  <g class="tc-a" transform="translate(78 150)"><g transform="rotate(15)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
-                  <g class="tc-a" transform="translate(104 88)"><g transform="rotate(60)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
-                  <g class="tc-a" transform="translate(122 140)"><g transform="rotate(-40)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
-                  <g class="tc-a" transform="translate(140 60)"><g transform="rotate(10)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
-                  <g class="tc-a" transform="translate(158 110)"><g transform="rotate(80)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
-                  <g class="tc-a" transform="translate(176 156)"><g transform="rotate(-10)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
-                  <g class="tc-a" transform="translate(190 72)"><g transform="rotate(35)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
-                  <g class="tc-a" transform="translate(206 126)"><g transform="rotate(-60)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
-                  <g class="tc-a" transform="translate(222 40)"><g transform="rotate(20)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
-                  <g class="tc-a" transform="translate(238 96)"><g transform="rotate(-25)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
-                  <g class="tc-a" transform="translate(252 150)"><g transform="rotate(50)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
-                  <g class="tc-a" transform="translate(266 64)"><g transform="rotate(-15)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
-                  <g class="tc-a" transform="translate(280 118)"><g transform="rotate(70)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
-                  <g class="tc-a" transform="translate(292 160)"><g transform="rotate(5)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
-                  <g class="tc-a" transform="translate(300 40)"><g transform="rotate(-50)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
-                  <g class="tc-a" transform="translate(118 30)"><g transform="rotate(25)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
-            </g>
-            <g data-el="scan" opacity="0">
-              <rect x="-26" width="26" height="180" fill="url(#tc-scan)"/>
-              <rect x="-1" width="2" height="180" fill="#ffd9a0" opacity="0.8"/>
-            </g>
-          </svg>
-          <div class="temp__chart">
-            <p class="rec__label">Each calf against the group, °F</p>
-            <svg viewBox="0 0 320 80" focusable="false">
-              <rect x="63.1" y="6" width="86.2" height="52" fill="#e8eee3"/>
-              <rect x="213.8" y="6" width="86.2" height="52" fill="#f6e7df"/>
-              <text class="temp__zone" x="67.1" y="16">Normal</text>
-              <text class="temp__zone" x="296" y="16" text-anchor="end">Pull for a look</text>
-              <g class="temp__axis">
-                <line x1="20" y1="58" x2="300" y2="58" stroke="#c3c8ba"/>
-                <g stroke="#c3c8ba"><line x1="20.0" y1="58" x2="20.0" y2="62"/><line x1="106.2" y1="58" x2="106.2" y2="62"/><line x1="192.3" y1="58" x2="192.3" y2="62"/><line x1="278.5" y1="58" x2="278.5" y2="62"/></g>
-                <text x="26.0" y="73">−2°</text><text x="106.2" y="73">group</text><text x="192.3" y="73">+2°</text><text x="278.5" y="73">+4°</text>
+          <div class="temp__body">
+            <svg class="temp__view" viewBox="0 0 320 240" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true">
+              <defs>
+                <linearGradient id="tc-ir" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#1a1030"/>
+                  <stop offset="1" stop-color="#2a1640"/>
+                </linearGradient>
+                <radialGradient id="tc-heat">
+                  <stop offset="0" stop-color="#ffe9b8"/>
+                  <stop offset="0.5" stop-color="#f0a250"/>
+                  <stop offset="1" stop-color="#c2552a" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="tc-hot">
+                  <stop offset="0" stop-color="#ffffff"/>
+                  <stop offset="0.45" stop-color="#ffe08a"/>
+                  <stop offset="1" stop-color="#ff6a2f" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="tc-scan" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#ffd9a0" stop-opacity="0"/>
+                  <stop offset="1" stop-color="#ffd9a0" stop-opacity="0.22"/>
+                </linearGradient>
+              </defs>
+              <!-- the cold ground: fence, water tank, a worn track -->
+              <rect width="320" height="240" fill="url(#tc-ir)"/>
+              <path d="M22 8H298V232H22Z" fill="none" stroke="#3d2458" stroke-width="2" stroke-dasharray="1 5" stroke-linecap="round"/>
+              <path d="M10 226C80 200 160 230 240 203S300 176 316 187" fill="none" stroke="#2e1d4a" stroke-width="6"/>
+              <circle cx="46" cy="38" r="12" fill="#140c24" stroke="#3d2458" stroke-width="2"/>
+              <g data-el="herd">
+                <g class="tc-a is-flagged" data-el="warm" transform="translate(71 69)"><g class="tc-body" transform="rotate(30)"><ellipse rx="7" ry="4" fill="url(#tc-hot)"/><circle cx="7.5" r="2.6" fill="url(#tc-hot)"/></g><g class="tc-flag"><path d="M-14 -7V-14H-7M7 -14H14V-7M14 7V14H7M-7 14H-14V7" fill="none" stroke="#ff6a5a" stroke-width="2"/><rect x="17" y="16" width="52" height="17" rx="3" fill="#ff6a5a"/><text x="22" y="28.5">+3.1°F</text></g></g>
+                <g class="tc-a" transform="translate(55 160)"><g class="tc-body" transform="rotate(-20)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g></g>
+                <g class="tc-a" transform="translate(89 200)"><g class="tc-body" transform="rotate(15)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g></g>
+                <g class="tc-a" transform="translate(112 117)"><g class="tc-body" transform="rotate(60)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g></g>
+                <g class="tc-a" transform="translate(128 187)"><g class="tc-body" transform="rotate(-40)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g></g>
+                <g class="tc-a" transform="translate(144 80)"><g class="tc-body" transform="rotate(10)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g></g>
+                <g class="tc-a" transform="translate(160 147)"><g class="tc-body" transform="rotate(80)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g></g>
+                <g class="tc-a" transform="translate(176 208)"><g class="tc-body" transform="rotate(-10)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g></g>
+                <g class="tc-a" transform="translate(188 96)"><g class="tc-body" transform="rotate(35)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g></g>
+                <g class="tc-a" transform="translate(202 168)"><g class="tc-body" transform="rotate(-60)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g></g>
+                <g class="tc-a" transform="translate(217 53)"><g class="tc-body" transform="rotate(20)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g></g>
+                <g class="tc-a" transform="translate(231 128)"><g class="tc-body" transform="rotate(-25)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g></g>
+                <g class="tc-a" transform="translate(243 200)"><g class="tc-body" transform="rotate(50)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g></g>
+                <g class="tc-a" transform="translate(256 85)"><g class="tc-body" transform="rotate(-15)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g></g>
+                <g class="tc-a" transform="translate(268 157)"><g class="tc-body" transform="rotate(70)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g></g>
+                <g class="tc-a" transform="translate(279 213)"><g class="tc-body" transform="rotate(5)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g></g>
+                <g class="tc-a" transform="translate(286 53)"><g class="tc-body" transform="rotate(-50)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g></g>
+                <g class="tc-a" transform="translate(124 40)"><g class="tc-body" transform="rotate(25)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g></g>
               </g>
-              <g data-el="dots">
-                <circle class="tc-dot tc-dot--warm" cx="239.7" cy="38" r="4.2"/>
-                <circle class="tc-dot" cx="88.9" cy="33" r="3.4"/>
-                <circle class="tc-dot" cx="114.8" cy="33" r="3.4"/>
-                <circle class="tc-dot" cx="71.7" cy="43" r="3.4"/>
-                <circle class="tc-dot" cx="127.7" cy="43" r="3.4"/>
-                <circle class="tc-dot" cx="106.2" cy="33" r="3.4"/>
-                <circle class="tc-dot" cx="93.2" cy="43" r="3.4"/>
-                <circle class="tc-dot" cx="144.9" cy="43" r="3.4"/>
-                <circle class="tc-dot" cx="58.8" cy="33" r="3.4"/>
-                <circle class="tc-dot" cx="119.1" cy="43" r="3.4"/>
-                <circle class="tc-dot" cx="84.6" cy="43" r="3.4"/>
-                <circle class="tc-dot" cx="157.8" cy="33" r="3.4"/>
-                <circle class="tc-dot" cx="101.8" cy="43" r="3.4"/>
-                <circle class="tc-dot" cx="123.4" cy="33" r="3.4"/>
-                <circle class="tc-dot" cx="80.3" cy="33" r="3.4"/>
-                <circle class="tc-dot" cx="110.5" cy="43" r="3.4"/>
-                <circle class="tc-dot" cx="136.3" cy="33" r="3.4"/>
-                <circle class="tc-dot" cx="97.5" cy="33" r="3.4"/>
+              <g data-el="scan" opacity="0">
+                <rect x="-26" width="26" height="240" fill="url(#tc-scan)"/>
+                <rect x="-1" width="2" height="240" fill="#ffd9a0" opacity="0.8"/>
               </g>
-              <text class="temp__note" x="247.7" y="41" fill="#a24e2c">Mon</text>
-              <g class="temp__recheck" data-el="recheck">
-                <path d="M235.7 33C209.5 4 149.2 4 128.4 16" fill="none" stroke="#2e6b34" stroke-width="1.2" stroke-dasharray="3 3"/>
-                <circle cx="123.4" cy="20" r="3.8" fill="#fff" stroke="#2e6b34" stroke-width="2"/>
-                <text class="temp__note" x="116.4" y="23" text-anchor="end" fill="#2e6b34">Thu</text>
-              </g>
+              <rect x="224" y="12" width="74" height="17" rx="3" fill="#0f0a1c" fill-opacity="0.75"/>
+              <text class="tc-cam" x="231" y="24">THERMAL</text>
             </svg>
+
+            <!-- the readout. Values below are the finished check (the no-JS frame). -->
+            <div class="temp__panel" aria-hidden="true">
+              <div class="tp-stats">
+                <p class="tp-stat">
+                  <span class="tp-label">Calves read</span>
+                  <span class="tp-num" data-el="readNum">18</span>
+                  <span class="tp-note" data-el="readNote">of 18 · one pass</span>
+                </p>
+                <p class="tp-stat tp-stat--warm">
+                  <span class="tp-label">Running warm</span>
+                  <span class="tp-num" data-el="warmNum">1</span>
+                  <span class="tp-note" data-el="warmNote">pull for a look</span>
+                </p>
+              </div>
+              <p class="tp-heat"><span class="tp-label">Heat load</span> <span class="tp-heat__val">Low</span> <span class="tp-note">71°F, light wind</span></p>
+              <div class="tp-list">
+                <p class="tp-label">Warmest against the group</p>
+                <div class="tp-slot">
+                  <p class="tp-wait" data-el="wait">Reading the group…</p>
+                  <ol class="tp-rows" role="list" data-el="rows">
+                    <li class="tp-row tp-row--warm"><span class="tp-val">+3.1°F</span><span class="tp-where">By the tank</span><span class="tp-badge">Pull</span></li>
+                    <li class="tp-row"><span class="tp-val">+1.2°F</span><span class="tp-where">Middle of the group</span><span class="tp-ok">Normal</span></li>
+                    <li class="tp-row"><span class="tp-val">+0.9°F</span><span class="tp-where">South fence</span><span class="tp-ok">Normal</span></li>
+                  </ol>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="rec__harvest" data-el="flag">
-            <span class="rec__harvest-title">Pull for a look: 1 calf running 3.1°F warm</span>
-            <span class="temp__flag-text">By the water tank, northwest corner. Photo attached.</span>
-            <span class="rec__chips"><span data-el="chip1">Tag 2214 treated 8:20 AM</span><span data-el="chip2">Thursday: back with the group ✓</span></span>
-          </div>
+
+          <ol class="temp__track" role="list" aria-hidden="true">
+            <li class="tt-step tt-step--flag is-done" data-el="t1"><b>Flagged</b> Mon 7:06 AM · photo and location sent</li>
+            <li class="tt-step tt-step--treat is-done" data-el="t2"><b>Treated</b> Tag 2214 · 8:20 AM</li>
+            <li class="tt-step tt-step--ok is-done" data-el="t3"><b>Rechecked</b> Thu 7:02 AM · back with the group</li>
+          </ol>
         </div>
         <figcaption class="demo__caption">
           <span>Illustration only.</span>
