@@ -10,6 +10,9 @@
 #       records-mule-deer-buck    mature mule deer buck in tall grass              (portrait)
 #       hospitality-bull-elk      bull elk bugling, golden hour                    (landscape)
 #       cattle-holstein-cow       dairy cow with ear tags in a green pasture       (portrait)
+#       cattle-hero-herd          cows in a hillside pasture under a big sky      (landscape)
+#       cattle-counts-herd        herd walking uphill toward the camera, evening  (landscape)
+#       cattle-hillside-cow       red-and-white cow on a green hillside           (portrait)
 #       hunts-whitetail-buck      whitetail buck in a sunlit clearing              (portrait)
 #       founder-parker-duckhunt   Parker DeYoung in the marsh with a duck          (portrait)
 #       founder-b                 (optional) real photo of Parker Piombo           (portrait)
@@ -75,11 +78,13 @@ echo "Processing images from $SRC ..."
 # full-bleed photos: 640 / 1280 / 1920. srcset means only big screens fetch the 1920.
 derive hero-autumn-peak       640 1280 1920
 derive surveys-bison-herd     640 1280 1920
+derive cattle-hero-herd       640 1280 1920
+derive cattle-counts-herd     640 1280 1920
 derive hospitality-bull-elk   640 1280
 # mule-deer frame is edge-to-edge fine grass — it does not compress. Cap it smaller.
 derive records-mule-deer-buck 640 960
-# the cow is also the cattle page's hero (beside the headline on wide screens), so 1440 too
-derive cattle-holstein-cow    640 960 1440
+derive cattle-holstein-cow    640 960
+derive cattle-hillside-cow    640 960
 derive hunts-whitetail-buck   640 960
 
 # founders: 560 / 1120 (rendered at most ~1 column wide)
@@ -101,15 +106,12 @@ if [ -n "$HERO_SRC" ]; then
   echo "  $OUT/og-cover.jpg (1200x630)"
 fi
 
-# cattle page share card: a wide band across the cow's face and ear tags
-COW_SRC="$(find_src cattle-holstein-cow)"
-if [ -n "$COW_SRC" ]; then
-  TMP="$(mktemp -t cattle-og).jpg"
-  sips -s format jpeg -s formatOptions 90 \
-       --cropToHeightWidth 1167 2223 --cropOffset 760 0 "$COW_SRC" --out "$TMP" >/dev/null
+# cattle page share card: 1200x630 crop from the cattle hero
+HERD_SRC="$(find_src cattle-hero-herd)"
+if [ -n "$HERD_SRC" ]; then
   sips -s format jpeg -s formatOptions 60 \
-       --resampleHeightWidth 630 1200 "$TMP" --out "$OUT/cattle-og-cover.jpg" >/dev/null
-  rm -f "$TMP"
+       --resampleHeightWidth 630 1200 --cropToHeightWidth 630 1200 \
+       "$HERD_SRC" --out "$OUT/cattle-og-cover.jpg" >/dev/null
   echo "  $OUT/cattle-og-cover.jpg (1200x630)"
 fi
 

@@ -1,5 +1,6 @@
-/* Arches Labs — the small demos: records and guests (hunting page), cow records and
-   grazing plan (cattle page). A scene whose markup isn't on the page is skipped.
+/* Arches Labs — the demos that share one player: records and guests (hunting page); cow
+   records, grazing plan, temperature checks, and herding (cattle page). A scene whose
+   markup isn't on the page is skipped.
    Progressive enhancement only. Without this file each demo shows its finished state
    and every step's text. One small player (below) runs them all: it loops a timeline,
    keeps the numbered steps in sync (the active step opens, its bar fills, clicking a
@@ -229,6 +230,162 @@
       show(el.newRest, t >= 8.4);
       show(el.note, t >= 12.6);
       show(el.sent, t >= 15.4);
+    }
+  });
+
+  /* --- temperature checks: a thermal pass reads each calf against the group; one runs warm --- */
+  var calves = [], tempDots = [];
+  play("temps", {
+    T: 20,
+    STEPS: [0, 7, 13],
+    KEYS: [5.6, 11, 19.5],
+    setup: function (el) {
+      calves = Array.prototype.map.call(el.herd.querySelectorAll(".tc-a"), function (g) {
+        var m = /translate\(\s*([\d.]+)/.exec(g.getAttribute("transform")) || [0, 0];
+        return { node: g, x: +m[1] };
+      });
+      tempDots = Array.prototype.slice.call(el.dots.querySelectorAll(".tc-dot"));
+    },
+    render: function (t, el) {
+      // 1. the scan line crosses the group; each calf is read (boxed, plotted) as it passes
+      var sx = 320 * prog(t, 0.6, 6);
+      el.scan.setAttribute("transform", "translate(" + sx.toFixed(1) + " 0)");
+      op(el.scan, fade(t, 0.4, 0.6, 6, 6.4));
+      var n = 0;
+      calves.forEach(function (c, i) {
+        var read = t >= 0.6 && sx >= c.x;
+        show(c.node, read);
+        show(tempDots[i], read);
+        if (read) { n++; }
+      });
+      setText(el.read, n < calves.length ? "Reading " + n + " of " + calves.length
+        : calves.length + " read · heat load low");
+
+      // 2. the one running warm is flagged, with where it's standing
+      el.warm.classList.toggle("is-flagged", t >= 7.2);
+      show(el.flag, t >= 8);
+
+      // 3. pulled and treated; Thursday's flight finds it back with the group
+      show(el.chip1, t >= 13.8);
+      show(el.recheck, t >= 15.4);
+      show(el.chip2, t >= 16.4);
+    }
+  });
+
+  /* --- herding: the drone works a pasture from behind and counts every head through the gate.
+     Pairs bunch into a funnel of slots in front of the gate, closest first, and file through
+     one at a time; the pair hung up in the brush waits until the drone goes back for it. --- */
+  var GATE = [342, 109], BARN = [70, 378], CALF_X = -8, FENCE_X = 331;
+  var queue = [], stray = null, headTotal = 0;
+  function lerp2(a, b, p) { return [a[0] + (b[0] - a[0]) * p, a[1] + (b[1] - a[1]) * p]; }
+  function slot(k) {
+    var r = Math.floor(k / 2);
+    return [312 - r * 16, 109 + (k % 2 ? 9 : -9) + (r % 2 ? 4 : 0)];
+  }
+  function queuedAt(t, p) {
+    if (t < p.pass) {
+      if (t < 9.6) { return lerp2(p.from, slot(p.k), ease(prog(t, 4.8 + (p.k % 3) * 0.4, 9.6))); }
+      var q = Math.max(0, p.k - Math.max(0, t - 10) / 0.4);   // slots move up as the front pairs go through
+      return lerp2(slot(Math.floor(q)), slot(Math.ceil(q)), q - Math.floor(q));
+    }
+    if (t < p.pass + 0.35) { return lerp2(slot(0), GATE, prog(t, p.pass, p.pass + 0.35)); }
+    return lerp2(GATE, p.to, ease(prog(t, p.pass + 0.35, p.pass + 2)));
+  }
+  function strayAt(t, p) {
+    if (t < 15.2) { return p.from; }
+    if (t < 17.4) { return lerp2(p.from, slot(0), ease(prog(t, 15.2, 17.4))); }
+    if (t < 17.75) { return lerp2(slot(0), GATE, prog(t, 17.4, 17.75)); }
+    return lerp2(GATE, p.to, ease(prog(t, 17.75, 19.4)));
+  }
+  // behind the queue, swinging side to side
+  function behindQueue(t) {
+    var base = lerp2([200, 172], [262, 140], prog(t, 9.6, 13.2));
+    var s = Math.sin((t - 9.6) * 2.2) * 26;
+    return [base[0] + 0.49 * s, base[1] + 0.872 * s];
+  }
+  function herdDroneAt(t) {
+    if (t < 1.4) { return BARN; }
+    if (t < 4) { return lerp2(BARN, [40, 262], ease(prog(t, 1.4, 4))); }
+    if (t < 9.6) {
+      // sweep in from the far side of the pasture, side to side, narrowing as they bunch
+      var p = prog(t, 4, 9.6);
+      var base = lerp2([40, 262], [200, 172], ease(p));
+      var s = Math.sin(p * Math.PI * 3) * 90 * (1 - 0.6 * p);
+      return [base[0] + 0.49 * s, base[1] + 0.872 * s];
+    }
+    if (t < 13.2) { return behindQueue(t); }
+    if (t < 15) { return lerp2(behindQueue(13.2), [70, 318], ease(prog(t, 13.2, 15))); }
+    var follow = function (u) { var a = strayAt(u, stray); return [a[0] - 30, a[1] + 26]; };
+    if (t < 17.4) { return follow(t); }
+    if (t < 18.6) { return lerp2(follow(17.4), [292, 150], ease(prog(t, 17.4, 18.6))); }
+    if (t < 21.4) { return lerp2([292, 150], BARN, ease(prog(t, 18.6, 21.4))); }
+    return BARN;
+  }
+  function herdAltitude(t) {
+    if (t < 1) { return 0; }
+    if (t < 1.4) { return ease(prog(t, 1, 1.4)); }
+    if (t < 21.4) { return 1; }
+    return 1 - ease(prog(t, 21.4, 22));
+  }
+  var HERD_STATUS = [
+    [0, "Move planned", "Creek to East · north gate open"],
+    [1.4, "Drone heading out", "Getting behind the herd"],
+    [4, "Gathering", "Working them from behind, slow"],
+    [10, "Through the gate", null],            // null: the sub line is the gate count
+    [13.2, "1 pair hung up in the brush", "Going back for them"],
+    [17.4, "Through the gate", null],
+    [19.6, "Move done · 7:52 AM", null]
+  ];
+  play("herding", {
+    T: 24,
+    STEPS: [0, 4, 10, 13.2],
+    KEYS: [3, 8.5, 12, 23.5],
+    setup: function (el) {
+      var all = Array.prototype.map.call(el.herd.querySelectorAll(".hd-pair"), function (g) {
+        var to = /translate\(\s*([\d.]+)[ ,]+([\d.]+)/.exec(g.getAttribute("transform")) || [0, 0, 0];
+        var from = g.getAttribute("data-from").split(" ");
+        return { node: g, from: [+from[0], +from[1]], to: [+to[1], +to[2]], stray: g.hasAttribute("data-stray") };
+      });
+      stray = all.filter(function (p) { return p.stray; })[0];
+      queue = all.filter(function (p) { return !p.stray; }).sort(function (a, b) {
+        return Math.hypot(a.from[0] - GATE[0], a.from[1] - GATE[1]) - Math.hypot(b.from[0] - GATE[0], b.from[1] - GATE[1]);
+      });
+      queue.forEach(function (p, k) { p.k = k; p.pass = 10 + 0.4 * k; });
+      headTotal = all.length * 2;
+    },
+    render: function (t, el) {
+      // the pairs, and the count at the gate (a cow or calf is through once it's east of the fence)
+      var through = 0;
+      queue.concat(stray).forEach(function (p) {
+        var at = p.stray ? strayAt(t, p) : queuedAt(t, p);
+        p.node.setAttribute("transform", "translate(" + at[0].toFixed(1) + " " + at[1].toFixed(1) + ")");
+        if (at[0] > FENCE_X) { through++; }
+        if (at[0] + CALF_X > FENCE_X) { through++; }
+      });
+
+      // the drone: grows and its shadow drifts as it climbs; pulses while it's working them
+      var d = herdDroneAt(t);
+      var alt = herdAltitude(t);
+      el.drone.setAttribute("transform", "translate(" + d[0].toFixed(1) + " " + d[1].toFixed(1) +
+        ") scale(" + (0.8 + 0.25 * alt).toFixed(3) + ")");
+      el.droneShadow.setAttribute("cx", (2 + 6 * alt).toFixed(1));
+      el.droneShadow.setAttribute("cy", (3 + 8 * alt).toFixed(1));
+      op(el.droneShadow, 0.2 - 0.08 * alt);
+      var beat = (t * 1.1) % 1;
+      el.push.setAttribute("cx", d[0].toFixed(1));
+      el.push.setAttribute("cy", d[1].toFixed(1));
+      el.push.setAttribute("r", (12 + 18 * beat).toFixed(1));
+      op(el.push, 0.6 * (1 - beat) * fade(t, 4, 4.3, 17.6, 18));
+      var dk = t < 12 ? prog(t, 1, 2.2) : prog(t, 21.6, 22.8);
+      el.dockRing.setAttribute("r", (12 + 18 * dk).toFixed(1));
+      op(el.dockRing, dk > 0 && dk < 1 ? 1 - dk : 0);
+
+      // status, and the card once everyone's through
+      for (var i = HERD_STATUS.length - 1; i > 0 && t < HERD_STATUS[i][0]; i--) { /* find current */ }
+      setText(el.status, HERD_STATUS[i][1]);
+      setText(el.statusSub, HERD_STATUS[i][2] !== null ? HERD_STATUS[i][2]
+        : through + " of " + headTotal + " head counted through");
+      show(el.card, t >= 20);
     }
   });
 })();

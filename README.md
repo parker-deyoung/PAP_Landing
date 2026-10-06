@@ -8,8 +8,8 @@ progressive-enhancement JS files (both pages work with all of them off).
 
 ```
 index.html              hunting page: all ten sections + footer; config block is at the top of <head>
-cattle/index.html       cattle page (served at /cattle/): counts, calving, fence and water,
-                        cow records, grazing, contact. Its config block is a copy of the
+cattle/index.html       cattle page (served at /cattle/): counts, temperature checks, calving,
+                        fence and water, cow records, grazing, herding, contact. Its config block is a copy of the
                         hunting page's; change both. All its paths start with ../
 assets/css/styles.css    all styles (both pages)
 assets/js/enhance.js     optional: link sync, topic tagging, on-page form submit (both pages)
@@ -17,8 +17,8 @@ assets/js/survey-demo.js optional: plays the surveys section's flight demo + liv
 assets/js/patrol-demo.js optional: plays the security section's night-patrol demo (inline SVG)
 assets/js/fence-demo.js  optional: plays the fence-check demo (map + phone) on both pages; each
                         page's markup supplies its finds' phone alerts (data-note-title/-text)
-assets/js/demos.js       optional: plays the small demos: records + guests (hunting), cow
-                        records + grazing (cattle); one shared player
+assets/js/demos.js       optional: one shared player for records + guests (hunting) and cow
+                        records, grazing, temperature checks, herding (cattle)
 assets/js/cattle-count-demo.js  optional: cattle page head-count flight + dashboard
                         (survey-demo.js's map and timing, counting cows/calves/bulls by pasture)
 assets/js/calving-demo.js       optional: cattle page night calving-check demo
@@ -87,7 +87,7 @@ done. `assets/img/_src/` is git-ignored — keep your own backup of the original
 
 Every section's "book" button carries a `data-topic` (`intro`, `surveys`, `security`, `fences`,
 `records`, `hospitality`, `cattle`, `contact`, `header`, `footer`). The cattle page uses
-its own (`cattle-intro`, `counts`, `calving`, `fence-water`, `cattle-records`, `grazing`,
+its own (`cattle-intro`, `counts`, `temps`, `calving`, `fence-water`, `cattle-records`, `grazing`, `herding`,
 `cattle-contact`, `cattle-header`, `cattle-footer`), its form defaults to `cattle-general`,
 and its emails arrive with the subject "New note from the Arches Labs cattle page". Bookings go to a Google Calendar
 appointment page, which doesn't record `topic=` or UTM params, so the booking itself

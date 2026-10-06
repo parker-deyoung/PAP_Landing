@@ -20,7 +20,7 @@
 -->
 
 <title>Arches Labs — drones and software for cattle ranches</title>
-<meta name="description" content="Thermal drone head counts, night calving checks, fence and water checks, cow records, and grazing plans for cattle ranches. Now taking on development partners.">
+<meta name="description" content="Thermal drone head counts, temperature checks, night calving checks, fence and water checks, and herding, plus cow records and grazing plans for cattle ranches. Now taking on development partners.">
 
 <link rel="canonical" href="https://REPLACE_ME.example/cattle/">
 
@@ -28,17 +28,17 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Arches Labs">
 <meta property="og:title" content="Drones and software for cattle ranches">
-<meta property="og:description" content="Head counts, night calving checks, fence and water checks, and cow records for cattle ranches. Now taking on development partners: book a 30-minute call.">
+<meta property="og:description" content="Head counts, temperature checks, calving checks, fence and water, and herding for cattle ranches. Now taking on development partners: book a 30-minute call.">
 <meta property="og:url" content="https://REPLACE_ME.example/cattle/">
 <meta property="og:image" content="https://REPLACE_ME.example/assets/img/cattle-og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A black-and-white cow with yellow ear tags looking straight at the camera in a green pasture at sunset.">
+<meta property="og:image:alt" content="Red-and-white cattle grazing a hillside pasture under a big evening sky.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Drones and software for cattle ranches">
-<meta name="twitter:description" content="Head counts, night calving checks, fence and water checks, and cow records for cattle ranches. Now taking on development partners: book a 30-minute call.">
+<meta name="twitter:description" content="Head counts, temperature checks, calving checks, fence and water, and herding for cattle ranches. Now taking on development partners: book a 30-minute call.">
 <meta name="twitter:image" content="https://REPLACE_ME.example/assets/img/cattle-og-cover.jpg">
-<meta name="twitter:image:alt" content="A black-and-white cow with yellow ear tags looking straight at the camera in a green pasture at sunset.">
+<meta name="twitter:image:alt" content="Red-and-white cattle grazing a hillside pasture under a big evening sky.">
 
 <meta name="theme-color" content="#33475a">
 <link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
@@ -87,13 +87,14 @@
         <img class="wordmark__text" src="../assets/img/logo-text.png" width="318" height="100" alt="">
       </picture>
     </a>
-    <nav class="site-nav" aria-label="Sections">
-      <a href="#about">About</a>
+    <nav class="site-nav site-nav--long" aria-label="Sections">
       <a href="#counts">Counts</a>
+      <a href="#temps">Temps</a>
       <a href="#calving">Calving</a>
       <a href="#fence-water">Fence &amp; water</a>
       <a href="#records">Records</a>
       <a href="#grazing">Grazing</a>
+      <a href="#herding">Herding</a>
     </nav>
     <a class="btn btn--primary btn--small btn--book" data-book data-topic="cattle-header"
        href="https://calendar.app.google/qBJynKzATiRonKVb9">
@@ -106,30 +107,30 @@
 
   <!-- ===================================================================
        1. HERO
-       Portrait photo: full-bleed behind the type on phones, beside it on wide
-       screens (.hero--side).
+       Full-bleed like the hunting page; the cows stand right of center, so the
+       headline sits over open grass (.hero--herd aims the crop on phones).
        =================================================================== -->
-  <section class="hero hero--side" aria-labelledby="hero-title">
+  <section class="hero hero--herd" aria-labelledby="hero-title">
     <picture class="hero__media">
       <source type="image/webp"
-              srcset="../assets/img/cattle-holstein-cow-640w.webp 640w,
-                      ../assets/img/cattle-holstein-cow-960w.webp 960w,
-                      ../assets/img/cattle-holstein-cow-1440w.webp 1440w"
-              sizes="(min-width: 64rem) 60vw, 100vw">
-      <img class="hero__img" src="../assets/img/cattle-holstein-cow-960w.jpg"
-           srcset="../assets/img/cattle-holstein-cow-640w.jpg 640w,
-                   ../assets/img/cattle-holstein-cow-960w.jpg 960w,
-                   ../assets/img/cattle-holstein-cow-1440w.jpg 1440w"
-           sizes="(min-width: 64rem) 60vw, 100vw" width="2223" height="3321"
+              srcset="../assets/img/cattle-hero-herd-640w.webp 640w,
+                      ../assets/img/cattle-hero-herd-1280w.webp 1280w,
+                      ../assets/img/cattle-hero-herd-1920w.webp 1920w"
+              sizes="100vw">
+      <img class="hero__img" src="../assets/img/cattle-hero-herd-1280w.jpg"
+           srcset="../assets/img/cattle-hero-herd-640w.jpg 640w,
+                   ../assets/img/cattle-hero-herd-1280w.jpg 1280w,
+                   ../assets/img/cattle-hero-herd-1920w.jpg 1920w"
+           sizes="100vw" width="3540" height="2654"
            fetchpriority="high" decoding="async"
-           alt="A black-and-white cow with yellow ear tags walking toward the camera across a green pasture in low evening light.">
+           alt="Red-and-white cattle with horns grazing a hillside pasture under a streaked evening sky, a farmhouse on the ridge behind them.">
     </picture>
 
     <div class="page hero__body">
       <h1 id="hero-title">Drones and software for cattle ranches.</h1>
       <p class="hero__lede">
-        Head counts, calving checks, and fence and water checks from the air, with your cow
-        records on your phone. We're taking on development partners now.
+        Thermal drones that count, check, and move your cattle, with your cow records on
+        your phone. We're taking on development partners now.
       </p>
       <div class="cta-row">
         <a class="btn btn--light btn--book" data-book data-topic="cattle-intro"
@@ -151,7 +152,7 @@
   <section class="section section--solutions" aria-labelledby="solutions-title">
     <div class="page">
       <h2 class="solutions__title" id="solutions-title">What we build for cattle</h2>
-      <div class="solutions__grid">
+      <div class="solutions__grid solutions__grid--uneven">
         <article class="solution">
           <div class="solution__top">
             <svg class="solution__icon" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
@@ -165,11 +166,13 @@
             </svg>
             <h3>Drone solutions</h3>
           </div>
-          <p>Thermal drones that fly the checking rounds, day or night, so your crew's hours go to the work.</p>
+          <p>Thermal drones that count, check, and move your cattle, day or night, so your crew's hours go to the work.</p>
           <ul class="solution__list" role="list">
           <li><a href="#counts"><span class="solution__name">Head counts</span><span class="solution__what">Cows, calves, and bulls by pasture</span></a></li>
+          <li><a href="#temps"><span class="solution__name">Temperature checks</span><span class="solution__what">The ones running warm, flagged early</span></a></li>
           <li><a href="#calving"><span class="solution__name">Night calving checks</span><span class="solution__what">Woken only when a cow needs you</span></a></li>
           <li><a href="#fence-water"><span class="solution__name">Fence and water checks</span><span class="solution__what">Breaks and low tanks found and pinned</span></a></li>
+          <li><a href="#herding"><span class="solution__name">Herding</span><span class="solution__what">Moved through the gate and counted</span></a></li>
           </ul>
         </article>
         <article class="solution">
@@ -192,7 +195,6 @@
           </ul>
         </article>
       </div>
-      <p class="solutions__more"><a href="../">Run hunts too? See what we build for hunting ranches.</a></p>
     </div>
   </section>
 
@@ -270,7 +272,22 @@
        count. The panel's numbers must match the markers (the script recounts
        from them as it plays): 23 cows, 22 calves, 2 bulls, 1 flagged.
        =================================================================== -->
-  <section class="section section--counts" id="counts" aria-labelledby="counts-title">
+  <section class="section section--bleed section--counts" id="counts" aria-labelledby="counts-title">
+    <figure class="bleed">
+      <picture>
+        <source type="image/webp"
+                srcset="../assets/img/cattle-counts-herd-640w.webp 640w,
+                        ../assets/img/cattle-counts-herd-1280w.webp 1280w,
+                        ../assets/img/cattle-counts-herd-1920w.webp 1920w"
+                sizes="100vw">
+        <img src="../assets/img/cattle-counts-herd-1280w.jpg"
+             srcset="../assets/img/cattle-counts-herd-640w.jpg 640w,
+                     ../assets/img/cattle-counts-herd-1280w.jpg 1280w,
+                     ../assets/img/cattle-counts-herd-1920w.jpg 1920w"
+             sizes="100vw" width="3200" height="2400" loading="lazy" decoding="async"
+             alt="A mixed herd of black, brown, and white cattle walking uphill toward the camera through tall grass in evening light, farmland stretching to the horizon.">
+      </picture>
+    </figure>
     <div class="page split">
       <h2 id="counts-title">Head counts by pasture</h2>
       <div class="split__body">
@@ -595,6 +612,161 @@
             Book a call about counts
           </a>
           <a class="link-note" data-topic="counts" href="#contact">or send us a note</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       3b. TEMPERATURE CHECKS
+       Demo is HTML + SVG (a thermal pass over 18 weaned calves and a dot plot
+       of each one against the group), the "temps" scene in assets/js/demos.js.
+       Each .tc-a calf pairs with the .tc-dot in the same position in its list.
+       With JS off it shows the finished check: all read, one flagged, Thursday's
+       recheck back in the normal band.
+       =================================================================== -->
+  <section class="section feature feature--flip section--temps" id="temps" aria-labelledby="temps-title">
+    <div class="page feature__grid" data-demo="temps">
+      <figure class="feature__demo">
+        <div class="temp" role="img" aria-label="Illustration of a temperature check on 18 weaned calves. A thermal pass reads each calf against the rest of the group. One calf by the water tank reads 3.1 degrees warmer than the group and is flagged with a photo and where it's standing. It's pulled and treated, and Thursday's flight finds it back in line with the group.">
+          <div class="temp__top">
+            <span class="temp__title">Temperature check <span class="temp__sub">Weaned calves · 18 head · Mon 7:05 AM</span></span>
+            <span class="temp__read" data-el="read">18 read · heat load low</span>
+          </div>
+          <svg class="temp__view" viewBox="0 0 320 180" focusable="false">
+            <defs>
+              <linearGradient id="tc-ir" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#1a1030"/>
+                <stop offset="1" stop-color="#2a1640"/>
+              </linearGradient>
+              <radialGradient id="tc-heat">
+                <stop offset="0" stop-color="#ffe9b8"/>
+                <stop offset="0.5" stop-color="#f0a250"/>
+                <stop offset="1" stop-color="#c2552a" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="tc-hot">
+                <stop offset="0" stop-color="#ffffff"/>
+                <stop offset="0.45" stop-color="#ffe08a"/>
+                <stop offset="1" stop-color="#ff6a2f" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="tc-scan" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#ffd9a0" stop-opacity="0"/>
+                <stop offset="1" stop-color="#ffd9a0" stop-opacity="0.22"/>
+              </linearGradient>
+            </defs>
+            <!-- the cold ground: fence, water tank, a worn track -->
+            <rect width="320" height="180" fill="url(#tc-ir)"/>
+            <path d="M6 6H314V174H6Z" fill="none" stroke="#3d2458" stroke-width="2" stroke-dasharray="1 5" stroke-linecap="round"/>
+            <path d="M10 170C80 150 160 172 240 152S300 132 316 140" fill="none" stroke="#2e1d4a" stroke-width="6"/>
+            <circle cx="28" cy="28" r="11" fill="#140c24" stroke="#3d2458" stroke-width="2"/>
+            <g data-el="herd">
+                  <g class="tc-a is-flagged" data-el="warm" transform="translate(58 52)"><g transform="rotate(30)"><ellipse rx="7" ry="4" fill="url(#tc-hot)"/><circle cx="7.5" r="2.6" fill="url(#tc-hot)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/><g class="tc-tag"><rect x="12" y="-21" width="40" height="13" rx="2"/><text x="15.5" y="-11.5">+3.1°F</text></g></g>
+                  <g class="tc-a" transform="translate(40 120)"><g transform="rotate(-20)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
+                  <g class="tc-a" transform="translate(78 150)"><g transform="rotate(15)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
+                  <g class="tc-a" transform="translate(104 88)"><g transform="rotate(60)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
+                  <g class="tc-a" transform="translate(122 140)"><g transform="rotate(-40)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
+                  <g class="tc-a" transform="translate(140 60)"><g transform="rotate(10)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
+                  <g class="tc-a" transform="translate(158 110)"><g transform="rotate(80)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
+                  <g class="tc-a" transform="translate(176 156)"><g transform="rotate(-10)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
+                  <g class="tc-a" transform="translate(190 72)"><g transform="rotate(35)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
+                  <g class="tc-a" transform="translate(206 126)"><g transform="rotate(-60)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
+                  <g class="tc-a" transform="translate(222 40)"><g transform="rotate(20)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
+                  <g class="tc-a" transform="translate(238 96)"><g transform="rotate(-25)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
+                  <g class="tc-a" transform="translate(252 150)"><g transform="rotate(50)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
+                  <g class="tc-a" transform="translate(266 64)"><g transform="rotate(-15)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
+                  <g class="tc-a" transform="translate(280 118)"><g transform="rotate(70)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
+                  <g class="tc-a" transform="translate(292 160)"><g transform="rotate(5)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
+                  <g class="tc-a" transform="translate(300 40)"><g transform="rotate(-50)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
+                  <g class="tc-a" transform="translate(118 30)"><g transform="rotate(25)"><ellipse rx="7" ry="4" fill="url(#tc-heat)"/><circle cx="7.5" r="2.6" fill="url(#tc-heat)"/></g><rect class="tc-box" x="-11" y="-11" width="22" height="22" rx="1"/></g>
+            </g>
+            <g data-el="scan" opacity="0">
+              <rect x="-26" width="26" height="180" fill="url(#tc-scan)"/>
+              <rect x="-1" width="2" height="180" fill="#ffd9a0" opacity="0.8"/>
+            </g>
+          </svg>
+          <div class="temp__chart">
+            <p class="rec__label">Each calf against the group, °F</p>
+            <svg viewBox="0 0 320 80" focusable="false">
+              <rect x="63.1" y="6" width="86.2" height="52" fill="#e8eee3"/>
+              <rect x="213.8" y="6" width="86.2" height="52" fill="#f6e7df"/>
+              <text class="temp__zone" x="67.1" y="16">Normal</text>
+              <text class="temp__zone" x="296" y="16" text-anchor="end">Pull for a look</text>
+              <g class="temp__axis">
+                <line x1="20" y1="58" x2="300" y2="58" stroke="#c3c8ba"/>
+                <g stroke="#c3c8ba"><line x1="20.0" y1="58" x2="20.0" y2="62"/><line x1="106.2" y1="58" x2="106.2" y2="62"/><line x1="192.3" y1="58" x2="192.3" y2="62"/><line x1="278.5" y1="58" x2="278.5" y2="62"/></g>
+                <text x="26.0" y="73">−2°</text><text x="106.2" y="73">group</text><text x="192.3" y="73">+2°</text><text x="278.5" y="73">+4°</text>
+              </g>
+              <g data-el="dots">
+                <circle class="tc-dot tc-dot--warm" cx="239.7" cy="38" r="4.2"/>
+                <circle class="tc-dot" cx="88.9" cy="33" r="3.4"/>
+                <circle class="tc-dot" cx="114.8" cy="33" r="3.4"/>
+                <circle class="tc-dot" cx="71.7" cy="43" r="3.4"/>
+                <circle class="tc-dot" cx="127.7" cy="43" r="3.4"/>
+                <circle class="tc-dot" cx="106.2" cy="33" r="3.4"/>
+                <circle class="tc-dot" cx="93.2" cy="43" r="3.4"/>
+                <circle class="tc-dot" cx="144.9" cy="43" r="3.4"/>
+                <circle class="tc-dot" cx="58.8" cy="33" r="3.4"/>
+                <circle class="tc-dot" cx="119.1" cy="43" r="3.4"/>
+                <circle class="tc-dot" cx="84.6" cy="43" r="3.4"/>
+                <circle class="tc-dot" cx="157.8" cy="33" r="3.4"/>
+                <circle class="tc-dot" cx="101.8" cy="43" r="3.4"/>
+                <circle class="tc-dot" cx="123.4" cy="33" r="3.4"/>
+                <circle class="tc-dot" cx="80.3" cy="33" r="3.4"/>
+                <circle class="tc-dot" cx="110.5" cy="43" r="3.4"/>
+                <circle class="tc-dot" cx="136.3" cy="33" r="3.4"/>
+                <circle class="tc-dot" cx="97.5" cy="33" r="3.4"/>
+              </g>
+              <text class="temp__note" x="247.7" y="41" fill="#a24e2c">Mon</text>
+              <g class="temp__recheck" data-el="recheck">
+                <path d="M235.7 33C209.5 4 149.2 4 128.4 16" fill="none" stroke="#2e6b34" stroke-width="1.2" stroke-dasharray="3 3"/>
+                <circle cx="123.4" cy="20" r="3.8" fill="#fff" stroke="#2e6b34" stroke-width="2"/>
+                <text class="temp__note" x="116.4" y="23" text-anchor="end" fill="#2e6b34">Thu</text>
+              </g>
+            </svg>
+          </div>
+          <div class="rec__harvest" data-el="flag">
+            <span class="rec__harvest-title">Pull for a look: 1 calf running 3.1°F warm</span>
+            <span class="temp__flag-text">By the water tank, northwest corner. Photo attached.</span>
+            <span class="rec__chips"><span data-el="chip1">Tag 2214 treated 8:20 AM</span><span data-el="chip2">Thursday: back with the group ✓</span></span>
+          </div>
+        </div>
+        <figcaption class="demo__caption">
+          <span>Illustration only.</span>
+          <button type="button" class="demo__toggle" data-el="toggle" hidden>Pause</button>
+        </figcaption>
+      </figure>
+      <div class="feature__body">
+        <h2 id="temps-title">Temperature checks</h2>
+        <p>
+          A sick calf often runs a fever before it looks sick, and a hot week can wear on the
+          whole herd. The thermal flight that counts them could catch both early.
+        </p>
+        <ol class="demo__steps" role="list">
+          <li class="demo__step">
+            <h3 class="demo__title"><span class="demo__num">1</span> Read the whole group</h3>
+            <p>Each animal is read against the rest, in the same light and wind.</p>
+          </li>
+          <li class="demo__step">
+            <h3 class="demo__title"><span class="demo__num">2</span> Flag the one running warm</h3>
+            <p>It's marked with a photo and where it's standing, so it's easy to pull.</p>
+          </li>
+          <li class="demo__step">
+            <h3 class="demo__title"><span class="demo__num">3</span> Pull, treat, recheck</h3>
+            <p>The treatment goes on its record, and the next flight checks it's back to normal.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="ask">
+      <div class="page ask__inner">
+        <p class="ask__q">How do you catch a sick one now, and how early?</p>
+        <div class="ask__actions">
+          <a class="btn btn--primary btn--book" data-book data-topic="temps"
+             href="https://calendar.app.google/qBJynKzATiRonKVb9">
+            Talk herd health with us
+          </a>
+          <a class="link-note" data-topic="temps" href="#contact">or send us a note</a>
         </div>
       </div>
     </div>
@@ -1364,6 +1536,156 @@
   </section>
 
   <!-- ===================================================================
+       7b. HERDING
+       The drone moves the pairs from the grazing board above (Creek to East,
+       north gate). Map SVG + status + "move done" card, the "herding" scene in
+       assets/js/demos.js. Each .hd-pair (cow + calf) sits at its end spot in
+       the East pasture (the no-JS frame) and carries its start spot in
+       data-from; data-stray marks the pair hung up in the brush.
+       =================================================================== -->
+  <section class="section section--herding" id="herding" aria-labelledby="herding-title">
+    <div class="page split">
+      <h2 id="herding-title">Herding by drone</h2>
+      <div class="split__body">
+        <p class="lede">
+          Gathering a pasture takes riders and a morning. A drone could work the herd from
+          behind, ease them through the gate, and count every head on the way.
+        </p>
+      </div>
+    </div>
+
+    <div class="page herd" data-demo="herding">
+      <figure class="herd__stage">
+        <div class="herd__map">
+          <svg viewBox="0 0 640 400" role="img" aria-labelledby="herding-svg-title" focusable="false">
+            <title id="herding-svg-title">Illustrated map of a drone moving cattle. Twelve cow-calf pairs are spread across the Creek pasture. A drone flies out from the barn, gets behind them, and works side to side until they bunch toward the open north gate. It counts every cow and calf through the gate into the East pasture, goes back for one pair hung up in the brush, and flies home once all 24 head are through.</title>
+            <!-- ground: the east pasture has rested, so it's greener -->
+            <rect width="640" height="400" fill="#e4e7dc"/>
+            <path d="M330 22L612 20L618 350L330 352Z" fill="#d5e0c2" opacity="0.7"/>
+            <path d="M60 230C120 210 210 220 250 250S240 320 180 326 70 310 60 280Z" fill="#ebe4cf"/>
+            <g fill="none" stroke="#7e8768" stroke-opacity="0.3" stroke-width="1.1">
+              <path d="M-10 60C80 44 160 76 250 62S420 30 500 52 600 40 650 60"/>
+              <path d="M-10 200C60 186 120 210 200 200S300 170 360 188"/>
+              <path d="M400 280C460 262 540 276 650 262"/>
+              <path d="M-10 380C80 366 160 392 240 378S380 360 460 384 580 370 650 392"/>
+            </g>
+            <path d="M150 -6C170 60 120 120 160 190S230 280 200 340 230 400 236 410" fill="none" stroke="#7fa6c4" stroke-width="3" stroke-linecap="round"/>
+            <g fill="#b7c5a5">
+              <circle cx="92" cy="284" r="10"/><circle cx="112" cy="296" r="9"/><circle cx="94" cy="304" r="8"/><circle cx="118" cy="279" r="7"/><circle cx="78" cy="297" r="7"/>
+              <circle cx="560" cy="236" r="8"/><circle cx="574" cy="248" r="7"/><circle cx="548" cy="250" r="6"/>
+              <circle cx="40" cy="60" r="8"/><circle cx="54" cy="50" r="6"/>
+            </g>
+
+            <!-- fences: the perimeter, and the cross fence with the north gate open -->
+            <path d="M26 24L612 20L618 350L22 354Z" fill="none" stroke="#4d4a40" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M26 24L612 20L618 350L22 354Z" fill="none" stroke="#4d4a40" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="0 11"/>
+            <path d="M330 22V96M330 122V352" fill="none" stroke="#4d4a40" stroke-width="1.3"/>
+            <path d="M330 22V96M330 122V352" fill="none" stroke="#4d4a40" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="0 11"/>
+            <path d="M330 96L349 81" stroke="#4d4a40" stroke-width="2.4" stroke-linecap="round"/>
+            <text class="fd-label fd-label--pin" x="356" y="78">NORTH GATE</text>
+            <text class="fd-label" x="40" y="342">CREEK PASTURE</text>
+            <text class="fd-label" x="604" y="44" text-anchor="end">EAST · RESTED 52 DAYS</text>
+
+            <!-- barn + dock -->
+            <g transform="translate(70 378) rotate(-4)">
+              <rect x="-17" y="-11" width="34" height="22" rx="2" fill="#8b8474" stroke="#5d584c" stroke-width="1"/>
+              <rect x="-7" y="-7" width="14" height="14" rx="1" fill="#6f695b" stroke="#e9eae6" stroke-opacity="0.7" stroke-dasharray="2 2"/>
+            </g>
+            <circle data-el="dockRing" cx="70" cy="378" r="12" fill="none" stroke="#33475a" stroke-width="1.5" opacity="0"/>
+            <text class="fd-label" x="94" y="383">BARN</text>
+
+            <!-- the pairs (cow + calf) -->
+            <g data-el="herd">
+                  <g class="hd-pair" data-from="270 140" transform="translate(380 150)"><circle cx="-8" cy="6" r="3.2" fill="#1c9269" stroke="#fff" stroke-width="1.5"/><circle r="4.5" fill="#2d6fb7" stroke="#fff" stroke-width="2"/></g>
+                  <g class="hd-pair" data-from="240 200" transform="translate(420 110)"><circle cx="-8" cy="6" r="3.2" fill="#1c9269" stroke="#fff" stroke-width="1.5"/><circle r="4.5" fill="#2d6fb7" stroke="#fff" stroke-width="2"/></g>
+                  <g class="hd-pair" data-from="285 250" transform="translate(470 80)"><circle cx="-8" cy="6" r="3.2" fill="#1c9269" stroke="#fff" stroke-width="1.5"/><circle r="4.5" fill="#2d6fb7" stroke="#fff" stroke-width="2"/></g>
+                  <g class="hd-pair" data-from="205 110" transform="translate(520 120)"><circle cx="-8" cy="6" r="3.2" fill="#1c9269" stroke="#fff" stroke-width="1.5"/><circle r="4.5" fill="#2d6fb7" stroke="#fff" stroke-width="2"/></g>
+                  <g class="hd-pair" data-from="190 240" transform="translate(570 90)"><circle cx="-8" cy="6" r="3.2" fill="#1c9269" stroke="#fff" stroke-width="1.5"/><circle r="4.5" fill="#2d6fb7" stroke="#fff" stroke-width="2"/></g>
+                  <g class="hd-pair" data-from="250 295" transform="translate(400 210)"><circle cx="-8" cy="6" r="3.2" fill="#1c9269" stroke="#fff" stroke-width="1.5"/><circle r="4.5" fill="#2d6fb7" stroke="#fff" stroke-width="2"/></g>
+                  <g class="hd-pair" data-from="110 170" transform="translate(460 170)"><circle cx="-8" cy="6" r="3.2" fill="#1c9269" stroke="#fff" stroke-width="1.5"/><circle r="4.5" fill="#2d6fb7" stroke="#fff" stroke-width="2"/></g>
+                  <g class="hd-pair" data-from="90 110" transform="translate(520 200)"><circle cx="-8" cy="6" r="3.2" fill="#1c9269" stroke="#fff" stroke-width="1.5"/><circle r="4.5" fill="#2d6fb7" stroke="#fff" stroke-width="2"/></g>
+                  <g class="hd-pair" data-from="160 300" transform="translate(580 180)"><circle cx="-8" cy="6" r="3.2" fill="#1c9269" stroke="#fff" stroke-width="1.5"/><circle r="4.5" fill="#2d6fb7" stroke="#fff" stroke-width="2"/></g>
+                  <g class="hd-pair" data-from="60 220" transform="translate(440 260)"><circle cx="-8" cy="6" r="3.2" fill="#1c9269" stroke="#fff" stroke-width="1.5"/><circle r="4.5" fill="#2d6fb7" stroke="#fff" stroke-width="2"/></g>
+                  <g class="hd-pair" data-from="140 60" transform="translate(500 280)"><circle cx="-8" cy="6" r="3.2" fill="#1c9269" stroke="#fff" stroke-width="1.5"/><circle r="4.5" fill="#2d6fb7" stroke="#fff" stroke-width="2"/></g>
+                  <g class="hd-pair" data-from="100 292" data-stray transform="translate(560 300)"><circle cx="-8" cy="6" r="3.2" fill="#1c9269" stroke="#fff" stroke-width="1.5"/><circle r="4.5" fill="#2d6fb7" stroke="#fff" stroke-width="2"/></g>
+            </g>
+
+            <!-- the drone, and the push it gives them while it works -->
+            <circle data-el="push" cx="70" cy="378" r="12" fill="none" stroke="#33475a" stroke-width="1.2" opacity="0"/>
+            <g data-el="drone" transform="translate(70 378)">
+              <ellipse data-el="droneShadow" cx="2" cy="3" rx="11" ry="5" fill="#22271f" opacity="0.2"/>
+              <g stroke="#22271f" stroke-width="2" stroke-linecap="round">
+                <line x1="-8" y1="-8" x2="8" y2="8"/><line x1="8" y1="-8" x2="-8" y2="8"/>
+              </g>
+              <g fill="#fff" fill-opacity="0.75" stroke="#22271f" stroke-width="1.2">
+                <circle cx="-9" cy="-9" r="5"/><circle cx="9" cy="-9" r="5"/><circle cx="-9" cy="9" r="5"/><circle cx="9" cy="9" r="5"/>
+              </g>
+              <circle r="4" fill="#22271f"/>
+              <circle r="1.6" fill="#e0824f"/>
+            </g>
+          </svg>
+
+          <p class="herd__status" aria-hidden="true">
+            <span class="herd__status-title" data-el="status">Move done · 7:52 AM</span>
+            <span class="herd__status-sub" data-el="statusSub">24 of 24 head counted through</span>
+          </p>
+
+          <div class="survey__card" data-el="card" aria-hidden="true">
+            <svg class="survey__card-icon" width="22" height="22" viewBox="0 0 24 24" focusable="false">
+              <rect width="24" height="24" rx="6" fill="#33475a"/>
+              <path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#e9eae6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="survey__card-body">
+              <span class="survey__card-title">Move done</span>
+              <span class="survey__card-text">24 head into the East pasture, 7:52 AM. Close the north gate.</span>
+            </span>
+          </div>
+        </div>
+        <ul class="fence__legend" role="list" aria-hidden="true">
+          <li><span class="fl-key fl-key--cow"></span>Cow</li>
+          <li><span class="fl-key fl-key--calf"></span>Calf</li>
+        </ul>
+        <figcaption class="demo__caption">
+          <span>Illustration only.</span>
+          <button type="button" class="demo__toggle" data-el="toggle" hidden>Pause</button>
+        </figcaption>
+      </figure>
+
+      <ol class="demo__steps" role="list">
+        <li class="demo__step">
+          <h3 class="demo__title"><span class="demo__num">1</span> Open the gate, send the drone</h3>
+          <p>Pick the pasture and the gate. It flies out and gets behind the herd.</p>
+        </li>
+        <li class="demo__step">
+          <h3 class="demo__title"><span class="demo__num">2</span> It works them from behind</h3>
+          <p>Side to side and slow, the way a good dog would. They drift together toward the gate.</p>
+        </li>
+        <li class="demo__step">
+          <h3 class="demo__title"><span class="demo__num">3</span> Counted through the gate</h3>
+          <p>Every cow and calf is counted as they go through, so you know the number matches.</p>
+        </li>
+        <li class="demo__step">
+          <h3 class="demo__title"><span class="demo__num">4</span> Nobody left behind</h3>
+          <p>A pair hung up in the brush? It goes back for them, then heads home.</p>
+        </li>
+      </ol>
+    </div>
+
+    <div class="ask">
+      <div class="page ask__inner">
+        <p class="ask__q">How many riders does it take to move a pasture, and how long?</p>
+        <div class="ask__actions">
+          <a class="btn btn--primary btn--book" data-book data-topic="herding"
+             href="https://calendar.app.google/qBJynKzATiRonKVb9">
+            Talk herding with us
+          </a>
+          <a class="link-note" data-topic="herding" href="#contact">or send us a note</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
        8. CONTACT
        Same FormSubmit endpoint as the hunting page; _subject says it came
        from the cattle page, and topic defaults to cattle-general.
@@ -1505,7 +1827,7 @@
           <img class="footer-mark" src="../assets/img/logo-mark.png" width="210" height="150" loading="lazy" decoding="async" alt="">
         </picture>
         <p class="footer-brand">Arches Labs</p>
-        <p class="footer-place">For cattle ranches. <a href="../">For hunting ranches</a></p>
+        <p class="footer-place">For cattle ranches</p>
       </div>
       <ul class="footer-contact" role="list">
         <li><a data-tel href="tel:+17204987552">Call or text 720-498-7552</a></li>
@@ -1523,7 +1845,9 @@
       <h2 class="footer-credits__title">Photography</h2>
       <!-- Mirrors IMAGE_CREDITS.md (the photos this page uses). -->
       <ul role="list">
-        <li>Hero and cow record: photo by <a href="https://unsplash.com/@jorienloman?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jorien Loman</a> on <a href="https://unsplash.com/photos/white-and-black-cow-on-green-grass-field-during-daytime-00YD5QLyaGU?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>.</li>
+        <li>Hero and social image: photo by <a href="https://unsplash.com/@daviddolenc?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">David Dolenc</a> on <a href="https://unsplash.com/photos/herd-of-cattle-standing-near-house-1AKuVmQxUkU?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>.</li>
+        <li>Head counts: photo by <a href="https://unsplash.com/@jakobcotton?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jakob Cotton</a> on <a href="https://unsplash.com/photos/black-and-white-cattle-UQJf6y91zZs?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>.</li>
+        <li>Cow record: photo by <a href="https://unsplash.com/@jorienloman?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jorien Loman</a> on <a href="https://unsplash.com/photos/white-and-black-cow-on-green-grass-field-during-daytime-00YD5QLyaGU?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>.</li>
         <li>Footer strip: photos by Taun Stewart, Caroline Sterr, Nils Rasmusson, and solotravelgoals on Unsplash.</li>
         <li>Founder photos and logo: &copy; Arches Labs.</li>
       </ul>
