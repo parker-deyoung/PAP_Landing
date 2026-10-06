@@ -187,6 +187,33 @@ a:hover { color: var(--rust); }
   text-decoration: underline;
 }
 
+/* ----- audience tabs: hunting ranches | cattle ranches -----
+   A thin ink strip above the header on both pages. The current page's tab is paper, so
+   it reads as joined to the header under it. Shown at every width: the section nav is
+   hidden on phones, and this is how a cattle rancher finds their page. */
+.audience { background: var(--ink); }
+.audience__inner { display: flex; gap: 0.25rem; padding-top: 0.4rem; }
+.audience__tab {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.3rem 0.95rem;
+  border-radius: 4px 4px 0 0;
+  font-family: var(--ui);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #cfd2c8;
+  text-decoration: none;
+}
+.audience__tab:hover {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: var(--rust-light);
+  text-underline-offset: 0.35em;
+}
+.audience__tab[aria-current="page"] { background: var(--paper); color: var(--ink); text-decoration: none; }
+.audience :focus-visible { outline-color: var(--rust-light); outline-offset: -3px; }
+
 /* ----- header ----- */
 .site-header { background: var(--paper); border-bottom: 1px solid var(--line); }
 .site-header__inner {
@@ -261,6 +288,70 @@ a:hover { color: var(--rust); }
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.9);
 }
+/* cattle page: a portrait photo, so on wide screens it sits beside the headline on the
+   night ground instead of under it (the cow's face shouldn't be behind the type) */
+.hero--side { background: var(--night); }
+.hero--side .hero__img { object-position: 50% 20%; }
+@media (min-width: 64rem) {
+  .hero--side .hero__media { left: 40%; }
+  .hero--side .hero__img { object-position: 50% 30%; }
+  .hero--side::after {
+    background:
+      linear-gradient(to right, var(--night) 40%, rgba(27, 33, 28, 0) 56%),
+      linear-gradient(to top, rgba(16, 19, 14, 0.5) 0%, rgba(16, 19, 14, 0) 30%);
+  }
+  .hero--side .hero__lede { max-width: 26rem; }
+}
+
+/* ----- what we build: drone solutions and ranch software, right under the hero -----
+   Two equal white panels on a stone band. Each line is a link down to the section that
+   shows it, so the panels double as a table of contents. */
+.section--solutions { padding-block: clamp(3rem, 6vw, 5.5rem); }
+.solutions__title { margin: 0 0 clamp(1.5rem, 3vw, 2.25rem); font-size: clamp(1.7rem, 1.2rem + 1.4vw, 2.4rem); }
+.solutions__grid { display: grid; gap: 1.25rem clamp(1.25rem, 2.5vw, 2rem); }
+@media (min-width: 56rem) {
+  .solutions__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.solution {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 20px 40px -32px rgba(34, 39, 31, 0.55);
+}
+.solution__top { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 0.8rem; }
+.solution__icon { flex: none; width: 2.75rem; height: 2.75rem; }
+.solution h3 { margin: 0; font-size: clamp(1.45rem, 1.2rem + 0.6vw, 1.8rem); }
+.solution > p { margin: 0 0 1.4rem; font-size: 1.05rem; color: var(--ink-soft); }
+.solution__list { list-style: none; margin: auto 0 0; padding: 0; }
+.solution__list a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 1rem;
+  align-items: center;
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+}
+.solution__list li:last-child a { border-bottom: 1px solid var(--line); }
+.solution__name { grid-column: 1; font-family: var(--ui); font-size: 1.02rem; font-weight: 700; }
+.solution__what { grid-column: 1; font-size: 0.95rem; color: var(--ink-soft); }
+.solution__list a::after {
+  content: "→";
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  font-family: var(--ui);
+  color: var(--rust);
+  transition: transform 150ms ease;
+}
+.solution__list a:hover { color: var(--ink); }
+.solution__list a:hover .solution__name { text-decoration: underline; text-decoration-color: var(--rust); text-underline-offset: 0.2em; }
+.solution__list a:hover::after { transform: translateX(3px); }
+.solutions__more { margin: 1.4rem 0 0; font-family: var(--ui); font-size: 1rem; }
+.solutions__more a::after { content: " →"; color: var(--rust); }
 
 /* ----- who we are ----- */
 .founders {
@@ -313,6 +404,10 @@ a:hover { color: var(--rust); }
   --sp-deer: #2d6fb7;
   --sp-elk: #d0602e;
   --sp-pronghorn: #1c9269;
+  /* cattle page head count: the same three validated hues */
+  --sp-cow: #2d6fb7;
+  --sp-calf: #1c9269;
+  --sp-bull: #d0602e;
   --up-good: #2e6b34;
   margin-top: clamp(2.75rem, 5vw, 4.5rem);
 }
@@ -388,6 +483,9 @@ a:hover { color: var(--rust); }
 .sd-a--deer circle { fill: var(--sp-deer); }
 .sd-a--elk circle { fill: var(--sp-elk); }
 .sd-a--pronghorn circle { fill: var(--sp-pronghorn); }
+.sd-a--cow circle { fill: var(--sp-cow); }
+.sd-a--calf circle { fill: var(--sp-calf); }
+.sd-a--bull circle { fill: var(--sp-bull); }
 .sd-a--unknown circle { fill: #fff; stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 2.4 1.6; }
 .sd-a--unknown text { font: 700 7px/1 var(--ui); fill: var(--ink); text-anchor: middle; }
 /* no JS: the finished survey, so no live camera */
@@ -499,6 +597,9 @@ a:hover { color: var(--rust); }
 .sp-sw--deer { background: var(--sp-deer); }
 .sp-sw--elk { background: var(--sp-elk); }
 .sp-sw--pronghorn { background: var(--sp-pronghorn); }
+.sp-sw--cow { background: var(--sp-cow); }
+.sp-sw--calf { background: var(--sp-calf); }
+.sp-sw--bull { background: var(--sp-bull); }
 .sp-sw--review {
   display: inline-grid;
   place-items: center;
@@ -523,6 +624,9 @@ a:hover { color: var(--rust); }
 .sp-bar__fill--deer { background: var(--sp-deer); }
 .sp-bar__fill--elk { background: var(--sp-elk); }
 .sp-bar__fill--pronghorn { background: var(--sp-pronghorn); }
+.sp-bar__fill--cow { background: var(--sp-cow); }
+.sp-bar__fill--calf { background: var(--sp-calf); }
+.sp-bar__fill--bull { background: var(--sp-bull); }
 .sp-classes { grid-column: 2 / -1; margin-top: 0.2rem; font-size: 0.78rem; color: var(--ink-soft); }
 
 /* bottom of the panel: sightings while flying, last-fall comparison once landed.
@@ -736,13 +840,14 @@ a:hover { color: var(--rust); }
 
 /* ----- section bands -----
    Every section below the survey photo sits on its own band so one topic ends before the
-   next begins: night (security), mist (fences), stone (records), mist (guests), stone
+   next begins (and "what we build" sits on stone under the hero): night (security), mist (fences), stone (records), mist (guests), stone
    (hunts), mist (cattle), paper (contact). A hairline marks the edge wherever two light
-   bands meet. */
-.section--fence, .section--hospitality, .section--cattle { background: var(--mist); }
-.section--records, .section--hunts { background: var(--stone); }
-.section--fence, .section--records, .section--hospitality, .section--hunts, .section--cattle,
-.section--contact { border-top: 1px solid var(--line); }
+   bands meet. The cattle page runs the same way: stone (counts), night (calving), mist
+   (fence and water), stone (records), mist (grazing), paper (contact). */
+.section--fence, .section--hospitality, .section--cattle, .section--grazing { background: var(--mist); }
+.section--solutions, .section--records, .section--hunts, .section--counts { background: var(--stone); }
+.section--who, .section--fence, .section--records, .section--hospitality, .section--hunts,
+.section--cattle, .section--counts, .section--grazing, .section--contact { border-top: 1px solid var(--line); }
 
 /* ----- lists of short points (security "keep your land safe", guests "hunts") ----- */
 .safe { margin-top: var(--space); }
@@ -1083,6 +1188,7 @@ a:hover { color: var(--rust); }
 .fl-key--down { background: var(--down); color: #fff; }
 .fl-key--work { background: var(--work); color: var(--ink); }
 .fl-key--fixed { background: var(--fixed); color: #fff; }
+.fl-key--tank { width: 0.9rem; height: 0.9rem; border-radius: 50%; background: #a9c6da; box-shadow: inset 0 0 0 1.5px #4d4a40; }
 
 /* the phone */
 .fence__phone {
@@ -1266,6 +1372,8 @@ a:hover { color: var(--rust); }
 }
 .rec__cam { position: relative; flex: none; width: 6rem; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 6px; background: #333; }
 .rec__cam img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: grayscale(1) contrast(1.15) brightness(0.92); }
+.rec__cam--tag { display: grid; place-items: center; background: #e6e2d3; }
+.rec__cam--tag svg { width: 58%; height: auto; }
 .rec__stamp {
   position: absolute;
   inset: auto 0 0;
@@ -1396,9 +1504,15 @@ a:hover { color: var(--rust); }
 .book__bk--cabin { background: #e6e4da; }
 .book__bk--new { background: var(--rust); color: #fff; transform-origin: left center; transition: transform 380ms ease, opacity 200ms linear; }
 .demo--live .book__bk--new:not(.is-shown) { opacity: 0; transform: scaleX(0.1); }
+/* grazing plan: a pasture resting (hatched), including one that starts resting this week */
+.book__bk--rest {
+  background: repeating-linear-gradient(135deg, #efede6 0 5px, #e3e0d6 5px 10px);
+  color: var(--ink-soft);
+  font-weight: 500;
+}
 .book__hl {
   grid-row: 1 / -1;
-  grid-column: 4 / span 3;
+  grid-column: var(--c) / span var(--s);
   border-radius: 6px;
   background: rgba(162, 78, 44, 0.1);
   opacity: 0;

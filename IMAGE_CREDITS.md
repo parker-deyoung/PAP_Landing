@@ -1,7 +1,8 @@
 # Image credits
 
 One row per image used on the site. The footer "Photography" list in `index.html`
-mirrors this file — update both together.
+mirrors this file — update both together. `cattle/index.html` has its own footer list
+for the photos it uses (the cow, the footer strip, founders and logo).
 
 **Verify before launch.** The photographer names and photo IDs below are read from the
 original download filenames in `assets/img/_src/`. Open each Unsplash photo page and
@@ -18,7 +19,7 @@ without touching layout.
 | Aerial surveys — grazing herd | `surveys-bison-herd-{640,1280}w.{webp,jpg}` | Unsplash, photo `xI_cQ1htD3g` (`_src/andres-haro-xI_cQ1htD3g-unsplash.jpg`) | Unsplash License | Photo by Andres Haro on Unsplash |
 | Herd records — mule deer buck | `records-mule-deer-buck-{640,960}w.{webp,jpg}` | Unsplash, photo `kEYtw1_YiHM` (`_src/kush-dwivedi-kEYtw1_YiHM-unsplash.jpg`) | Unsplash License | Photo by Kush Dwivedi on Unsplash |
 | Hospitality — bull elk | `hospitality-bull-elk-{640,1280}w.{webp,jpg}` | Unsplash, photo `rtT0Uk8fkR8` (`_src/mathew-schwartz-rtT0Uk8fkR8-unsplash.jpg`) | Unsplash License | Photo by Mathew Schwartz on Unsplash |
-| Cattle — dairy cow | `cattle-holstein-cow-{640,960}w.{webp,jpg}` | Unsplash, photo `00YD5QLyaGU` (`_src/jorien-loman-00YD5QLyaGU-unsplash.jpg`), [photo page](https://unsplash.com/photos/white-and-black-cow-on-green-grass-field-during-daytime-00YD5QLyaGU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) | Unsplash License | Photo by [Jorien Loman](https://unsplash.com/@jorienloman?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on Unsplash (linked in the footer) |
+| Cattle — dairy cow (hunting page cattle section; cattle page hero and cow record) | `cattle-holstein-cow-{640,960,1440}w.{webp,jpg}`, `cattle-og-cover.jpg` (cattle page social card, cropped across the face) | Unsplash, photo `00YD5QLyaGU` (`_src/jorien-loman-00YD5QLyaGU-unsplash.jpg`), [photo page](https://unsplash.com/photos/white-and-black-cow-on-green-grass-field-during-daytime-00YD5QLyaGU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) | Unsplash License | Photo by [Jorien Loman](https://unsplash.com/@jorienloman?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on Unsplash (linked in the footer) |
 | Hunts — whitetail buck | `hunts-whitetail-buck-{640,960}w.{webp,jpg}` | Unsplash, photo `K_Na5gCmh38` (`_src/laura-college-K_Na5gCmh38-unsplash.jpg`), [photo page](https://unsplash.com/photos/selective-focus-photography-of-brown-deer-standing-on-green-grass-field-during-daytime-K_Na5gCmh38?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) | Unsplash License | Photo by [Laura College](https://unsplash.com/@laura_college?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on Unsplash (linked in the footer) |
 | Founder A — Parker DeYoung | `founder-parker-duckhunt-{560,1120}w.{webp,jpg}` | Arches Labs (own photo) | © Arches Labs, all rights reserved | — |
 | Founder B — Parker Piombo | `founder-b-{560,1120}w.{webp,jpg}` | Arches Labs (own photo, `_src/founder-b.jpg`) | © Arches Labs, all rights reserved | — |

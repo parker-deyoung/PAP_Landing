@@ -37,6 +37,8 @@
     PHONE ....... visible phone text in those same spots
     EMAIL ....... mailto: link + visible text in contact block and footer
     SITE_URL .... <link rel="canonical">, og:url, twitter:url  (also hard-coded in sitemap.xml)
+
+  The cattle page (cattle/index.html) carries a copy of these values: change both.
   ============================================================================
 -->
 
@@ -88,6 +90,14 @@
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
+<!-- Who it's for: this page (hunting) and the cattle page, same site. -->
+<nav class="audience" aria-label="Who it's for">
+  <div class="page audience__inner">
+    <a class="audience__tab" href="./" aria-current="page">Hunting ranches</a>
+    <a class="audience__tab" href="cattle/">Cattle ranches</a>
+  </div>
+</nav>
+
 <header class="site-header">
   <div class="page site-header__inner">
     <a class="wordmark" href="#main" aria-label="Arches Labs, home">
@@ -107,7 +117,6 @@
       <a href="#fences">Fences</a>
       <a href="#records">Records</a>
       <a href="#guests">Guests</a>
-      <a href="#cattle">Cattle</a>
     </nav>
     <a class="btn btn--primary btn--small btn--book" data-book data-topic="header"
        href="https://calendar.app.google/qBJynKzATiRonKVb9">
@@ -140,9 +149,8 @@
     <div class="page hero__body">
       <h1 id="hero-title">Software for private hunting ranches.</h1>
       <p class="hero__lede">
-        Drone surveys, fence and security checks, herd records, and guest tools, built by two
-        hunters. We're taking on development partners now: ranches that put it to work first
-        and help shape how it runs.
+        Thermal drones and ranch software, built by two hunters. We're taking on development
+        partners now: ranches that put it to work first and help shape how it runs.
       </p>
       <div class="cta-row">
         <a class="btn btn--light btn--book" data-book data-topic="intro"
@@ -153,6 +161,59 @@
           Call or text 720-498-7552
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       1b. WHAT WE BUILD
+       The two halves of the product, right under the hero: drone work and
+       ranch software. Each line jumps to the section that shows it.
+       =================================================================== -->
+  <section class="section section--solutions" aria-labelledby="solutions-title">
+    <div class="page">
+      <h2 class="solutions__title" id="solutions-title">What we build</h2>
+      <div class="solutions__grid">
+        <article class="solution">
+          <div class="solution__top">
+            <svg class="solution__icon" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+              <circle cx="22" cy="22" r="22" fill="#f3e6de"/>
+              <g fill="none" stroke="#a24e2c" stroke-width="1.8" stroke-linecap="round">
+                <path d="M17 17l10 10M27 17L17 27"/>
+                <circle cx="14.5" cy="14.5" r="4.5"/><circle cx="29.5" cy="14.5" r="4.5"/>
+                <circle cx="14.5" cy="29.5" r="4.5"/><circle cx="29.5" cy="29.5" r="4.5"/>
+              </g>
+              <circle cx="22" cy="22" r="3" fill="#a24e2c"/>
+            </svg>
+            <h3>Drone solutions</h3>
+          </div>
+          <p>Thermal drones that fly your ground day or night, so your crew's hours go where they count.</p>
+          <ul class="solution__list" role="list">
+          <li><a href="#surveys"><span class="solution__name">Herd surveys</span><span class="solution__what">Counts by species and age class</span></a></li>
+          <li><a href="#fences"><span class="solution__name">Fence line checks</span><span class="solution__what">Breaks found and pinned after storms</span></a></li>
+          <li><a href="#security"><span class="solution__name">Night security</span><span class="solution__what">Trespassers found and tracked</span></a></li>
+          </ul>
+        </article>
+        <article class="solution">
+          <div class="solution__top">
+            <svg class="solution__icon" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+              <circle cx="22" cy="22" r="22" fill="#f3e6de"/>
+              <g fill="none" stroke="#a24e2c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="14" y="10.5" width="16" height="23" rx="3"/>
+                <path d="M18 16.5h8M18 20.5h8M18 24.5h5"/>
+              </g>
+              <circle cx="22" cy="29.5" r="1.2" fill="#a24e2c"/>
+            </svg>
+            <h3>Ranch software</h3>
+          </div>
+          <p>Your herd, your guests, and your hunts, kept in one place on your phone or computer.</p>
+          <ul class="solution__list" role="list">
+          <li><a href="#records"><span class="solution__name">Herd records</span><span class="solution__what">Every animal, from sightings to harvest</span></a></li>
+          <li><a href="#guests"><span class="solution__name">Guest operations</span><span class="solution__what">Bookings, guides, and cabins on one board</span></a></li>
+          <li><a href="#hunts"><span class="solution__name">Hunt planning</span><span class="solution__what">Hunts built on how your animals move</span></a></li>
+          </ul>
+        </article>
+      </div>
+      <p class="solutions__more"><a href="cattle/">Run cattle? See what we build for cattle ranches.</a></p>
     </div>
   </section>
 
@@ -1039,7 +1100,9 @@
                 <span class="fp-meter"><span class="fp-meter__fill" data-el="milesBar" style="--v:1"></span></span>
                 <p class="fp-label" data-el="findLabel">2 spots need work</p>
                 <ul class="fp-finds" role="list">
-                  <li class="fp-find" data-el="find1">
+                  <li class="fp-find" data-el="find1"
+                      data-note-title="Fence down on the East line"
+                      data-note-text="About 40 ft of wire under a fallen tree. Tap for directions.">
                     <svg class="fp-thumb" viewBox="0 0 200 120" focusable="false"><use href="#fd-photo-tree" width="200" height="120"/></svg>
                     <span class="fp-find__body">
                       <span class="fp-badge fp-badge--down" data-el="badge1">Fence down</span>
@@ -1048,7 +1111,9 @@
                     </span>
                     <span class="fp-actions"><span>Directions</span><span data-el="fix1">Mark fixed</span></span>
                   </li>
-                  <li class="fp-find" data-el="find2">
+                  <li class="fp-find" data-el="find2"
+                      data-note-title="Washout at the creek crossing"
+                      data-note-text="A gap under the bottom wire on the south line. Tap for the photo.">
                     <svg class="fp-thumb" viewBox="0 0 200 120" focusable="false"><use href="#fd-photo-wash" width="200" height="120"/></svg>
                     <span class="fp-find__body">
                       <span class="fp-badge fp-badge--work">Needs work</span>
@@ -1216,7 +1281,7 @@
             <span class="book__req" data-el="request"><b>New request</b> Harlan party · 2 hunters · elk · Sep 17–19</span>
           </div>
           <div class="book__grid">
-            <span class="book__hl" data-el="hl"></span>
+            <span class="book__hl" data-el="hl" style="--c:4;--s:3"></span>
             <span class="book__day" style="--c:2">Mon<b>15</b></span>
             <span class="book__day" style="--c:3">Tue<b>16</b></span>
             <span class="book__day" style="--c:4">Wed<b>17</b></span>
@@ -1333,8 +1398,9 @@
 
   <!-- ===================================================================
        9. CATTLE OPERATIONS
-       The same tools, pointed at a cow-calf place. Photo + text, photo on the
-       right. Books under topic=cattle.
+       This page stays hunting-focused; cattle has its own page (cattle/) with
+       its own demos. This section just points cattle people there. Photo +
+       text, photo on the right. Books under topic=cattle.
        =================================================================== -->
   <section class="section feature feature--flip section--cattle" id="cattle" aria-labelledby="cattle-title">
     <div class="page feature__grid">
@@ -1352,29 +1418,14 @@
         </picture>
       </figure>
       <div class="feature__body">
-        <h2 id="cattle-title">Cattle operations</h2>
+        <h2 id="cattle-title">Run cattle too?</h2>
         <p class="lede">
-          Run cattle? Most of this carries over. The drone that counts deer can count pairs,
-          and a fence check doesn't care what's behind the wire.
+          Head counts, night calving checks, fence and water, and cow records. Cattle ranches
+          have their own page, with demos built for them.
         </p>
-        <ul class="points points--2" role="list">
-          <li>
-            <h3>Head counts by pasture</h3>
-            <p>Count pairs from the air and find the strays hung up in the brush.</p>
-          </li>
-          <li>
-            <h3>Calving checks at night</h3>
-            <p>Thermal spots a cow off by herself or a calf that's down, without the 2 AM drive.</p>
-          </li>
-          <li>
-            <h3>Fences, gates, and water</h3>
-            <p>Wire down, a gate left open, a tank running low, found before the cows find it.</p>
-          </li>
-          <li>
-            <h3>Records that follow the cow</h3>
-            <p>Tags, treatments, weights, and calving dates, ready when you sell.</p>
-          </li>
-        </ul>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="cattle/">See it for cattle ranches</a>
+        </div>
       </div>
     </div>
 
@@ -1525,7 +1576,7 @@
           <img class="footer-mark" src="assets/img/logo-mark.png" width="210" height="150" loading="lazy" decoding="async" alt="">
         </picture>
         <p class="footer-brand">Arches Labs</p>
-        <p class="footer-place">For private hunting ranches</p>
+        <p class="footer-place">For private hunting ranches. <a href="cattle/">For cattle ranches</a></p>
       </div>
       <ul class="footer-contact" role="list">
         <li><a data-tel href="tel:+17204987552">Call or text 720-498-7552</a></li>

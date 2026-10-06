@@ -78,7 +78,8 @@ derive surveys-bison-herd     640 1280 1920
 derive hospitality-bull-elk   640 1280
 # mule-deer frame is edge-to-edge fine grass — it does not compress. Cap it smaller.
 derive records-mule-deer-buck 640 960
-derive cattle-holstein-cow    640 960
+# the cow is also the cattle page's hero (beside the headline on wide screens), so 1440 too
+derive cattle-holstein-cow    640 960 1440
 derive hunts-whitetail-buck   640 960
 
 # founders: 560 / 1120 (rendered at most ~1 column wide)
@@ -98,6 +99,18 @@ if [ -n "$HERO_SRC" ]; then
        --resampleHeightWidth 630 1200 --cropToHeightWidth 630 1200 \
        "$HERO_SRC" --out "$OUT/og-cover.jpg" >/dev/null
   echo "  $OUT/og-cover.jpg (1200x630)"
+fi
+
+# cattle page share card: a wide band across the cow's face and ear tags
+COW_SRC="$(find_src cattle-holstein-cow)"
+if [ -n "$COW_SRC" ]; then
+  TMP="$(mktemp -t cattle-og).jpg"
+  sips -s format jpeg -s formatOptions 90 \
+       --cropToHeightWidth 1167 2223 --cropOffset 760 0 "$COW_SRC" --out "$TMP" >/dev/null
+  sips -s format jpeg -s formatOptions 60 \
+       --resampleHeightWidth 630 1200 "$TMP" --out "$OUT/cattle-og-cover.jpg" >/dev/null
+  rm -f "$TMP"
+  echo "  $OUT/cattle-og-cover.jpg (1200x630)"
 fi
 
 echo "Done. Now swap the placeholder <img> tags in index.html for the <picture> blocks."

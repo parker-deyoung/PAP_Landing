@@ -1,6 +1,7 @@
-/* Arches Labs — records and guests demos (sections 6 and 7).
+/* Arches Labs — the small demos: records and guests (hunting page), cow records and
+   grazing plan (cattle page). A scene whose markup isn't on the page is skipped.
    Progressive enhancement only. Without this file each demo shows its finished state
-   and every step's text. One small player (below) runs both: it loops a timeline,
+   and every step's text. One small player (below) runs them all: it loops a timeline,
    keeps the numbered steps in sync (the active step opens, its bar fills, clicking a
    step jumps to it), respects prefers-reduced-motion (starts paused on a still frame),
    and pauses while the demo is off-screen. Each scene only says what's on screen at
@@ -170,6 +171,63 @@
       show(el.newGuide, t >= 7);
       show(el.newCabin, t >= 8.4);
       show(el.client, t >= 12.6);
+      show(el.sent, t >= 15.4);
+    }
+  });
+
+  /* --- cattle records: a new calf is paired to Cow 9626, her record fills in, then preg check --- */
+  var cowLen = 0, cowHead = 0;
+  play("cow", {
+    T: 21,
+    STEPS: [0, 7, 13],
+    KEYS: [5.8, 11.5, 20.5],
+    setup: function (el) {
+      if (typeof el.line.getTotalLength !== "function") { return false; }
+      cowLen = el.line.getTotalLength();
+      cowHead = cowLen * 2 / 3;   // 2022 to 2024; this year's calf draws in during step 2
+      el.line.setAttribute("stroke-dasharray", cowLen.toFixed(1) + " " + cowLen.toFixed(1));
+    },
+    render: function (t, el) {
+      // 1. the calf's tag comes in and is paired to his mother, then confirmed
+      show(el.inbox, t >= 0.6);
+      var confirmed = t >= 4.5;
+      setText(el.matchText, t < 2.2 ? "Finding his mother…" : confirmed ? "Paired with Cow 9626" : "Looks like Cow 9626");
+      setText(el.confirm, confirmed ? "Confirmed ✓" : "Confirm");
+      el.confirm.classList.toggle("is-done", confirmed);
+      el.confirm.classList.toggle("is-pressed", t >= 4.2 && !confirmed);
+      var logged = t >= 5.2;
+      setText(el.calves, logged ? "6" : "5");
+      setText(el.calved, logged ? "Mar 14" : "Mar 2024");
+      el.calves.classList.toggle("is-new", t >= 5.2 && t < 7.4);
+      el.calved.classList.toggle("is-new", t >= 5.2 && t < 7.4);
+
+      // 2. this year's weaning weight joins the chart
+      var grow = ease(prog(t, 7.6, 9));
+      el.line.setAttribute("stroke-dashoffset", (cowLen - (cowHead + (cowLen - cowHead) * grow)).toFixed(1));
+      op(el.lastDot, prog(t, 8.9, 9.1));
+      op(el.lastVal, prog(t, 9.1, 9.5));
+
+      // 3. preg check, her rank in the herd, the buyer's paperwork
+      el.status.classList.toggle("is-harvested", t >= 13.8);
+      setText(el.status, t >= 13.8 ? "Bred" : "With calf");
+      show(el.preg, t >= 13.6);
+      show(el.chip1, t >= 15.2);
+      show(el.chip2, t >= 16.6);
+    }
+  });
+
+  /* --- grazing: a move comes due, rested grass lights up, and the crew gets the plan --- */
+  play("grazing", {
+    T: 20,
+    STEPS: [0, 6, 12],
+    KEYS: [4, 10.5, 19],
+    render: function (t, el) {
+      show(el.request, t >= 0.6);
+      show(el.hl, t >= 2.4 && t < 12);
+      el.east.classList.toggle("is-free", t >= 6.2 && t < 12);
+      show(el.newMove, t >= 7);
+      show(el.newRest, t >= 8.4);
+      show(el.note, t >= 12.6);
       show(el.sent, t >= 15.4);
     }
   });

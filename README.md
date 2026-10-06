@@ -1,17 +1,28 @@
 # Arches Labs — landing page
 
-Static one-page site whose only job is to get ranch owners and managers to book a
-30-minute discovery call. No build step, no framework. Plain HTML, one CSS file, and
-small progressive-enhancement JS files (the page works with all of them off).
+Static site whose only job is to get ranch owners and managers to book a 30-minute
+discovery call. Two pages on one domain: the hunting-ranch page (`/`) and the
+cattle-ranch page (`/cattle/`), linked by the "Hunting ranches | Cattle ranches" tabs at
+the top of both. No build step, no framework. Plain HTML, one shared CSS file, and small
+progressive-enhancement JS files (both pages work with all of them off).
 
 ```
-index.html              all ten sections + footer; config block is at the top of <head>
-assets/css/styles.css    all styles
-assets/js/enhance.js     optional: link sync, topic tagging, on-page form submit
+index.html              hunting page: all ten sections + footer; config block is at the top of <head>
+cattle/index.html       cattle page (served at /cattle/): counts, calving, fence and water,
+                        cow records, grazing, contact. Its config block is a copy of the
+                        hunting page's; change both. All its paths start with ../
+assets/css/styles.css    all styles (both pages)
+assets/js/enhance.js     optional: link sync, topic tagging, on-page form submit (both pages)
 assets/js/survey-demo.js optional: plays the surveys section's flight demo + live dashboard
 assets/js/patrol-demo.js optional: plays the security section's night-patrol demo (inline SVG)
-assets/js/fence-demo.js  optional: plays the fences section's fence-check demo (map + phone)
-assets/js/demos.js       optional: plays the records and guests demos (one shared player)
+assets/js/fence-demo.js  optional: plays the fence-check demo (map + phone) on both pages; each
+                        page's markup supplies its finds' phone alerts (data-note-title/-text)
+assets/js/demos.js       optional: plays the small demos: records + guests (hunting), cow
+                        records + grazing (cattle); one shared player
+assets/js/cattle-count-demo.js  optional: cattle page head-count flight + dashboard
+                        (survey-demo.js's map and timing, counting cows/calves/bulls by pasture)
+assets/js/calving-demo.js       optional: cattle page night calving-check demo
+                        (patrol-demo.js's night map style, told for a calving pasture)
 assets/img/              processed WebP + JPEG (via tools/make-images.sh) + favicons
 assets/img/_src/         full-res originals (git-ignored); build script reads these
 tools/make-images.sh     one-time image processing (needs macOS `sips`; `cwebp` optional)
@@ -25,7 +36,7 @@ Any static server works. From the repo root:
 
 ```
 python3 -m http.server 8000
-# then open http://localhost:8000
+# then open http://localhost:8000 (hunting) or http://localhost:8000/cattle/ (cattle)
 ```
 
 Opening `index.html` directly with `file://` mostly works too, but a server matches
@@ -53,7 +64,7 @@ the `<script id="site-config">`, AND the visible markup where noted):**
 |---|---|---|
 | `CAL_URL` | `site-config` script + every `a[data-book]` href + booking link in Contact | **Set:** `https://calendar.app.google/qBJynKzATiRonKVb9` (Google Calendar appointment page). Buttons use the plain link; Google drops any `?topic=`/`utm` params. |
 | `FORM_ENDPOINT` | `site-config` script + `<form action="…">` | **Set:** `https://formsubmit.co/phdeyoung@gmail.com` (FormSubmit, no account). Notes go to phdeyoung@gmail.com with a copy to parkerpiombo@gmail.com (hidden `_cc` field; `_subject` and `_template` set the email subject and layout). The first submission sends an "Activate Form" email to phdeyoung@gmail.com; nothing is delivered until it's clicked. With JS on, `enhance.js` posts JSON to `formsubmit.co/ajax/…`; with JS off the browser posts to the plain URL and FormSubmit shows a captcha, then its own thank-you page. |
-| `SITE_URL` | `<link rel="canonical">`, `og:url`, `twitter:url`, `og:image`/`twitter:image` | Also update `robots.txt` and `sitemap.xml` to the same domain. |
+| `SITE_URL` | `<link rel="canonical">`, `og:url`, `twitter:url`, `og:image`/`twitter:image` | Also update `robots.txt` and `sitemap.xml` to the same domain, and the same tags in `cattle/index.html` (which point at `/cattle/` and `cattle-og-cover.jpg`). |
 | `ANALYTICS_ID` | `site-config` script + commented snippet before `</body>` | Optional. Uncomment the snippet only if you want analytics. |
 
 **Images — mostly done.** Nine photos are placed, processed to responsive WebP + JPEG
@@ -75,7 +86,10 @@ done. `assets/img/_src/` is git-ignored — keep your own backup of the original
 ## The research tag (why each section has its own CTA)
 
 Every section's "book" button carries a `data-topic` (`intro`, `surveys`, `security`, `fences`,
-`records`, `hospitality`, `cattle`, `contact`, `header`, `footer`). Bookings go to a Google Calendar
+`records`, `hospitality`, `cattle`, `contact`, `header`, `footer`). The cattle page uses
+its own (`cattle-intro`, `counts`, `calving`, `fence-water`, `cattle-records`, `grazing`,
+`cattle-contact`, `cattle-header`, `cattle-footer`), its form defaults to `cattle-general`,
+and its emails arrive with the subject "New note from the Arches Labs cattle page". Bookings go to a Google Calendar
 appointment page, which doesn't record `topic=` or UTM params, so the booking itself
 won't say which section sent the visitor; ask on the call. The contact form still
 carries the signal in its hidden `topic` field, set from whichever section's "or send us

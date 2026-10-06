@@ -1,4 +1,5 @@
-/* Arches Labs — fences section fence-check demo (section 5).
+/* Arches Labs — fence-check demo: the hunting page's fences section and the cattle
+   page's fence-and-water section (same map geometry; each page's markup supplies its finds).
    Progressive enhancement only. Without this file the SVG map and the phone show the
    finished check (whole line checked, both breaks pinned and listed) and every step's text.
    This script plays one 30-second loop: the drone leaves the barn and follows the fence,
@@ -30,10 +31,11 @@
   // fence legs [start, end, from, to] as fractions of the fence; the drone holds over
   // each find in the gaps between legs. The finds' fractions come from the pins below.
   var HOLDS = [[10.8, 13.8], [17.7, 19.2]];
-  var NOTES = [
-    [13.9, 17.2, "Fence down on the East line", "About 40 ft of wire under a fallen tree. Tap for directions."],
-    [19.3, 22, "Washout at the creek crossing", "A gap under the bottom wire on the south line. Tap for the photo."]
-  ];
+  // the phone alert for each find; its words live on the find's list item, so each
+  // page (hunting, cattle) says what its own check found
+  var NOTES = [[13.9, 17.2, el.find1], [19.3, 22, el.find2]].map(function (n) {
+    return [n[0], n[1], n[2].getAttribute("data-note-title"), n[2].getAttribute("data-note-text")];
+  });
 
   /* --- helpers --- */
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
