@@ -340,9 +340,26 @@ a:hover { color: var(--rust); }
 .solution__list a:hover { color: var(--ink); }
 .solution__list a:hover .solution__name { text-decoration: underline; text-decoration-color: var(--rust); text-underline-offset: 0.2em; }
 .solution__list a:hover::after { transform: translateX(3px); }
-/* cattle page: five drone lines beside three software lines; the shorter list sits under
-   its paragraph instead of being pushed to the bottom of the panel */
-.solutions__grid--uneven .solution__list { margin-top: 0; }
+/* the other page: a bordered row under the two panels, its button in the site's
+   outline style so it doesn't compete with "Book a call" */
+.switch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem 2rem;
+  margin-top: clamp(1.25rem, 2.5vw, 2rem);
+  padding: 1rem clamp(1.25rem, 3vw, 2.25rem);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.55);
+}
+.switch__text { margin: 0; font-size: 1.05rem; color: var(--ink-soft); }
+.switch__text b { margin-right: 0.3rem; font-family: var(--ui); font-weight: 700; color: var(--ink); }
+.switch__btn { flex: none; }
+.switch__btn::after { content: "→"; margin-left: 0.55rem; transition: transform 150ms ease; }
+.switch__btn:hover::after { transform: translateX(3px); }
+@media (max-width: 39.99rem) { .switch__btn { width: 100%; } }
 
 /* ----- who we are ----- */
 .founders {
