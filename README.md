@@ -32,12 +32,17 @@ IMAGE_CREDITS.md         one row per image; footer "Photography" list mirrors it
 
 ## Run locally
 
-Any static server works. From the repo root:
+From the repo root:
 
 ```
-python3 -m http.server 8000
+python3 tools/serve.py
 # then open http://localhost:8000 (hunting) or http://localhost:8000/cattle/ (cattle)
 ```
+
+`tools/serve.py` is `python3 -m http.server` with caching turned off. Use it instead of
+the plain server: that one sends no cache header, so Chrome keeps showing old copies of
+the pages and `styles.css` for hours after they change (new sections look missing or
+unstyled). If you do use the plain server, hard-reload with Cmd+Shift+R.
 
 Opening `index.html` directly with `file://` mostly works too, but a server matches
 production and lets the form's `fetch` path run.
