@@ -703,6 +703,30 @@ a:hover { color: var(--rust); }
 .survey__toggle:hover,
 .fence__toggle:hover,
 .demo__toggle:hover { background: color-mix(in srgb, var(--slate) 8%, transparent); }
+/* pause bars while playing, play triangle while paused */
+.survey__toggle::before,
+.fence__toggle::before,
+.demo__toggle::before,
+.patrol__toggle::before {
+  content: "";
+  display: inline-block;
+  box-sizing: border-box;
+  width: 0.7em;
+  height: 0.8em;
+  margin-right: 0.5em;
+  vertical-align: -0.05em;
+  border-style: solid;
+  border-color: currentColor;
+  border-width: 0 0.22em;
+}
+.is-paused .survey__toggle::before,
+.is-paused .fence__toggle::before,
+.is-paused .demo__toggle::before,
+.is-paused .patrol__toggle::before {
+  width: 0;
+  border-color: transparent transparent transparent currentColor;
+  border-width: 0.4em 0 0.4em 0.7em;
+}
 
 /* phones: window runs edge to edge; the "saved" card shrinks to a strip */
 @media (max-width: 39.99rem) {

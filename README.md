@@ -104,6 +104,6 @@ Cal.com or Calendly later, add `?topic=…&utm_medium=…` back to the `data-boo
 ## Accessibility / quality
 
 Responsive from 320px. Semantic landmarks, single `h1`, ordered headings, labeled
-inputs, visible keyboard focus, `prefers-reduced-motion` respected, AA contrast, Open
+inputs, visible keyboard focus, `prefers-reduced-motion` respected for page transitions (the demos still autoplay; each has a Pause/Play button), AA contrast, Open
 Graph + Twitter card tags, SVG + PNG favicons. Works fully with JavaScript disabled —
 all links resolve and the form submits natively to `FORM_ENDPOINT`.

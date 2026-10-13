@@ -7,7 +7,7 @@
    finished count (every animal marked, final numbers) and every step's text. The panel is
    recounted from the .sd-a markers as each one is found, so the markers in the SVG are
    the only data. STEPS start times must line up with the five <li class="survey__step">.
-   Respects prefers-reduced-motion (starts paused on a still frame) and pauses itself
+   Plays on its own; the Pause/Play button under the demo stops and restarts it. Pauses itself
    while the demo is scrolled off-screen. */
 (function () {
   "use strict";
@@ -372,10 +372,9 @@
   }
 
   /* --- playback --- */
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var playing = !reduce;
+  var playing = true;
   var onScreen = true;
-  var t = reduce ? KEYS[3] : 0;
+  var t = 0;
   var lastNow = 0;
   var raf = 0;
 

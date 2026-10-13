@@ -4,7 +4,7 @@
    Progressive enhancement only. Without this file each demo shows its finished state
    and every step's text. One small player (below) runs them all: it loops a timeline,
    keeps the numbered steps in sync (the active step opens, its bar fills, clicking a
-   step jumps to it), respects prefers-reduced-motion (starts paused on a still frame),
+   step jumps to it), plays on its own with a Pause/Play button under each demo,
    and pauses while the demo is off-screen. Each scene only says what's on screen at
    time t. STEPS start times must line up with that demo's <li class="demo__step">s. */
 (function () {
@@ -67,10 +67,9 @@
       if (bars[i]) { bars[i].style.transform = "scaleX(" + prog(t, o.STEPS[i], stepEnd).toFixed(3) + ")"; }
     }
 
-    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var playing = !reduce;
+    var playing = true;
     var onScreen = true;
-    var t = reduce ? o.KEYS[o.KEYS.length - 1] : 0;
+    var t = 0;
     var last = 0;
     var raf = 0;
 

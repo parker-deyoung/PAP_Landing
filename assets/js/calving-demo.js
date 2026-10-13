@@ -5,8 +5,8 @@
    drives out, then logs the calving and docks.
    Progressive enhancement only. Without this file the SVG shows one static frame (heifer
    tagged, alert sent) and every step's text is visible. STEPS start times must line up
-   with the six <li class="patrol__step"> in order. Respects prefers-reduced-motion
-   (starts paused on a still frame) and pauses itself while scrolled off-screen. */
+   with the six <li class="patrol__step"> in order. Plays on its own; the Pause/Play button
+   under the demo stops and restarts it. Pauses itself while scrolled off-screen. */
 (function () {
   "use strict";
 
@@ -209,10 +209,9 @@
   }
 
   /* --- playback --- */
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var playing = !reduce;
+  var playing = true;
   var onScreen = true;
-  var t = reduce ? KEYS[3] : 0;
+  var t = 0;
   var last = 0;
   var raf = 0;
 

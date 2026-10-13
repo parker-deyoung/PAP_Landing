@@ -4,7 +4,7 @@
    This script plays the SVG on one 30-second loop and keeps the six steps in sync:
    the active step opens, its bar fills, and clicking a step jumps to it.
    STEPS start times must line up with the six <li class="patrol__step"> in order.
-   Respects prefers-reduced-motion (starts paused on a still frame) and pauses
+   Plays on its own; the Pause/Play button under the demo stops and restarts it. Pauses
    itself while the demo is scrolled off-screen. */
 (function () {
   "use strict";
@@ -222,10 +222,9 @@
   }
 
   /* --- playback --- */
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var playing = !reduce;
+  var playing = true;
   var onScreen = true;
-  var t = reduce ? KEYS[3] : 0;
+  var t = 0;
   var last = 0;
   var raf = 0;
 

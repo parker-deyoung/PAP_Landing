@@ -6,7 +6,7 @@
    holds over each break while its photo comes up, the phone gets an alert, the drone
    flies home, and later that morning the downed section is marked fixed.
    STEPS start times must line up with the four <li class="fence__step"> in order.
-   Respects prefers-reduced-motion (starts paused on a still frame) and pauses itself
+   Plays on its own; the Pause/Play button under the demo stops and restarts it. Pauses itself
    while the demo is scrolled off-screen. */
 (function () {
   "use strict";
@@ -236,10 +236,9 @@
   }
 
   /* --- playback --- */
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var playing = !reduce;
+  var playing = true;
   var onScreen = true;
-  var t = reduce ? KEYS[2] : 0;
+  var t = 0;
   var last = 0;
   var raf = 0;
 
