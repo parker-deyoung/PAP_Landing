@@ -1,24 +1,33 @@
 # Arches Labs — landing page
 
 Static site whose only job is to get ranch owners and managers to book a 30-minute
-discovery call. Two pages on one domain: the hunting-ranch page (`/`) and the
-cattle-ranch page (`/cattle/`), linked by the "Hunting ranches | Cattle ranches" tabs at
-the top of both. No build step, no framework. Plain HTML, one shared CSS file, and small
-progressive-enhancement JS files (both pages work with all of them off).
+discovery call. Three pages on one domain: the hunting-ranch page (`/`), the
+cattle-ranch page (`/cattle/`), and the local AI page (`/local-ai/`), linked by the
+"Hunting ranches | Cattle ranches | Local AI" tabs at the top of each. No build step, no
+framework. Plain HTML, one shared CSS file (plus one for the local AI page's own look), and
+small progressive-enhancement JS files (every page works with all of them off).
 
 ```
 index.html              hunting page: all ten sections + footer; config block is at the top of <head>
 cattle/index.html       cattle page (served at /cattle/): counts, temperature checks, calving,
                         fence and water, cow records, grazing, herding, contact. Its config block is a copy of the
                         hunting page's; change both. All its paths start with ../
-assets/css/styles.css    all styles (both pages)
-assets/js/enhance.js     optional: link sync, topic tagging, on-page form submit (both pages)
+local-ai/index.html     local AI page (served at /local-ai/): AI agents on hardware the customer owns,
+                        led by defense teams on air-gapped networks. Its own dark look, one demo.
+                        Same config-block copy and ../ paths as the cattle page
+assets/css/styles.css    all shared styles (every page)
+assets/css/local-ai.css  the local AI page's look, loaded after styles.css
+assets/js/enhance.js     optional: link sync, topic tagging, on-page form submit (every page)
+assets/js/contours.js    optional: the local AI page's drifting contour map (canvas). Holds still for
+                        prefers-reduced-motion and has a Pause map button; with JS off the page
+                        shows assets/img/contours.svg instead
 assets/js/survey-demo.js optional: plays the surveys section's flight demo + live dashboard
 assets/js/patrol-demo.js optional: plays the security section's night-patrol demo (inline SVG)
 assets/js/fence-demo.js  optional: plays the fence-check demo (map + phone) on both pages; each
                         page's markup supplies its finds' phone alerts (data-note-title/-text)
-assets/js/demos.js       optional: one shared player for records + guests (hunting) and cow
-                        records, grazing, temperature checks, herding (cattle)
+assets/js/demos.js       optional: one shared player for records + guests (hunting), cow
+                        records, grazing, temperature checks, herding (cattle), and the sample
+                        job (local AI)
 assets/js/cattle-count-demo.js  optional: cattle page head-count flight + dashboard
                         (survey-demo.js's map and timing, counting cows/calves/bulls by pasture)
 assets/js/calving-demo.js       optional: cattle page night calving-check demo
@@ -26,6 +35,8 @@ assets/js/calving-demo.js       optional: cattle page night calving-check demo
 assets/img/              processed WebP + JPEG (via tools/make-images.sh) + favicons
 assets/img/_src/         full-res originals (git-ignored); build script reads these
 tools/make-images.sh     one-time image processing (needs macOS `sips`; `cwebp` optional)
+tools/make-contours.js   redraws assets/img/contours.svg (the no-JS map) with contours.js's own code:
+                        `node tools/make-contours.js` after changing its SEED, SCALE, or STEP
 robots.txt  sitemap.xml  .nojekyll
 IMAGE_CREDITS.md         one row per image; footer "Photography" list mirrors it
 ```
@@ -36,7 +47,8 @@ From the repo root:
 
 ```
 python3 tools/serve.py
-# then open http://localhost:8000 (hunting) or http://localhost:8000/cattle/ (cattle)
+# then open http://localhost:8000 (hunting), http://localhost:8000/cattle/ (cattle),
+# or http://localhost:8000/local-ai/ (local AI)
 ```
 
 `tools/serve.py` is `python3 -m http.server` with caching turned off. Use it instead of
@@ -69,7 +81,7 @@ the `<script id="site-config">`, AND the visible markup where noted):**
 |---|---|---|
 | `CAL_URL` | `site-config` script + every `a[data-book]` href + booking link in Contact | **Set:** `https://calendar.app.google/qBJynKzATiRonKVb9` (Google Calendar appointment page). Buttons use the plain link; Google drops any `?topic=`/`utm` params. |
 | `FORM_ENDPOINT` | `site-config` script + `<form action="…">` | **Set:** `https://formsubmit.co/phdeyoung@gmail.com` (FormSubmit, no account). Notes go to phdeyoung@gmail.com with a copy to parkerpiombo@gmail.com (hidden `_cc` field; `_subject` and `_template` set the email subject and layout). The first submission sends an "Activate Form" email to phdeyoung@gmail.com; nothing is delivered until it's clicked. With JS on, `enhance.js` posts JSON to `formsubmit.co/ajax/…`; with JS off the browser posts to the plain URL and FormSubmit shows a captcha, then its own thank-you page. |
-| `SITE_URL` | `<link rel="canonical">`, `og:url`, `twitter:url`, `og:image`/`twitter:image` | Also update `robots.txt` and `sitemap.xml` to the same domain, and the same tags in `cattle/index.html` (which point at `/cattle/` and `cattle-og-cover.jpg`). |
+| `SITE_URL` | `<link rel="canonical">`, `og:url`, `twitter:url`, `og:image`/`twitter:image` | Also update `robots.txt` and `sitemap.xml` to the same domain, and the same tags in `cattle/index.html` (which point at `/cattle/` and `cattle-og-cover.jpg`) and `local-ai/index.html` (`/local-ai/` and `local-ai-og-cover.jpg`, a 1200x630 card of the hero drawn on the same map). |
 | `ANALYTICS_ID` | `site-config` script + commented snippet before `</body>` | Optional. Uncomment the snippet only if you want analytics. |
 
 **Images — mostly done.** Nine photos are placed, processed to responsive WebP + JPEG
@@ -94,7 +106,9 @@ Every section's "book" button carries a `data-topic` (`intro`, `surveys`, `secur
 `records`, `hospitality`, `cattle`, `contact`, `header`, `footer`). The cattle page uses
 its own (`cattle-intro`, `counts`, `temps`, `calving`, `fence-water`, `cattle-records`, `grazing`, `herding`,
 `cattle-contact`, `cattle-header`, `cattle-footer`), its form defaults to `cattle-general`,
-and its emails arrive with the subject "New note from the Arches Labs cattle page". Bookings go to a Google Calendar
+and its emails arrive with the subject "New note from the Arches Labs cattle page". The
+local AI page does the same with `ai-header`, `ai-intro`, `ai-contact`, `ai-footer`, form
+default `ai-general`, subject "New note from the Arches Labs local AI page". Bookings go to a Google Calendar
 appointment page, which doesn't record `topic=` or UTM params, so the booking itself
 won't say which section sent the visitor; ask on the call. The contact form still
 carries the signal in its hidden `topic` field, set from whichever section's "or send us

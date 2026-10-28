@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+  ============================================================================
+  ARCHES LABS — LOCAL AI PAGE (served at /local-ai/)
+  ============================================================================
+  The third tab: AI agents set up on hardware the customer owns, for any small business,
+  led by defense teams on air-gapped networks. Same company, booking link, phone, email,
+  and form endpoint as the hunting page (../index.html), so the config block below is a
+  copy of that page's: change a value there, change it here too.
+
+  Its own look on purpose, and fewer demos: a dark topographic sheet with a contour map
+  drifting behind everything (canvas.contours, drawn by assets/js/contours.js), styled by
+  assets/css/local-ai.css on top of the shared styles.css. One demo (the "agent" scene in
+  assets/js/demos.js). With JS off the map is a still frame (assets/img/contours.svg).
+
+  Assets are one level up (../assets/). Every link and image path here starts with ../
+  ============================================================================
+-->
+
+<title>Arches Labs — AI agents on hardware you own</title>
+<meta name="description" content="AI agents set up on computers inside your building, working on your own files and systems. Nothing leaves your network. Built for defense teams on air-gapped networks and any business that keeps its data in-house.">
+
+<link rel="canonical" href="https://archeslab.com/local-ai/">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Arches Labs">
+<meta property="og:title" content="AI agents on ground you own">
+<meta property="og:description" content="AI agents set up on hardware inside your building. Nothing leaves your network. Built for air-gapped teams: book a 30-minute call.">
+<meta property="og:url" content="https://archeslab.com/local-ai/">
+<meta property="og:image" content="https://archeslab.com/assets/img/local-ai-og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pale contour lines on a dark blue-green map, behind the words: AI agents on ground you own.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI agents on ground you own">
+<meta name="twitter:description" content="AI agents set up on hardware inside your building. Nothing leaves your network. Built for air-gapped teams: book a 30-minute call.">
+<meta name="twitter:image" content="https://archeslab.com/assets/img/local-ai-og-cover.jpg">
+<meta name="twitter:image:alt" content="Pale contour lines on a dark blue-green map, behind the words: AI agents on ground you own.">
+
+<meta name="theme-color" content="#101a1c">
+<link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- the ranch pages' two faces, with Archivo's wide end (map labels) and Source Serif's light end (headlines) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,400&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/local-ai.css">
+<noscript><style>.page-ai { background-image: url("../assets/img/contours.svg"); }</style></noscript>
+
+<script id="site-config">
+  /* Copy of the hunting page's config (../index.html). Keep the two in sync. */
+  window.SITE_CONFIG = {
+    CAL_URL:      "https://calendar.app.google/qBJynKzATiRonKVb9",
+    FORM_ENDPOINT: "https://formsubmit.co/phdeyoung@gmail.com",
+    PHONE:        "720-498-7552",
+    PHONE_TEL:    "+17204987552",
+    EMAIL:        "phdeyoung@gmail.com",
+    SITE_URL:     "https://archeslab.com",                   // REPLACE_ME
+    ANALYTICS_ID: ""                                              // optional
+  };
+</script>
+</head>
+
+<body class="page-ai">
+<canvas class="contours" aria-hidden="true"></canvas>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="audience" aria-label="Arches Labs pages">
+  <div class="page audience__inner">
+    <a class="audience__tab" href="../">Hunting<span class="audience__long">&nbsp;ranches</span></a>
+    <a class="audience__tab" href="../cattle/">Cattle<span class="audience__long">&nbsp;ranches</span></a>
+    <a class="audience__tab" href="./" aria-current="page">Local AI</a>
+  </div>
+</nav>
+
+<header class="site-header">
+  <div class="page site-header__inner">
+    <!-- the lettering logo's dark red "LABS" disappears on this ground, so the name is set in type -->
+    <a class="wordmark" href="#main" aria-label="Arches Labs, local AI, top of page">
+      <picture>
+        <source type="image/webp" srcset="../assets/img/logo-mark.webp">
+        <img class="wordmark__mark" src="../assets/img/logo-mark.png" width="210" height="150" alt="">
+      </picture>
+      <span class="ai-wordmark">Arches Labs</span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#setup">How it's set up</a>
+      <a href="#job">A sample job</a>
+      <a href="#about">Who we are</a>
+    </nav>
+    <a class="btn btn--primary btn--small btn--book" data-book data-topic="ai-header"
+       href="https://calendar.app.google/qBJynKzATiRonKVb9">
+      Book a call
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===================================================================
+       1. HERO
+       Type straight on the map. The note at the bottom is shown by
+       contours.js once it has drawn the map (it isn't true without JS).
+       =================================================================== -->
+  <section class="ai-hero ai-halo" aria-labelledby="hero-title">
+    <div class="page">
+      <p class="ai-label">For defense and other <span class="nowrap">air-gapped teams</span></p>
+      <h1 id="hero-title">AI agents on ground you own.</h1>
+      <p class="ai-hero__lede">
+        We set up AI agents on computers inside your building, working on your own files and
+        systems. Nothing leaves your network. We're setting up our first partner sites now.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn--primary btn--book" data-book data-topic="ai-intro"
+           href="https://calendar.app.google/qBJynKzATiRonKVb9">
+          Book a 30-minute call
+        </a>
+        <a class="btn btn--outline-light" data-tel href="tel:+17204987552">
+          Call or text 720-498-7552
+        </a>
+      </div>
+
+      <div class="ai-hero__foot">
+        <p class="ai-note" data-contours-note hidden>The map behind this page is drawn by your own computer, as you read.</p>
+        <button type="button" class="ai-pause" data-contours-toggle aria-pressed="false" hidden>Pause map</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       2. HOW IT'S SET UP
+       A map legend: each line style is one fact about where the work happens.
+       =================================================================== -->
+  <section class="ai-section ai-halo" id="setup" aria-labelledby="setup-title">
+    <div class="page split">
+      <div class="split__body">
+        <h2 id="setup-title">Your network is the boundary.</h2>
+        <p class="lede">
+          The agents, the AI model, and everything they touch stay on hardware on your
+          property. We set it up there and hand you the keys.
+        </p>
+      </div>
+
+      <div class="ai-legend">
+        <p class="ai-label ai-legend__title">Legend</p>
+        <dl>
+          <div class="ai-legend__row">
+            <dt>
+              <svg class="ai-legend__key" viewBox="0 0 56 16" aria-hidden="true" focusable="false">
+                <path d="M2 8h52" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+              Your network
+            </dt>
+            <dd>The agents and the model run here, on machines you can walk up to and unplug.</dd>
+          </div>
+          <div class="ai-legend__row">
+            <dt>
+              <svg class="ai-legend__key" viewBox="0 0 56 16" aria-hidden="true" focusable="false">
+                <path d="M2 8h52" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.6"/>
+                <path d="M23 3l10 10M33 3L23 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              Outside connections
+            </dt>
+            <dd>None needed. It installs and runs behind an air gap.</dd>
+          </div>
+          <div class="ai-legend__row">
+            <dt>
+              <svg class="ai-legend__key" viewBox="0 0 56 16" aria-hidden="true" focusable="false">
+                <circle cx="28" cy="8" r="5" fill="currentColor"/>
+              </svg>
+              Your people
+            </dt>
+            <dd>Every step an agent takes is logged where your team can read it, and a person signs off on the work.</dd>
+          </div>
+          <div class="ai-legend__row">
+            <dt>
+              <svg class="ai-legend__key" viewBox="0 0 56 16" aria-hidden="true" focusable="false">
+                <path d="M28 2.5l6.5 11h-13z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+              Updates
+            </dt>
+            <dd>New models and fixes come in on drives you check, on your schedule.</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       3. A SAMPLE JOB (the page's one demo)
+       The "agent" scene in assets/js/demos.js. The agent's plan shows from the
+       start; each line lights up when it's done while "Read on site" climbs and
+       "Sent outside" stays at zero. With JS off every line shows done.
+       =================================================================== -->
+  <section class="ai-section ai-section--band" id="job" aria-labelledby="job-title">
+    <div class="page split">
+      <h2 id="job-title">One job, start to finish</h2>
+      <div class="split__body">
+        <p class="lede">
+          A quote request comes in. An agent works it from your past bids, on your own
+          server, then hands it to a person to sign off.
+        </p>
+      </div>
+    </div>
+
+    <div class="page job" data-demo="agent">
+      <figure class="job__stage">
+        <div class="job__window" role="img" aria-label="Illustration of an AI agent working a quote request on a company's own server. It reads the 41-page request, searches 2,316 past bids on the file server, finds four close matches, pulls their labor hours and material costs, drafts the quote and cover letter, flags two line items it couldn't price, and hands the draft to a person to sign off. About 1.9 GB is read on site and nothing is sent outside.">
+          <div class="job__bar" aria-hidden="true">
+            <span class="job__title">Job 0418 <span class="job__sub">Quote for RFQ 25-0117</span></span>
+            <span class="job__state" data-el="state">Needs your OK</span>
+          </div>
+          <div class="job__body" aria-hidden="true">
+            <ol class="job__log" role="list">
+              <li class="job__line" data-el="l1"><span class="job__mark"></span><span class="job__time">8:02</span><span>Read <code>RFQ-25-0117.pdf</code>: 41 pages, 3 drawings</span></li>
+              <li class="job__line" data-el="l2"><span class="job__mark"></span><span class="job__time">8:03</span><span>Searched past bids in <code>\\files\contracts</code>: 2,316 files</span></li>
+              <li class="job__line" data-el="l3"><span class="job__mark"></span><span class="job__time">8:05</span><span>Found 4 close matches, 2019 to 2024</span></li>
+              <li class="job__line" data-el="l4"><span class="job__mark"></span><span class="job__time">8:06</span><span>Pulled labor hours and material costs from those 4 jobs</span></li>
+              <li class="job__line" data-el="l5"><span class="job__mark"></span><span class="job__time">8:11</span><span>Drafted the quote and the cover letter</span></li>
+              <li class="job__line" data-el="l6"><span class="job__mark"></span><span class="job__time">8:12</span><span>Flagged 2 line items it couldn't price</span></li>
+              <li class="job__line" data-el="l7"><span class="job__mark"></span><span class="job__time">8:12</span><span>Handed the draft to you to sign off</span></li>
+            </ol>
+            <dl class="job__meters">
+              <div class="job__meter job__meter--big">
+                <dt>Read on site</dt>
+                <dd data-el="read">1.9 GB</dd>
+              </div>
+              <div class="job__meter job__meter--big job__meter--out">
+                <dt>Sent outside</dt>
+                <dd>0 bytes</dd>
+              </div>
+              <div class="job__meter">
+                <dt>Running on</dt>
+                <dd>Your back-office server</dd>
+              </div>
+              <div class="job__meter">
+                <dt>Internet</dt>
+                <dd>Not connected</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <figcaption class="demo__caption">
+          <span>Illustration only. The job and files are made up.</span>
+          <button type="button" class="demo__toggle" data-el="toggle" hidden>Pause</button>
+        </figcaption>
+      </figure>
+
+      <div class="ai-also">
+        <p class="ai-label">Other places to start</p>
+        <ul role="list">
+          <li>Answering questions from your manuals and specs</li>
+          <li>Checking drawings against the spec</li>
+          <li>Turning test data into the report</li>
+          <li>Finding anything on the shared drive</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       4. WHO WE ARE
+       Text only on this page (the founder photos are hunting photos).
+       =================================================================== -->
+  <section class="ai-section ai-halo" id="about" aria-labelledby="who-title">
+    <div class="page split">
+      <h2 id="who-title">Who we are</h2>
+      <div class="split__body">
+        <p class="lede">Arches Labs is Parker DeYoung and Parker Piombo.</p>
+        <ul class="ai-people" role="list">
+          <li>
+            <h3 class="ai-people__name">Parker DeYoung</h3>
+            <p>Built computer-vision systems for U.S. Air Force drones and secure, locally hosted
+            AI. Published at EMNLP, a leading AI conference, on benchmarking AI agents and making
+            them more reliable.</p>
+          </li>
+          <li>
+            <h3 class="ai-people__name">Parker Piombo</h3>
+            <p>Studies business and brings experience from Deloitte.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       5. CONTACT
+       Same form and endpoint as the ranch pages, with this page's questions.
+       =================================================================== -->
+  <section class="ai-section ai-section--solid" id="contact" aria-labelledby="contact-title">
+    <div class="page contact">
+      <div class="contact__info">
+      <h2 id="contact-title">What would you hand an agent first?</h2>
+      <p class="lede">
+        Tell us how your network is set up and what eats your team's week. We'll tell you
+        what an agent could take off your plate.
+      </p>
+
+      <div class="contact-methods">
+        <p class="contact-method">
+          <span class="contact-method__label">Call or text</span>
+          <a class="contact-method__value" data-tel href="tel:+17204987552">720-498-7552</a>
+        </p>
+        <p class="contact-method">
+          <span class="contact-method__label">Email</span>
+          <a class="contact-method__value" data-email href="mailto:phdeyoung@gmail.com">phdeyoung@gmail.com</a>
+        </p>
+        <p class="contact-method">
+          <span class="contact-method__label">Book a time directly</span>
+          <a class="btn btn--primary btn--book" data-book data-topic="ai-contact"
+             href="https://calendar.app.google/qBJynKzATiRonKVb9">
+            Open the booking calendar
+          </a>
+        </p>
+      </div>
+      </div>
+
+      <div class="form-panel">
+        <h3 id="form-title">Or send a note</h3>
+        <p class="form-panel__intro">A few questions. Answer the last one if nothing else.</p>
+
+        <form id="contact-form" method="post"
+              action="https://formsubmit.co/phdeyoung@gmail.com"
+              aria-labelledby="form-title" aria-describedby="form-status">
+
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label for="f-operation">Company</label>
+            <input id="f-operation" name="operation" type="text" autocomplete="organization">
+          </div>
+
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="f-phone">Phone</label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+          </div>
+
+          <div class="field">
+            <label for="f-network">How is your network set up?</label>
+            <select id="f-network" name="network">
+              <option value="">Select one</option>
+              <option value="air-gapped">Air-gapped</option>
+              <option value="closed">Closed network, no internet</option>
+              <option value="online-in-house">On the internet, but data stays in-house</option>
+              <option value="not-sure">Not sure</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="f-team">People on your team</label>
+            <select id="f-team" name="team">
+              <option value="">Select a range</option>
+              <option value="under-25">Under 25</option>
+              <option value="25-100">25 to 100</option>
+              <option value="100-500">100 to 500</option>
+              <option value="500-plus">500 or more</option>
+            </select>
+          </div>
+
+          <div class="field field--wide">
+            <label for="f-week">What eats the most of your team's week?</label>
+            <textarea id="f-week" name="week" rows="6"></textarea>
+          </div>
+
+          <!-- research tag: set from the section CTA the visitor clicked (JS). No-JS default below. -->
+          <input type="hidden" id="f-topic" name="topic" value="ai-general">
+          <!-- FormSubmit settings: who gets a copy, the email subject, and the email layout -->
+          <input type="hidden" name="_cc" value="parkerpiombo@gmail.com">
+          <input type="hidden" name="_subject" value="New note from the Arches Labs local AI page">
+          <input type="hidden" name="_template" value="table">
+          <!-- spam honeypot: real people leave this empty; not a counted field -->
+          <div class="hp" aria-hidden="true">
+            <label for="f-company-url">Company website</label>
+            <input id="f-company-url" name="company_url" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn--primary">Send note</button>
+          </div>
+
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="page">
+    <div class="footer-grid">
+      <div>
+        <picture>
+          <source type="image/webp" srcset="../assets/img/logo-mark.webp">
+          <img class="footer-mark" src="../assets/img/logo-mark.png" width="210" height="150" loading="lazy" decoding="async" alt="">
+        </picture>
+        <p class="footer-brand">Arches Labs</p>
+        <p class="footer-place">Local AI, on hardware you own</p>
+      </div>
+      <ul class="footer-contact" role="list">
+        <li><a data-tel href="tel:+17204987552">Call or text 720-498-7552</a></li>
+        <li><a data-email href="mailto:phdeyoung@gmail.com">phdeyoung@gmail.com</a></li>
+        <li>
+          <a class="btn--book" data-book data-topic="ai-footer"
+             href="https://calendar.app.google/qBJynKzATiRonKVb9">
+            Book a 30-minute call
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <p class="footer-legal">&copy; 2026 Arches Labs.</p>
+  </div>
+</footer>
+
+<script src="../assets/js/enhance.js" defer></script>
+<script src="../assets/js/contours.js" defer></script>
+<script src="../assets/js/demos.js" defer></script>
+</body>
+</html>

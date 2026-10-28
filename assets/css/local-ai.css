@@ -1,0 +1,403 @@
+/* ==========================================================================
+   Arches Labs — local AI page (/local-ai/). Loaded after styles.css.
+
+   Its own look on purpose: the page is a dark topographic sheet. A contour map drifts
+   behind everything (canvas.contours, drawn by assets/js/contours.js) and text sits
+   straight on it with a halo, the way labels sit on a printed map. Only the legend,
+   the demo, the job band, and the contact band get a surface of their own.
+
+   Same faces as the ranch pages, set differently: Source Serif 4 at its light end for
+   headlines, Archivo at its wide end, in caps, for map-style labels.
+
+   Palette (AA-checked on --ground):
+     --ground      #101A1C  page: deep blue-green slate
+     --ground-high #172528  demo window, form panel
+     --ground-low  #0A1113  tab strip, header, footer, contact band
+     --bone        #ECE6D9  text, ~15:1
+     --bone-soft   #A9B2AD  secondary text, ~8:1
+     --sand        #D6C49E  contour lines (drawn at low alpha), legend keys, file names
+     --ochre       #D9AE62  index contours, focus ring, "working" marks; the one warm accent
+   ========================================================================== */
+
+.page-ai {
+  --ground: #101a1c;
+  --ground-high: #172528;
+  --ground-low: #0a1113;
+  --bone: #ece6d9;
+  --bone-soft: #a9b2ad;
+  --sand: #d6c49e;
+  --ochre: #d9ae62;
+  --rule: rgba(236, 230, 217, 0.13);
+  --rule-strong: rgba(236, 230, 217, 0.26);
+  --wide: "Archivo", "Helvetica Neue", Arial, sans-serif;
+
+  color-scheme: dark;
+  background-color: var(--ground);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: var(--bone);
+}
+.page-ai :focus-visible { outline-color: var(--ochre); }
+.page-ai ::selection { background: var(--ochre); color: var(--ground-low); }
+
+/* headlines in the serif, light and large; small headings stay in Archivo */
+.page-ai h1,
+.page-ai h2 {
+  font-family: var(--text);
+  font-stretch: normal;
+  letter-spacing: -0.02em;
+  color: var(--bone);
+}
+.page-ai h1 {
+  max-width: 11ch;
+  margin: 0 0 0.35em;
+  font-size: clamp(3rem, 1.3rem + 6.2vw, 7.5rem);
+  font-weight: 320;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+.page-ai h2 {
+  font-size: clamp(2.1rem, 1.4rem + 2.3vw, 3.5rem);
+  font-weight: 380;
+  line-height: 1.04;
+}
+.page-ai h3 { color: var(--bone); }
+.page-ai .lede { color: var(--bone); }
+.page-ai main a:not(.btn) { color: var(--bone); }
+.page-ai main a:not(.btn):hover { color: var(--ochre); }
+
+/* map-style label: wide caps */
+.ai-label {
+  margin: 0 0 1.25rem;
+  font-family: var(--wide);
+  font-size: 0.74rem;
+  font-weight: 600;
+  font-stretch: 125%;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+.nowrap { white-space: nowrap; }
+
+/* label halo: text on the open map gets a soft edge of ground color, so contour lines
+   stop short of the letters (text-shadow is inherited; controls turn it off) */
+.ai-halo { text-shadow: 0 0 2px var(--ground), 0 0 6px var(--ground), 0 0 14px var(--ground); }
+.ai-halo .btn,
+.ai-halo .ai-legend { text-shadow: none; }
+
+/* buttons: bone on the dark ground */
+.page-ai .btn--primary { background: var(--bone); color: var(--ground-low); border-color: var(--bone); }
+.page-ai .btn--primary:hover { background: #fff; border-color: #fff; color: var(--ground-low); }
+.page-ai .btn--outline-light { color: var(--bone); border-color: var(--rule-strong); }
+.page-ai .btn--outline-light:hover { border-color: var(--bone); background: rgba(236, 230, 217, 0.06); color: var(--bone); }
+
+/* ----- the map ----- */
+.contours {
+  --contour: rgba(214, 196, 158, 0.2);       /* --sand */
+  --contour-index: rgba(217, 174, 98, 0.42);  /* --ochre */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100vh;
+  height: 100lvh;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.6s ease;
+}
+.contours.is-drawn { opacity: 1; }
+
+/* ----- tabs + header: solid, like the margin above a map's neatline ----- */
+.page-ai .audience { background: #060b0c; }
+.page-ai .audience__tab { color: var(--bone-soft); }
+.page-ai .audience__tab:hover { color: var(--bone); text-decoration-color: var(--ochre); }
+.page-ai .audience__tab[aria-current="page"] { background: var(--ground-low); color: var(--bone); }
+.page-ai .audience :focus-visible { outline-color: var(--ochre); }
+
+.page-ai .site-header { background: var(--ground-low); border-bottom-color: var(--rule-strong); }
+.page-ai .wordmark__mark { height: 2.6rem; }
+.ai-wordmark {
+  font-family: var(--wide);
+  font-size: 0.95rem;
+  font-weight: 650;
+  font-stretch: 125%;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--bone);
+}
+.page-ai .site-header .btn--book { white-space: nowrap; }
+@media (max-width: 29.99rem) {
+  .page-ai .site-header__inner { gap: 1rem; }
+  .page-ai .wordmark__mark { height: 2.2rem; }
+  .ai-wordmark { font-size: 0.8rem; letter-spacing: 0.1em; }
+}
+.page-ai .site-nav a { color: var(--bone-soft); }
+.page-ai .site-nav a:hover { color: var(--bone); text-decoration-color: var(--ochre); }
+
+/* ----- hero ----- */
+/* the map dims behind the hero copy, so the lede reads cleanly over the lines */
+.ai-hero {
+  padding-block: clamp(5rem, 11vw, 9.5rem) clamp(1.25rem, 2.5vw, 2rem);
+  background: radial-gradient(ellipse 62% 58% at 22% 56%, color-mix(in srgb, var(--ground) 78%, transparent), transparent 78%);
+}
+.ai-hero__lede {
+  max-width: 34rem;
+  margin: 0;
+  font-size: clamp(1.15rem, 1rem + 0.45vw, 1.4rem);
+  line-height: 1.5;
+}
+.ai-hero__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  min-height: 2.5rem;
+  margin-top: clamp(4rem, 9vw, 7.5rem);
+}
+.ai-note { margin: 0; font-family: var(--ui); font-size: 0.9rem; color: var(--bone-soft); }
+.ai-pause {
+  min-height: 2.5rem;
+  margin-left: auto;
+  padding: 0.25rem 0.9rem;
+  font-family: var(--ui);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--bone-soft);
+  background: var(--ground);
+  border: 1px solid var(--rule-strong);
+  border-radius: 2px;
+  cursor: pointer;
+}
+.ai-pause:hover { color: var(--bone); border-color: var(--bone-soft); }
+/* the same pause bars / play triangle as the demos' buttons */
+.ai-pause::before {
+  content: "";
+  display: inline-block;
+  box-sizing: border-box;
+  width: 0.7em;
+  height: 0.8em;
+  margin-right: 0.5em;
+  vertical-align: -0.05em;
+  border-style: solid;
+  border-color: currentColor;
+  border-width: 0 0.22em;
+}
+.ai-pause.is-paused::before {
+  width: 0;
+  border-color: transparent transparent transparent currentColor;
+  border-width: 0.4em 0 0.4em 0.7em;
+}
+
+/* ----- sections: hairlines between, the job band dims the map, contact sits on solid ----- */
+.ai-section { padding-block: var(--space); border-top: 1px solid var(--rule); }
+.ai-section--band { background: color-mix(in srgb, var(--ground-low) 80%, transparent); }
+.ai-section--solid { background: var(--ground-low); }
+.page-ai .split__body > .lede { margin-bottom: 0; }
+
+/* ----- legend ----- */
+.ai-legend {
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  border: 1px solid var(--rule-strong);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--ground-low) 85%, transparent);
+}
+.ai-legend dl { margin: 0; }
+.ai-legend__row { padding-block: 1.1rem; border-top: 1px solid var(--rule); }
+.ai-legend__row:first-child { padding-top: 0; border-top: 0; }
+.ai-legend__row:last-child { padding-bottom: 0; }
+.ai-legend dt {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--ui);
+  font-size: 1.08rem;
+  font-weight: 650;
+}
+.ai-legend__key { flex: none; width: 3.5rem; height: 1rem; color: var(--sand); }
+.ai-legend dd { margin: 0.3rem 0 0 4.5rem; color: var(--bone-soft); }
+@media (max-width: 29.99rem) {
+  .ai-legend__key { width: 2.5rem; }
+  .ai-legend dd { margin-left: 3.5rem; }
+}
+
+/* ----- the demo: one job in the agent's log ----- */
+.job { margin-top: clamp(2.25rem, 4vw, 3.5rem); }
+.job__stage { margin: 0; }
+.job__window {
+  overflow: hidden;
+  border: 1px solid var(--rule-strong);
+  border-radius: 6px;
+  background: var(--ground-high);
+  box-shadow: 0 40px 70px -50px #000;
+}
+.job__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 0.8rem clamp(1rem, 2.5vw, 1.5rem);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--ui);
+}
+.job__title { font-size: 0.98rem; font-weight: 650; }
+.job__sub { margin-left: 0.5rem; font-weight: 400; color: var(--bone-soft); }
+.job__state {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.2rem 0.75rem;
+  border-radius: 999px;
+  background: var(--bone);
+  color: var(--ground-low);
+  font-size: 0.82rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+.job__state.is-working { background: transparent; color: var(--ochre); box-shadow: inset 0 0 0 1px currentColor; }
+.job__state.is-working::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: currentColor;
+  animation: job-blink 1.2s ease-in-out infinite;
+}
+.is-paused .job__state::before { animation-play-state: paused; }
+@keyframes job-blink { 50% { opacity: 0.25; } }
+
+.job__body { display: grid; }
+@media (min-width: 52rem) { .job__body { grid-template-columns: minmax(0, 1fr) minmax(14rem, 17rem); } }
+
+.job__log {
+  list-style: none;
+  margin: 0;
+  padding: 0.6rem clamp(1rem, 2.5vw, 1.5rem) 0.9rem;
+  font-family: var(--ui);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+.job__line {
+  display: grid;
+  grid-template-columns: 0.75rem 2.75rem minmax(0, 1fr);
+  column-gap: 0.75rem;
+  align-items: baseline;
+  padding-block: 0.6rem;
+  border-bottom: 1px dashed var(--rule);
+  transition: color 300ms ease;
+}
+.job__line:last-child { border-bottom: 0; }
+/* small phones: the clock times go, so the steps get the width */
+@media (max-width: 29.99rem) {
+  .job__line { grid-template-columns: 0.75rem minmax(0, 1fr); }
+  .job__time { display: none; }
+}
+.job__mark {
+  align-self: center;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--sand);
+  box-shadow: 0 0 0 1px var(--sand);
+}
+.job__time { font-family: var(--mono); font-size: 0.85rem; color: var(--bone-soft); font-variant-numeric: tabular-nums; }
+.job__line code { font-family: var(--mono); font-size: 0.88em; color: var(--sand); overflow-wrap: anywhere; }
+/* playing: the plan shows from the start, dim; each line lights up as it's worked */
+.demo--live .job__line:not(.is-shown) { color: color-mix(in srgb, var(--bone) 52%, transparent); }
+.demo--live .job__line:not(.is-shown) code { color: inherit; }
+.demo--live .job__line:not(.is-shown) .job__time { visibility: hidden; }
+.demo--live .job__line:not(.is-shown) .job__mark { background: transparent; box-shadow: 0 0 0 1px var(--rule-strong); }
+.job__line.is-current .job__mark { background: var(--ochre); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ochre) 25%, transparent); }
+.job__line.is-current .job__time { color: var(--ochre); }
+
+.job__meters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  gap: 1.1rem 1.5rem;
+  margin: 0;
+  padding: 1.25rem clamp(1rem, 2.5vw, 1.5rem) 1.4rem;
+  border-top: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--ground-low) 45%, transparent);
+}
+@media (min-width: 52rem) {
+  .job__meters { grid-template-columns: minmax(0, 1fr); border-top: 0; border-left: 1px solid var(--rule); }
+}
+.job__meter dt {
+  font-family: var(--wide);
+  font-size: 0.68rem;
+  font-weight: 600;
+  font-stretch: 125%;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bone-soft);
+}
+.job__meter dd { margin: 0.25rem 0 0; font-family: var(--ui); font-size: 1rem; font-weight: 600; }
+.job__meter--big dd {
+  font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem);
+  font-weight: 650;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.job__meter--out dd { color: var(--ochre); }
+
+.page-ai .demo__caption { color: var(--bone-soft); }
+.page-ai .demo__toggle { color: var(--bone); border-color: var(--rule-strong); }
+.page-ai .demo__toggle:hover { background: rgba(236, 230, 217, 0.06); border-color: var(--bone-soft); }
+
+/* other first jobs: a quiet list under the demo (plain text, so nothing looks clickable) */
+.ai-also { margin-top: clamp(2.25rem, 4vw, 3rem); }
+.ai-also .ai-label { margin-bottom: 0.25rem; }
+.ai-also ul {
+  display: grid;
+  column-gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 40rem) { .ai-also ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 64rem) { .ai-also ul { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.ai-also li {
+  padding-block: 0.7rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--ui);
+  font-size: 0.98rem;
+  color: var(--bone);
+}
+
+/* ----- who we are ----- */
+.ai-people { display: grid; gap: 1.5rem; margin: 2rem 0 0; padding: 0; list-style: none; }
+@media (min-width: 48rem) { .ai-people { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; } }
+.ai-people li { padding-top: 1rem; border-top: 1px solid var(--rule-strong); }
+.ai-people__name { margin: 0 0 0.4rem; font-family: var(--ui); font-size: 1.15rem; font-weight: 650; font-stretch: 100%; letter-spacing: 0; }
+.ai-people p { margin: 0; color: var(--bone-soft); }
+
+/* ----- contact + form on the dark ground ----- */
+.page-ai .contact-method { border-color: var(--rule-strong); }
+.page-ai .contact-method__label { color: var(--bone-soft); }
+.page-ai .form-panel { background: var(--ground-high); border-color: var(--rule-strong); border-radius: 6px; }
+.page-ai .form-panel h3 { color: var(--bone); }
+.page-ai .form-panel__intro { color: var(--bone-soft); }
+.page-ai .field label { color: var(--bone); }
+.page-ai .field input,
+.page-ai .field select,
+.page-ai .field textarea {
+  color: var(--bone);
+  background: var(--ground-low);
+  border-color: rgba(236, 230, 217, 0.34);
+}
+.page-ai .field input:focus,
+.page-ai .field select:focus,
+.page-ai .field textarea:focus { outline-color: var(--ochre); border-color: var(--ochre); }
+.page-ai .form-status--ok { color: var(--bone); }
+.page-ai .form-status--err { color: #f0a08a; }
+
+/* ----- footer ----- */
+.page-ai .site-footer { background: #060b0c; border-top: 1px solid var(--rule); }
+.page-ai .footer-place { color: var(--bone-soft); }
+.page-ai .site-footer a:hover { text-decoration-color: var(--ochre); }

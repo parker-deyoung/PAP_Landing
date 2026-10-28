@@ -1,6 +1,6 @@
 /* Arches Labs — the demos that share one player: records and guests (hunting page); cow
-   records, grazing plan, temperature checks, and herding (cattle page). A scene whose
-   markup isn't on the page is skipped.
+   records, grazing plan, temperature checks, and herding (cattle page); the sample job
+   (local AI page). A scene whose markup isn't on the page is skipped.
    Progressive enhancement only. Without this file each demo shows its finished state
    and every step's text. One small player (below) runs them all: it loops a timeline,
    keeps the numbered steps in sync (the active step opens, its bar fills, clicking a
@@ -393,6 +393,31 @@
       setText(el.statusSub, HERD_STATUS[i][2] !== null ? HERD_STATUS[i][2]
         : through + " of " + headTotal + " head counted through");
       show(el.card, t >= 20);
+    }
+  });
+
+  /* --- agent (local AI page): a quote request worked on the company's own server. The
+     plan shows from the start; each line lights up as it's worked while "Read on site"
+     climbs. "Sent outside" is never touched: it stays at 0 bytes. --- */
+  var JOB_AT = [0.5, 2.1, 3.9, 5.5, 7.4, 9, 10.4];          // when each log line starts
+  var JOB_MB = [46, 1180, 1420, 1860, 1890, 1900, 1900];    // total read once that line's done
+  var JOB_DONE = 10.4;
+  play("agent", {
+    T: 16,
+    STEPS: [0],
+    KEYS: [15],
+    render: function (t, el) {
+      var mb = 0;
+      for (var i = 0; i < JOB_AT.length; i++) {
+        var next = i + 1 < JOB_AT.length ? JOB_AT[i + 1] : JOB_DONE;
+        show(el["l" + (i + 1)], t >= JOB_AT[i]);
+        el["l" + (i + 1)].classList.toggle("is-current", t >= JOB_AT[i] && t < next);
+        mb += (JOB_MB[i] - (i ? JOB_MB[i - 1] : 0)) * ease(prog(t, JOB_AT[i], JOB_AT[i] + 1.3));
+      }
+      var done = t >= JOB_DONE;
+      setText(el.state, done ? "Needs your OK" : "Working");
+      el.state.classList.toggle("is-working", !done);
+      setText(el.read, mb < 1000 ? Math.round(mb) + " MB" : (mb / 1000).toFixed(1) + " GB");
     }
   });
 })();

@@ -187,10 +187,11 @@ a:hover { color: var(--rust); }
   text-decoration: underline;
 }
 
-/* ----- audience tabs: hunting ranches | cattle ranches -----
-   A thin ink strip above the header on both pages. The current page's tab is paper, so
-   it reads as joined to the header under it. Shown at every width: the section nav is
-   hidden on phones, and this is how a cattle rancher finds their page. */
+/* ----- page tabs: hunting ranches | cattle ranches | local AI -----
+   A thin ink strip above the header on every page. The current page's tab is paper, so
+   it reads as joined to the header under it (local-ai.css recolors it for that page).
+   Shown at every width: the section nav is hidden on phones, and this is how a cattle
+   rancher finds their page. On small phones the tabs drop "ranches" to fit in a row. */
 .audience { background: var(--ink); }
 .audience__inner { display: flex; gap: 0.25rem; padding-top: 0.4rem; }
 .audience__tab {
@@ -212,6 +213,7 @@ a:hover { color: var(--rust); }
   text-underline-offset: 0.35em;
 }
 .audience__tab[aria-current="page"] { background: var(--paper); color: var(--ink); text-decoration: none; }
+@media (max-width: 29.99rem) { .audience__long { display: none; } }
 .audience :focus-visible { outline-color: var(--rust-light); outline-offset: -3px; }
 
 /* ----- header ----- */
