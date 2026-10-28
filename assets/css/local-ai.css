@@ -225,126 +225,106 @@
   .ai-legend dd { margin-left: 3.5rem; }
 }
 
-/* ----- the demo: one job in the agent's log ----- */
+/* ----- the demo: one job, as its own log shows it. Plain rows, monospace columns,
+   status words instead of dots or badges, so it reads like real job output. Columns
+   step down with the width: all five from 52rem, no Read / Sent out below that,
+   and on small phones only the step and its status. ----- */
 .job { margin-top: clamp(2.25rem, 4vw, 3.5rem); }
 .job__stage { margin: 0; }
 .job__window {
+  --job-pad: clamp(1rem, 2.5vw, 1.5rem);
   overflow: hidden;
   border: 1px solid var(--rule-strong);
-  border-radius: 6px;
+  border-radius: 3px;
   background: var(--ground-high);
-  box-shadow: 0 40px 70px -50px #000;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
 .job__bar {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  gap: 0.5rem 1rem;
-  padding: 0.8rem clamp(1rem, 2.5vw, 1.5rem);
-  border-bottom: 1px solid var(--rule);
-  font-family: var(--ui);
+  gap: 0.25rem 2ch;
+  padding: 0.7rem var(--job-pad);
+  border-bottom: 1px solid var(--rule-strong);
+  background: var(--ground-low);
 }
-.job__title { font-size: 0.98rem; font-weight: 650; }
-.job__sub { margin-left: 0.5rem; font-weight: 400; color: var(--bone-soft); }
-.job__state {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.2rem 0.75rem;
-  border-radius: 999px;
-  background: var(--bone);
-  color: var(--ground-low);
-  font-size: 0.82rem;
-  font-weight: 650;
-  white-space: nowrap;
-}
-.job__state.is-working { background: transparent; color: var(--ochre); box-shadow: inset 0 0 0 1px currentColor; }
-.job__state.is-working::before {
-  content: "";
-  width: 0.45rem;
-  height: 0.45rem;
-  border-radius: 50%;
-  background: currentColor;
-  animation: job-blink 1.2s ease-in-out infinite;
-}
-.is-paused .job__state::before { animation-play-state: paused; }
-@keyframes job-blink { 50% { opacity: 0.25; } }
+.job__title { font-weight: 600; }
+.job__sub { margin-left: 1ch; font-weight: 400; color: var(--bone-soft); }
+.job__state { color: var(--bone-soft); white-space: nowrap; }
+.job__state b { font-weight: 600; color: var(--bone); }
+.job__state b.is-working { color: var(--ochre); }
 
-.job__body { display: grid; }
-@media (min-width: 52rem) { .job__body { grid-template-columns: minmax(0, 1fr) minmax(14rem, 17rem); } }
-
-.job__log {
-  list-style: none;
-  margin: 0;
-  padding: 0.6rem clamp(1rem, 2.5vw, 1.5rem) 0.9rem;
-  font-family: var(--ui);
-  font-size: 1rem;
-  line-height: 1.4;
-}
+/* the header row and each log row share one grid; ch is the mono's own width */
+.job__cols,
 .job__line {
   display: grid;
-  grid-template-columns: 0.75rem 2.75rem minmax(0, 1fr);
-  column-gap: 0.75rem;
-  align-items: baseline;
-  padding-block: 0.6rem;
-  border-bottom: 1px dashed var(--rule);
-  transition: color 300ms ease;
+  grid-template-columns: minmax(0, 1fr) 7ch;
+  column-gap: 2ch;
+  padding-inline: var(--job-pad);
 }
-.job__line:last-child { border-bottom: 0; }
-/* small phones: the clock times go, so the steps get the width */
-@media (max-width: 29.99rem) {
-  .job__line { grid-template-columns: 0.75rem minmax(0, 1fr); }
-  .job__time { display: none; }
-}
-.job__mark {
-  align-self: center;
-  width: 0.6rem;
-  height: 0.6rem;
-  border-radius: 50%;
-  background: var(--sand);
-  box-shadow: 0 0 0 1px var(--sand);
-}
-.job__time { font-family: var(--mono); font-size: 0.85rem; color: var(--bone-soft); font-variant-numeric: tabular-nums; }
-.job__line code { font-family: var(--mono); font-size: 0.88em; color: var(--sand); overflow-wrap: anywhere; }
-/* playing: the plan shows from the start, dim; each line lights up as it's worked */
-.demo--live .job__line:not(.is-shown) { color: color-mix(in srgb, var(--bone) 52%, transparent); }
-.demo--live .job__line:not(.is-shown) code { color: inherit; }
-.demo--live .job__line:not(.is-shown) .job__time { visibility: hidden; }
-.demo--live .job__line:not(.is-shown) .job__mark { background: transparent; box-shadow: 0 0 0 1px var(--rule-strong); }
-.job__line.is-current .job__mark { background: var(--ochre); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ochre) 25%, transparent); }
-.job__line.is-current .job__time { color: var(--ochre); }
-
-.job__meters {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-content: start;
-  gap: 1.1rem 1.5rem;
-  margin: 0;
-  padding: 1.25rem clamp(1rem, 2.5vw, 1.5rem) 1.4rem;
-  border-top: 1px solid var(--rule);
-  background: color-mix(in srgb, var(--ground-low) 45%, transparent);
+.job__time, .job__read, .job__sent { display: none; }
+@media (max-width: 29.99rem) { .job__window { font-size: 0.84rem; } }
+@media (min-width: 30rem) {
+  .job__cols, .job__line { grid-template-columns: 8ch minmax(0, 1fr) 7ch; }
+  .job__time { display: block; }
 }
 @media (min-width: 52rem) {
-  .job__meters { grid-template-columns: minmax(0, 1fr); border-top: 0; border-left: 1px solid var(--rule); }
+  .job__cols, .job__line { grid-template-columns: 8ch minmax(0, 1fr) 6ch 8ch 7ch; }
+  .job__read, .job__sent { display: block; text-align: right; }
 }
-.job__meter dt {
-  font-family: var(--wide);
-  font-size: 0.68rem;
-  font-weight: 600;
-  font-stretch: 125%;
-  letter-spacing: 0.14em;
+.job__cols { padding-block: 0.6rem 0.45rem; border-bottom: 1px solid var(--rule); }
+.job__cols span {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bone-soft);
+  white-space: nowrap;
+}
+
+.job__log { list-style: none; margin: 0; padding: 0.3rem 0 0.5rem; }
+.job__line { align-items: baseline; padding-block: 0.4rem; transition: color 300ms ease; }
+.job__line + .job__line { border-top: 1px solid color-mix(in srgb, var(--rule) 55%, transparent); }
+.job__line .job__time,
+.job__line .job__read,
+.job__line .job__sent,
+.job__line .job__status { color: var(--bone-soft); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.job__line code { font: inherit; color: var(--sand); overflow-wrap: anywhere; }
+/* playing: queued rows show dim with no numbers yet; the running row's time and status go ochre */
+.demo--live .job__line:not(.is-shown) { color: color-mix(in srgb, var(--bone) 52%, transparent); }
+.demo--live .job__line:not(.is-shown) :is(code, .job__status) { color: inherit; }
+.demo--live .job__line:not(.is-shown) :is(.job__time, .job__read, .job__sent) { visibility: hidden; }
+.job__line.is-current :is(.job__time, .job__status) { color: var(--ochre); }
+.job__line.is-current .job__status { animation: job-blink 1.2s ease-in-out infinite; }
+.is-paused .job__line.is-current .job__status { animation-play-state: paused; }
+@keyframes job-blink { 50% { opacity: 0.35; } }
+
+/* the window's status bar: totals and where it ran */
+.job__totals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 3ch;
+  margin: 0;
+  padding: 0.75rem var(--job-pad);
+  border-top: 1px solid var(--rule-strong);
+  background: var(--ground-low);
+}
+.job__totals div { display: flex; align-items: baseline; gap: 1.5ch; }
+.job__totals dt {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--bone-soft);
 }
-.job__meter dd { margin: 0.25rem 0 0; font-family: var(--ui); font-size: 1rem; font-weight: 600; }
-.job__meter--big dd {
-  font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem);
-  font-weight: 650;
-  line-height: 1.1;
-  font-variant-numeric: tabular-nums;
+.job__totals dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+.job__out dd { color: var(--ochre); }
+/* below the five-column view, one total per line with the values lined up */
+@media (max-width: 51.99rem) {
+  .job__totals div { flex-basis: 100%; }
+  .job__totals dt { flex: none; width: 7.5rem; }
 }
-.job__meter--out dd { color: var(--ochre); }
 
 .page-ai .demo__caption { color: var(--bone-soft); }
 .page-ai .demo__toggle { color: var(--bone); border-color: var(--rule-strong); }

@@ -196,9 +196,10 @@
 
   <!-- ===================================================================
        3. A SAMPLE JOB (the page's one demo)
-       The "agent" scene in assets/js/demos.js. The agent's plan shows from the
-       start; each line lights up when it's done while "Read on site" climbs and
-       "Sent outside" stays at zero. With JS off every line shows done.
+       The "agent" scene in assets/js/demos.js, drawn as the job's own log: plain
+       rows and status words, no badges. Every step is listed from the start as
+       queued, then runs and reads done while its Read column and "Read on site"
+       climb; "Sent out" stays at 0 bytes. With JS off every row shows done.
        =================================================================== -->
   <section class="ai-section ai-section--band" id="job" aria-labelledby="job-title">
     <div class="page split">
@@ -216,35 +217,24 @@
         <div class="job__window" role="img" aria-label="Illustration of an AI agent working a quote request on a company's own server. It reads the 41-page request, searches 2,316 past bids on the file server, finds four close matches, pulls their labor hours and material costs, drafts the quote and cover letter, flags two line items it couldn't price, and hands the draft to a person to sign off. About 1.9 GB is read on site and nothing is sent outside.">
           <div class="job__bar" aria-hidden="true">
             <span class="job__title">Job 0418 <span class="job__sub">Quote for RFQ 25-0117</span></span>
-            <span class="job__state" data-el="state">Needs your OK</span>
+            <span class="job__state">Status: <b data-el="state">needs your OK</b></span>
           </div>
           <div class="job__body" aria-hidden="true">
+            <div class="job__cols"><span class="job__time">Time</span><span>Step</span><span class="job__read">Read</span><span class="job__sent">Sent out</span><span class="job__status">Status</span></div>
             <ol class="job__log" role="list">
-              <li class="job__line" data-el="l1"><span class="job__mark"></span><span class="job__time">8:02</span><span>Read <code>RFQ-25-0117.pdf</code>: 41 pages, 3 drawings</span></li>
-              <li class="job__line" data-el="l2"><span class="job__mark"></span><span class="job__time">8:03</span><span>Searched past bids in <code>\\files\contracts</code>: 2,316 files</span></li>
-              <li class="job__line" data-el="l3"><span class="job__mark"></span><span class="job__time">8:05</span><span>Found 4 close matches, 2019 to 2024</span></li>
-              <li class="job__line" data-el="l4"><span class="job__mark"></span><span class="job__time">8:06</span><span>Pulled labor hours and material costs from those 4 jobs</span></li>
-              <li class="job__line" data-el="l5"><span class="job__mark"></span><span class="job__time">8:11</span><span>Drafted the quote and the cover letter</span></li>
-              <li class="job__line" data-el="l6"><span class="job__mark"></span><span class="job__time">8:12</span><span>Flagged 2 line items it couldn't price</span></li>
-              <li class="job__line" data-el="l7"><span class="job__mark"></span><span class="job__time">8:12</span><span>Handed the draft to you to sign off</span></li>
+              <li class="job__line" data-el="l1"><span class="job__time">08:02:14</span><span>Read <code>RFQ-25-0117.pdf</code>: 41 pages, 3 drawings</span><span class="job__read" data-el="r1">46 MB</span><span class="job__sent">0 bytes</span><span class="job__status" data-el="s1">done</span></li>
+              <li class="job__line" data-el="l2"><span class="job__time">08:03:40</span><span>Searched past bids in <code>\\files\contracts</code>: 2,316 files</span><span class="job__read" data-el="r2">1.1 GB</span><span class="job__sent">0 bytes</span><span class="job__status" data-el="s2">done</span></li>
+              <li class="job__line" data-el="l3"><span class="job__time">08:05:02</span><span>Found 4 close matches, 2019 to 2024</span><span class="job__read" data-el="r3">240 MB</span><span class="job__sent">0 bytes</span><span class="job__status" data-el="s3">done</span></li>
+              <li class="job__line" data-el="l4"><span class="job__time">08:06:51</span><span>Pulled labor hours and material costs from those 4 jobs</span><span class="job__read" data-el="r4">440 MB</span><span class="job__sent">0 bytes</span><span class="job__status" data-el="s4">done</span></li>
+              <li class="job__line" data-el="l5"><span class="job__time">08:11:23</span><span>Drafted the quote and the cover letter</span><span class="job__read" data-el="r5">30 MB</span><span class="job__sent">0 bytes</span><span class="job__status" data-el="s5">done</span></li>
+              <li class="job__line" data-el="l6"><span class="job__time">08:12:05</span><span>Flagged 2 line items it couldn't price</span><span class="job__read" data-el="r6">10 MB</span><span class="job__sent">0 bytes</span><span class="job__status" data-el="s6">done</span></li>
+              <li class="job__line" data-el="l7"><span class="job__time">08:12:09</span><span>Handed the draft to you to sign off</span><span class="job__read" data-el="r7">0 MB</span><span class="job__sent">0 bytes</span><span class="job__status" data-el="s7">done</span></li>
             </ol>
-            <dl class="job__meters">
-              <div class="job__meter job__meter--big">
-                <dt>Read on site</dt>
-                <dd data-el="read">1.9 GB</dd>
-              </div>
-              <div class="job__meter job__meter--big job__meter--out">
-                <dt>Sent outside</dt>
-                <dd>0 bytes</dd>
-              </div>
-              <div class="job__meter">
-                <dt>Running on</dt>
-                <dd>Your back-office server</dd>
-              </div>
-              <div class="job__meter">
-                <dt>Internet</dt>
-                <dd>Not connected</dd>
-              </div>
+            <dl class="job__totals">
+              <div><dt>Read on site</dt><dd data-el="read">1.9 GB</dd></div>
+              <div class="job__out"><dt>Sent outside</dt><dd>0 bytes</dd></div>
+              <div><dt>Running on</dt><dd>your back-office server</dd></div>
+              <div><dt>Internet</dt><dd>not connected</dd></div>
             </dl>
           </div>
         </div>

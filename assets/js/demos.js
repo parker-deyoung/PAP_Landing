@@ -396,28 +396,35 @@
     }
   });
 
-  /* --- agent (local AI page): a quote request worked on the company's own server. The
-     plan shows from the start; each line lights up as it's worked while "Read on site"
-     climbs. "Sent outside" is never touched: it stays at 0 bytes. --- */
-  var JOB_AT = [0.5, 2.1, 3.9, 5.5, 7.4, 9, 10.4];          // when each log line starts
-  var JOB_MB = [46, 1180, 1420, 1860, 1890, 1900, 1900];    // total read once that line's done
+  /* --- agent (local AI page): a quote request worked on the company's own server, shown
+     as the job's log. Every step is listed from the start as queued; each one runs, then
+     reads done, while its Read column and "Read on site" climb. "Sent out" never moves
+     off 0 bytes. --- */
+  var JOB_AT = [0.5, 2.1, 3.9, 5.5, 7.4, 9, 10.4];          // when each log row starts
+  var JOB_MB = [46, 1180, 1420, 1860, 1890, 1900, 1900];    // total read once that row's done
   var JOB_DONE = 10.4;
+  function mbText(mb) { return mb < 1000 ? Math.round(mb) + " MB" : (mb / 1000).toFixed(1) + " GB"; }
   play("agent", {
     T: 16,
     STEPS: [0],
     KEYS: [15],
     render: function (t, el) {
-      var mb = 0;
+      var total = 0;
       for (var i = 0; i < JOB_AT.length; i++) {
-        var next = i + 1 < JOB_AT.length ? JOB_AT[i + 1] : JOB_DONE;
-        show(el["l" + (i + 1)], t >= JOB_AT[i]);
-        el["l" + (i + 1)].classList.toggle("is-current", t >= JOB_AT[i] && t < next);
-        mb += (JOB_MB[i] - (i ? JOB_MB[i - 1] : 0)) * ease(prog(t, JOB_AT[i], JOB_AT[i] + 1.3));
+        var n = i + 1;
+        var next = n < JOB_AT.length ? JOB_AT[n] : JOB_DONE;
+        var on = t >= JOB_AT[i], now = on && t < next;
+        var mb = (JOB_MB[i] - (i ? JOB_MB[i - 1] : 0)) * ease(prog(t, JOB_AT[i], JOB_AT[i] + 1.3));
+        show(el["l" + n], on);
+        el["l" + n].classList.toggle("is-current", now);
+        setText(el["s" + n], now ? "running" : on ? "done" : "queued");
+        setText(el["r" + n], mbText(mb));
+        total += mb;
       }
       var done = t >= JOB_DONE;
-      setText(el.state, done ? "Needs your OK" : "Working");
+      setText(el.state, done ? "needs your OK" : "running");
       el.state.classList.toggle("is-working", !done);
-      setText(el.read, mb < 1000 ? Math.round(mb) + " MB" : (mb / 1000).toFixed(1) + " GB");
+      setText(el.read, mbText(total));
     }
   });
 })();
